@@ -105,3 +105,14 @@ pluginDefaults:
         modelName: gemini-2.5-flash
         apiKey: "{{ secret('GEMINI_API_KEY') }}"
 ```
+
+## Setup & Execution
+
+To run these flows locally:
+1. Start Kestra using Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+2. Navigate to `http://localhost:8080` to access the Kestra UI.
+3. Configure the `GEMINI_API_KEY` in the Kestra Secrets configuration.
+4. Import the flow YAML files from the `flows/` directory into Kestra and execute them via the UI.
