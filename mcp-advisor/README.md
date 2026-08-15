@@ -51,18 +51,23 @@ The LLM integration operates in two strict phases to ensure high-quality, ground
 
 ---
 
-## 7. Retrieval Evaluation
-We generated 50 realistic developer queries representing actual use cases (without explicitly naming the server). The ground-truth dataset (`data/eval/ground_truth.json`) tracks the expected `server_id` for each query.
+## 7. Evaluation & Monitoring
 
-**Evaluation Results (50 queries):**
-| Strategy | Hit@1 | Hit@5 | MRR |
-| :--- | :--- | :--- | :--- |
-| Keyword Search | 0.440 | 0.700 | 0.566 |
-| Vector Search | 0.380 | 0.560 | 0.460 |
-| Hybrid Search | 0.540 | 0.700 | 0.626 |
-| **Hybrid + Reranking** | **0.360*** | **0.620** | **0.456** |
+### Retrieval Benchmark (50 Stratified Semantic Queries)
+*We evaluated retrieval performance by fetching exactly 30 candidates for each method before reranking, and scoring the Top-5 unique servers.*
+- **Vector Search**: Hit@1: 0.180 | Hit@5: 0.380 | MRR: 0.276 *(Best Performer)*
+- **Hybrid + CrossEncoder**: Hit@1: 0.100 | Hit@5: 0.300 | MRR: 0.177
+- **Keyword Search**: Hit@1: 0.100 | Hit@5: 0.180 | MRR: 0.149
+- **Hybrid Search**: Hit@1: 0.080 | Hit@5: 0.180 | MRR: 0.141
 
-*(Note: The fallback heuristic generated queries that exactly matched repo keywords, heavily skewing metrics toward pure Keyword/Hybrid search. In real-world verbose queries, CrossEncoder reranking provides superior semantic matching.)*
+*Note: Vector Search outperforms other methods on this dataset because the queries were deliberately designed to be highly verbose and semantic without exact server names.*
+
+### LLM-as-a-Judge Evaluation (gemini-3.5-flash)
+*Results based on 20 stratified cases, graded specifically on evidence-groundedness and constraint satisfaction.*
+- **Relevance**: 3.45/5.0
+- **Groundedness**: 1.35/5.0 *(Note: The system aggressively scores down if the LLM hallucinates constraints not present in the chunk. We also observed several `503 UNAVAILABLE` API rate-limits dropping the average).*
+- **Constraint Satisfaction**: 3.40/5.0
+- **Usefulness**: 3.65/5.0
 
 ---
 

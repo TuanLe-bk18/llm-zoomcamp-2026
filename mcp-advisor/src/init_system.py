@@ -27,21 +27,39 @@ def wait_for_es():
     print("Failed to connect to Elasticsearch.")
     return False
 
+def check_index_exists():
+    es_url = os.getenv("ES_URL", "http://localhost:9200")
+    es = Elasticsearch(es_url)
+    return es.indices.exists(index="mcp-servers")
+
 def main():
     print("=== MCP Advisor Initialization ===")
+    
+    # Check for refresh mode
+    refresh_mode = "--refresh" in sys.argv
     
     # 1. Wait for ES
     if not wait_for_es():
         sys.exit(1)
         
-    # Check if data already exists to avoid re-fetching on every restart
-    data_file = os.path.join(os.path.dirname(__file__), "..", "data", "documents.json")
-    if os.path.exists(data_file):
-        print("Data already exists. Skipping ingestion and jumping to indexing to ensure schema is correct.")
-        print("--- Running Indexing ---")
-        es_index()
-        print("=== Initialization Complete ===")
-        return
+    if not refresh_mode:
+        if check_index_exists():
+            print("Elasticsearch index 'mcp-servers' already exists. Fast boot mode: skipping ingestion and indexing.")
+            print("=== Initialization Complete ===")
+            return
+        
+        data_file = os.path.join(os.path.dirname(__file__), "..", "data", "documents.json")
+        if os.path.exists(data_file):
+            print("Data file exists but index is missing. Running Indexing only...")
+            try:
+                es_index()
+            except Exception as e:
+                print(f"Error during indexing: {e}")
+                sys.exit(1)
+            print("=== Initialization Complete ===")
+            return
+            
+    print("Refresh mode or missing data. Running full ingestion pipeline...")
 
     # 2. Fetch Registry
     print("\\n--- Phase 1: Fetching Registry ---")

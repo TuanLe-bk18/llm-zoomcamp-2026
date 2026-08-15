@@ -32,9 +32,9 @@ def extract_repos(content, source_name):
             "name": repo,
             "description": f"MCP server from {repo_id}",
             "repository": f"https://github.com/{repo_id}",
-            "version": "latest",
+            "version": "unknown",
             "package_endpoint": f"github:{repo_id}",
-            "transport": "stdio",
+            "transport": "unknown",
             "source": source_name,
             "owner": owner,
             "repo": repo

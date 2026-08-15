@@ -32,7 +32,7 @@ def log_interaction(user_query, rewritten_query, latency_ms, recommended_server,
     cursor = conn.cursor()
     
     timestamp = datetime.now().isoformat()
-    candidates_json = json.dumps([c.get('server_id') for c in top_k_candidates])
+    candidates_json = json.dumps(top_k_candidates) if top_k_candidates else "[]"
     
     cursor.execute('''
     INSERT INTO interactions (timestamp, user_query, rewritten_query, latency_ms, recommended_server, top_k_candidates)

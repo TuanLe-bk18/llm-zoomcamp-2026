@@ -34,6 +34,10 @@ with st.sidebar:
     ✅ Phase 8: Docker Reproducibility  
     """)
 
+@st.cache_resource
+def get_advisor():
+    return MCPAdvisor()
+
 tab1, tab2 = st.tabs(["Search", "Dashboard"])
 
 with tab1:
@@ -54,7 +58,7 @@ with tab1:
         else:
             with st.spinner("Retrieving candidates & analyzing..."):
                 start_time = time.time()
-                advisor = MCPAdvisor()
+                advisor = get_advisor()
                 
                 # Incorporate constraints into query
                 full_query = query
@@ -64,25 +68,22 @@ with tab1:
                     full_query += f" (Must support: {local_remote})"
                     
                 try:
-                    # Modify advisor.recommend to also return rewritten query and candidates to log
-                    # But since we didn't change the signature of advisor.recommend, we will just log the full_query and result
                     result = advisor.recommend(full_query)
                     latency = (time.time() - start_time) * 1000
                     
                     st.success("Recommendation Ready!")
                     
                     st.markdown("### Result")
-                    st.markdown(result)
+                    st.markdown(result["answer"])
                     
-                    # Extract recommended server name naively for logging
-                    recommended_server = ""
-                    for line in result.split('\\n'):
-                        if line.startswith("Recommended:"):
-                            recommended_server = line.replace("Recommended:", "").strip()
-                            break
-                            
                     # Log to DB
-                    interaction_id = db.log_interaction(query, full_query, latency, recommended_server, [])
+                    interaction_id = db.log_interaction(
+                        query, 
+                        result["rewritten_query"], 
+                        latency, 
+                        result["recommended_server"], 
+                        result["candidates"]
+                    )
                     st.session_state['last_interaction_id'] = interaction_id
                     
                 except Exception as e:

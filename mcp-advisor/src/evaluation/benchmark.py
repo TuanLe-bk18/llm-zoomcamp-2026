@@ -62,9 +62,8 @@ def main():
             relevant_server_ids = q.get('relevant_server_ids', [])
             
             try:
-                # search_hybrid_rerank already returns unique servers.
-                # other methods return top chunks, so we fetch more (e.g. 15) to get 5 unique servers.
-                results = search_func(query_text, top_k=15 if method_name != "Hybrid+Rerank" else 5)
+                # Fetch 30 chunks for baseline methods to match the 30 chunks fetched by Hybrid+Rerank before reranking
+                results = search_func(query_text, top_k=30 if method_name != "Hybrid+Rerank" else 5)
             except Exception as e:
                 print(f"Error during search: {e}")
                 results = []

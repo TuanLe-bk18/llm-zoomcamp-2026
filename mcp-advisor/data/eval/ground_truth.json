@@ -1,532 +1,402 @@
 [
   {
-    "query": "Is there a spotinst integration for Model Context Protocol?",
+    "query": "I need a way to programmatically manage my cloud compute instances and optimize spot instance scaling within my infrastructure environment.",
     "relevant_server_ids": [
       "arnstarn/mcp-server-spotinst"
     ],
-    "constraints": [
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for spotinst capabilities. The arnstarn/mcp-server-spotinst server provides exactly this."
+    "constraints": "Must allow for automated scaling adjustments.",
+    "rationale": "The server provides tools for interacting with Spot.io/NetApp Cloud infrastructure APIs for instance lifecycle management."
   },
   {
-    "query": "Provide read access to imagen3 data",
+    "query": "Can you help me generate high-quality images from text prompts directly within my development workflow?",
     "relevant_server_ids": [
       "hamflx/imagen3-mcp"
     ],
-    "constraints": [
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for imagen3 capabilities. The hamflx/imagen3-mcp server provides exactly this."
+    "constraints": "None.",
+    "rationale": "This server integrates Google's Imagen 3 generative AI model for image creation."
   },
   {
-    "query": "Is there a slack integration for Model Context Protocol?",
+    "query": "I need to fetch recent messages from specific channels and send automated status updates to our team's workspace.",
     "relevant_server_ids": [
       "zencoderai/slack-mcp-server"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for slack capabilities. The zencoderai/slack-mcp-server server provides exactly this."
+    "constraints": "Needs authentication via API token.",
+    "rationale": "This server provides connectivity to Slack APIs for channel messaging and communication automation."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with portainer",
+    "query": "I want to manage my containerized applications and monitor deployment health across multiple environments through a unified interface.",
     "relevant_server_ids": [
       "portainer/portainer-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for portainer capabilities. The portainer/portainer-mcp server provides exactly this."
+    "constraints": "Must be able to handle remote cluster connections.",
+    "rationale": "The server allows orchestration and management of containers via the Portainer API."
   },
   {
-    "query": "I want to automate my thiri workflow",
+    "query": "I am looking for a tool that can facilitate complex data transformations and workflow orchestration within my data pipeline.",
     "relevant_server_ids": [
       "BluesPrince/thiri-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for thiri capabilities. The BluesPrince/thiri-mcp server provides exactly this."
+    "constraints": "Must be performant for large datasets.",
+    "rationale": "Thiri is designed for building and managing data-centric workflows."
   },
   {
-    "query": "Provide read access to SeedreamMCP data",
+    "query": "I need an interface to interact with my data cloud storage to query and retrieve datasets for my machine learning projects.",
     "relevant_server_ids": [
       "AceDataCloud/SeedreamMCP"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for SeedreamMCP capabilities. The AceDataCloud/SeedreamMCP server provides exactly this."
+    "constraints": "Must be read-only access.",
+    "rationale": "This server provides access to Seedream data cloud services for efficient data retrieval."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with liquid",
+    "query": "I need a templating engine integration that allows me to dynamically generate text files and configuration outputs based on variables.",
     "relevant_server_ids": [
       "ertad-family/liquid"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for liquid capabilities. The ertad-family/liquid server provides exactly this."
+    "constraints": "Must support local file rendering.",
+    "rationale": "The server provides Liquid template processing capabilities for dynamic content generation."
   },
   {
-    "query": "I want to automate my ragmap workflow",
+    "query": "How can I map and visualize the relationships between my retrieved documents and knowledge base to improve my RAG system's accuracy?",
     "relevant_server_ids": [
       "khalidsaidi/ragmap"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for ragmap capabilities. The khalidsaidi/ragmap server provides exactly this."
+    "constraints": "Must support local vector database integration.",
+    "rationale": "The server is specialized in mapping retrieval-augmented generation processes and document relationships."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with cert manager",
+    "query": "I need to monitor the status of my SSL/TLS certificates and automate certificate renewal checks in my Kubernetes environment.",
     "relevant_server_ids": [
       "pibblokto/cert-manager-mcp-server"
     ],
-    "constraints": [],
-    "rationale": "The user is looking for cert manager capabilities. The pibblokto/cert-manager-mcp-server server provides exactly this."
+    "constraints": "Must be integrated with cluster-level cert-manager.",
+    "rationale": "This server provides tools to interact with Kubernetes cert-manager resources."
   },
   {
-    "query": "Provide read access to evc spark data",
+    "query": "I need to submit and monitor Spark jobs on my cluster to process large-scale batch data analytics.",
     "relevant_server_ids": [
       "entire-vc/evc-spark-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for evc spark capabilities. The entire-vc/evc-spark-mcp server provides exactly this."
+    "constraints": "Must support authentication with existing cluster credentials.",
+    "rationale": "This server facilitates the submission and management of Apache Spark workloads."
   },
   {
-    "query": "Is there a docker integration for Model Context Protocol?",
+    "query": "I need to manage my local containers and inspect logs directly from my IDE's AI chat interface. Can you help me list running containers and stop specific ones?",
     "relevant_server_ids": [
       "friendlygeorge/docker-mcp-server"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for docker capabilities. The friendlygeorge/docker-mcp-server server provides exactly this."
+    "constraints": "Must be local, no cloud-based container management.",
+    "rationale": "This server provides direct interaction with the Docker daemon, allowing for container lifecycle management."
   },
   {
-    "query": "Provide read access to ejentum data",
+    "query": "How can I integrate my current workflow automation tools to bridge data between disparate internal business systems?",
     "relevant_server_ids": [
       "ejentum/ejentum-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for ejentum capabilities. The ejentum/ejentum-mcp server provides exactly this."
+    "constraints": "Requires robust authentication handling.",
+    "rationale": "This server facilitates data bridging and workflow automation between enterprise systems."
   },
   {
-    "query": "Is there a agent web interface integration for Model Context Protocol?",
+    "query": "I want to visualize the decision-making process of my autonomous agent by giving it a browser-based dashboard. Is there a way to expose agent internal states to a web UI?",
     "relevant_server_ids": [
       "lespaceman/agent-web-interface"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for agent web interface capabilities. The lespaceman/agent-web-interface server provides exactly this."
+    "constraints": "Read-only access preferred for dashboard metrics.",
+    "rationale": "This server provides a web-based interface for monitoring and interacting with agents."
   },
   {
-    "query": "Provide read access to avots data",
+    "query": "I am looking for a tool that helps me manage my AI-driven development tasks and context more effectively.",
     "relevant_server_ids": [
       "avotsai/avots-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for avots capabilities. The avotsai/avots-mcp server provides exactly this."
+    "constraints": "None specified.",
+    "rationale": "This server acts as an orchestration layer for AI-driven development tasks."
   },
   {
-    "query": "Looking for a way to connect Claude to unbrowser",
+    "query": "I need a way to scrape and parse complex web content without dealing with heavy headless browser overhead. Can you provide a lightweight way to extract clean text from URLs?",
     "relevant_server_ids": [
       "protostatis/unbrowser"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for unbrowser capabilities. The protostatis/unbrowser server provides exactly this."
+    "constraints": "Must be lightweight, avoid heavy dependencies.",
+    "rationale": "This server specializes in non-browser-based web content extraction and parsing."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with practice fusion",
+    "query": "How can I programmatically query patient records or schedule data from my electronic health record system while ensuring HIPAA compliance?",
     "relevant_server_ids": [
       "kushaim/practice-fusion-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for practice fusion capabilities. The kushaim/practice-fusion-mcp server provides exactly this."
+    "constraints": "Must support secure API authentication.",
+    "rationale": "This server specifically integrates with Practice Fusion for healthcare data management."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with coinopai",
+    "query": "I am looking for an interface to execute crypto-asset transactions and monitor wallet balances through natural language commands.",
     "relevant_server_ids": [
       "forgemeshlabs/coinopai-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for coinopai capabilities. The forgemeshlabs/coinopai-mcp server provides exactly this."
+    "constraints": "Needs high-security transaction authorization.",
+    "rationale": "This server provides tools for managing digital assets and crypto-related operations."
   },
   {
-    "query": "Looking for a way to connect Claude to ddg agent payable services",
+    "query": "I need to implement a monetization layer for my agent, where users pay for specific API calls or tasks. Do you have a tool for handling payable service requests?",
     "relevant_server_ids": [
       "daedalusdevelopmentgroup/ddg-agent-payable-services"
     ],
-    "constraints": [
-      "must run locally"
-    ],
-    "rationale": "The user is looking for ddg agent payable services capabilities. The daedalusdevelopmentgroup/ddg-agent-payable-services server provides exactly this."
+    "constraints": "Must support micro-transaction logging.",
+    "rationale": "This server enables payable service integration for AI agents."
   },
   {
-    "query": "Is there a orcarouter integration for Model Context Protocol?",
+    "query": "I have multiple LLM endpoints and need a smart router to distribute traffic based on cost and performance. How can I manage these routes?",
     "relevant_server_ids": [
       "Continuum-AI-Corp/orcarouter-mcp-server"
     ],
-    "constraints": [
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for orcarouter capabilities. The Continuum-AI-Corp/orcarouter-mcp-server server provides exactly this."
+    "constraints": "Must handle load balancing across different providers.",
+    "rationale": "This server acts as a routing layer for multiple AI model endpoints."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with wisepanel",
+    "query": "I need an administrative panel interface that allows me to configure and monitor my AI services without writing raw configuration files.",
     "relevant_server_ids": [
       "ikoskela/wisepanel-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for wisepanel capabilities. The ikoskela/wisepanel-mcp server provides exactly this."
+    "constraints": "Must be user-friendly, focus on administrative tasks.",
+    "rationale": "This server provides a dashboard interface for managing AI service configurations."
   },
   {
-    "query": "Looking for a way to connect Claude to astronomy oracle",
+    "query": "I need a tool that can provide precise celestial coordinates and planetary positions for specific timestamps to help with my telescope automation script.",
     "relevant_server_ids": [
       "gregario/astronomy-oracle"
     ],
-    "constraints": [
-      "must run locally"
-    ],
-    "rationale": "The user is looking for astronomy oracle capabilities. The gregario/astronomy-oracle server provides exactly this."
+    "constraints": "Must provide accurate astronomical data.",
+    "rationale": "The server provides astronomical data and calculations, which directly addresses the need for celestial coordinates."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with browsermcp",
+    "query": "I am looking for a way to let my AI agent navigate the web, click buttons, and extract text from dynamic websites during a research task.",
     "relevant_server_ids": [
       "browsermcp/mcp"
     ],
-    "constraints": [
-      "must run locally"
-    ],
-    "rationale": "The user is looking for browsermcp capabilities. The browsermcp/mcp server provides exactly this."
+    "constraints": "Needs to support interaction with dynamic web elements.",
+    "rationale": "This server enables browser automation capabilities allowing the agent to perform web navigation tasks."
   },
   {
-    "query": "I want to automate my scrapeunblocker workflow",
+    "query": "I'm trying to gather product pricing data from a site that has aggressive anti-bot protections. I need a way to fetch this HTML without getting blocked.",
     "relevant_server_ids": [
       "ScrapeUnblocker/scrapeunblocker-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for scrapeunblocker capabilities. The ScrapeUnblocker/scrapeunblocker-mcp server provides exactly this."
+    "constraints": "Must bypass anti-scraping protections.",
+    "rationale": "The server is designed to facilitate scraping by handling unblocking mechanisms."
   },
   {
-    "query": "Is there a awesome  clients integration for Model Context Protocol?",
+    "query": "I'm building an application that needs to connect to various MCP servers and I need to see what desktop or CLI clients are currently available for testing.",
     "relevant_server_ids": [
       "punkpeye/awesome-mcp-clients"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for awesome  clients capabilities. The punkpeye/awesome-mcp-clients server provides exactly this."
+    "constraints": "Must list compatible client software.",
+    "rationale": "The server acts as a registry or resource hub for finding MCP-compatible client applications."
   },
   {
-    "query": "I want to automate my auto browser workflow",
+    "query": "I need to automate a series of complex form submissions across multiple web pages and want an agent-based solution to handle the session and navigation.",
     "relevant_server_ids": [
       "LvcidPsyche/auto-browser"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for auto browser capabilities. The LvcidPsyche/auto-browser server provides exactly this."
+    "constraints": "Needs session persistence for multi-step tasks.",
+    "rationale": "The server specializes in automated browser tasks suitable for complex interaction workflows."
   },
   {
-    "query": "Is there a mcgravity integration for Model Context Protocol?",
+    "query": "Can you help me calculate the gravitational force between two celestial bodies given their mass and distance?",
     "relevant_server_ids": [
       "tigranbs/mcgravity"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for mcgravity capabilities. The tigranbs/mcgravity server provides exactly this."
+    "constraints": "Must provide physics calculation tools.",
+    "rationale": "The server provides tools specifically for gravitational physics calculations."
   },
   {
-    "query": "Looking for a way to connect Claude to kubernetes",
+    "query": "I want to be able to query my cluster status, list pods, and inspect logs directly from my chat interface without switching to kubectl.",
     "relevant_server_ids": [
       "manusa/kubernetes-mcp-server"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for kubernetes capabilities. The manusa/kubernetes-mcp-server server provides exactly this."
+    "constraints": "Must connect to a local or remote Kubernetes cluster.",
+    "rationale": "The server exposes Kubernetes cluster management functions to the MCP interface."
   },
   {
-    "query": "Is there a cloudscope integration for Model Context Protocol?",
+    "query": "I need to visualize and inspect my cloud infrastructure resources across multiple regions to identify security misconfigurations.",
     "relevant_server_ids": [
       "alexpota/cloudscope-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for cloudscope capabilities. The alexpota/cloudscope-mcp server provides exactly this."
+    "constraints": "Must support cloud provider authentication.",
+    "rationale": "The server provides tools for cloud infrastructure inspection and visibility."
   },
   {
-    "query": "Is there a netskope integration for Model Context Protocol?",
+    "query": "I need to pull security logs and policy violations from my cloud security platform to include in my daily compliance report.",
     "relevant_server_ids": [
       "johnneerdael/netskope-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for netskope capabilities. The johnneerdael/netskope-mcp server provides exactly this."
+    "constraints": "Must be read-only access to security logs.",
+    "rationale": "The server facilitates integration with Netskope for security and compliance data retrieval."
   },
   {
-    "query": "Looking for a way to connect Claude to ucsc genome",
+    "query": "I am working on a bioinformatics project and need to programmatically fetch gene sequence data and annotations from the genome database.",
     "relevant_server_ids": [
       "hlydecker/ucsc-genome-mcp"
     ],
-    "constraints": [
-      "must run locally"
-    ],
-    "rationale": "The user is looking for ucsc genome capabilities. The hlydecker/ucsc-genome-mcp server provides exactly this."
+    "constraints": "Must support standard genomic data formats.",
+    "rationale": "The server offers specialized access to genomic databases, perfect for bioinformatics workflows."
   },
   {
-    "query": "Is there a PersonalizationMCP integration for Model Context Protocol?",
+    "query": "I need a way to integrate user-specific preference data into my AI agent's workflow so it can provide tailored responses based on historical interaction patterns.",
     "relevant_server_ids": [
       "YangLiangwei/PersonalizationMCP"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for PersonalizationMCP capabilities. The YangLiangwei/PersonalizationMCP server provides exactly this."
+    "constraints": "Must support secure storage of user profiles.",
+    "rationale": "This server provides personalization capabilities for customizing agent behavior based on user data."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with dicomweb",
+    "query": "How can I enable my LLM to query and retrieve medical imaging data directly from a PACS system using standard web protocols?",
     "relevant_server_ids": [
       "PantelisGeorgiadis/dicomweb-mcp-server"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for dicomweb capabilities. The PantelisGeorgiadis/dicomweb-mcp-server server provides exactly this."
+    "constraints": "Must comply with DICOMweb standards for medical data interoperability.",
+    "rationale": "This server acts as a bridge to medical imaging servers, allowing for the retrieval of clinical scans."
   },
   {
-    "query": "Provide read access to web search data",
+    "query": "I need to give my assistant the ability to look up current events and verify facts by performing live searches on the internet.",
     "relevant_server_ids": [
       "pskill9/web-search"
     ],
-    "constraints": [
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for web search capabilities. The pskill9/web-search server provides exactly this."
+    "constraints": "Must return up-to-date information.",
+    "rationale": "This server adds real-time search functionality to an MCP-enabled agent."
   },
   {
-    "query": "Looking for a way to connect Claude to bazi",
+    "query": "Can you provide a tool that calculates traditional Chinese four-pillar destiny charts based on birth date and time inputs?",
     "relevant_server_ids": [
       "cantian-ai/bazi-mcp"
     ],
-    "constraints": [
-      "must run locally"
-    ],
-    "rationale": "The user is looking for bazi capabilities. The cantian-ai/bazi-mcp server provides exactly this."
+    "constraints": "Must perform calculations offline.",
+    "rationale": "This server offers domain-specific logic for Bazi (Four Pillars of Destiny) analysis."
   },
   {
-    "query": "Provide read access to VMware Monitor data",
+    "query": "I'm looking for a way to monitor the health status and resource utilization of my virtual machines directly from my chat interface.",
     "relevant_server_ids": [
       "zw008/VMware-Monitor"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for VMware Monitor capabilities. The zw008/VMware-Monitor server provides exactly this."
+    "constraints": "Must have read-only access to the hypervisor.",
+    "rationale": "This server provides observability and metrics for VMware environments."
   },
   {
-    "query": "Looking for a way to connect Claude to pyATS_MCP",
+    "query": "How can I integrate network test automation results into my troubleshooting workflow to validate device configurations?",
     "relevant_server_ids": [
       "automateyournetwork/pyATS_MCP"
     ],
-    "constraints": [
-      "must run locally"
-    ],
-    "rationale": "The user is looking for pyATS_MCP capabilities. The automateyournetwork/pyATS_MCP server provides exactly this."
+    "constraints": "Must be able to execute test scripts on network infrastructure.",
+    "rationale": "This server facilitates network testing and validation workflows."
   },
   {
-    "query": "Looking for a way to connect Claude to kotlin sdk",
+    "query": "I am a Java/Kotlin developer looking for the official libraries to implement my own custom MCP server, what is the standard SDK I should use?",
     "relevant_server_ids": [
       "modelcontextprotocol/kotlin-sdk"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for kotlin sdk capabilities. The modelcontextprotocol/kotlin-sdk server provides exactly this."
+    "constraints": "Must be the official JVM-based implementation.",
+    "rationale": "This provides the necessary framework and libraries for building MCP servers in Kotlin."
   },
   {
-    "query": "I want to automate my tilt workflow",
+    "query": "I need to manage my local Kubernetes development environment and view live logs or status updates for my services without leaving the IDE.",
     "relevant_server_ids": [
       "rrmistry/tilt-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for tilt capabilities. The rrmistry/tilt-mcp server provides exactly this."
+    "constraints": "Must work with local development clusters.",
+    "rationale": "This server integrates developer tools for Kubernetes to streamline the inner dev loop."
   },
   {
-    "query": "I want to automate my VMware AIops workflow",
+    "query": "I want to leverage AI to analyze my virtual infrastructure and receive proactive recommendations for optimizing resource allocation.",
     "relevant_server_ids": [
       "zw008/VMware-AIops"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for VMware AIops capabilities. The zw008/VMware-AIops server provides exactly this."
+    "constraints": "Requires integration with existing virtual machine monitoring data.",
+    "rationale": "This server applies AI-driven insights to manage and optimize VMware infrastructure."
   },
   {
-    "query": "Is there a octodamus core integration for Model Context Protocol?",
+    "query": "I am looking for a core framework to handle complex task orchestration and modular component management within my agent architecture.",
     "relevant_server_ids": [
       "Octodamus/octodamus-core"
     ],
-    "constraints": [
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for octodamus core capabilities. The Octodamus/octodamus-core server provides exactly this."
+    "constraints": "Needs to be extensible and modular.",
+    "rationale": "This server offers a foundational system for organizing and executing multi-step agentic tasks."
   },
   {
-    "query": "Provide read access to oci pricing data",
+    "query": "I need to estimate the monthly costs for hosting an OCI infrastructure setup. Can you fetch the current pricing for compute instances and block storage based on my region?",
     "relevant_server_ids": [
       "jasonwilbur/oci-pricing-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for oci pricing capabilities. The jasonwilbur/oci-pricing-mcp server provides exactly this."
+    "constraints": "must provide accurate, up-to-date pricing data",
+    "rationale": "This server provides real-time access to cloud infrastructure pricing, which is essential for developers performing cost analysis on Oracle Cloud Infrastructure."
   },
   {
-    "query": "Looking for a way to connect Claude to build123d",
+    "query": "Help me generate a 3D model script for a custom mechanical part using code-based CAD tools.",
     "relevant_server_ids": [
       "pzfreo/build123d-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for build123d capabilities. The pzfreo/build123d-mcp server provides exactly this."
+    "constraints": "none",
+    "rationale": "The server enables programmatic 3D modeling, allowing developers to integrate CAD generation directly into their development workflow via code."
   },
   {
-    "query": "Is there a mindsdb integration for Model Context Protocol?",
+    "query": "I need to connect to my existing database and perform predictive analytics on my customer churn data. How can I integrate ML models directly into my SQL workflow?",
     "relevant_server_ids": [
       "mindsdb/mindsdb"
     ],
-    "constraints": [
-      "must run locally"
-    ],
-    "rationale": "The user is looking for mindsdb capabilities. The mindsdb/mindsdb server provides exactly this."
+    "constraints": "must support standard SQL interfaces",
+    "rationale": "This server bridges the gap between traditional database management and machine learning, allowing developers to query predictions as if they were standard data."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with x402search",
+    "query": "I need to perform a deep search across my technical documentation and codebase to find specific implementation patterns. What index-based search tools are available?",
     "relevant_server_ids": [
       "x402-index/x402search-mcp"
     ],
-    "constraints": [
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for x402search capabilities. The x402-index/x402search-mcp server provides exactly this."
+    "constraints": "must be efficient for large repositories",
+    "rationale": "This tool is designed for advanced indexing and search capabilities, which are critical for developers managing large-scale documentation or codebases."
   },
   {
-    "query": "Looking for a way to connect Claude to vibie",
+    "query": "I am working on a video processing pipeline and need an automated way to handle media tasks. Are there any tools that can assist with video-related workflows?",
     "relevant_server_ids": [
       "shdomi8599/vibie-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for vibie capabilities. The shdomi8599/vibie-mcp server provides exactly this."
+    "constraints": "must handle automated media processing",
+    "rationale": "The server provides specialized functionality for media and video operations, assisting developers who need to integrate video manipulation tasks into their applications."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with MayaMCP",
+    "query": "I need to automate tasks within my 3D animation software using a scripting interface. Can you help me control the environment programmatically?",
     "relevant_server_ids": [
       "PatrickPalmer/MayaMCP"
     ],
-    "constraints": [],
-    "rationale": "The user is looking for MayaMCP capabilities. The PatrickPalmer/MayaMCP server provides exactly this."
+    "constraints": "must support integration with professional 3D software",
+    "rationale": "This server provides the necessary bridge to interact with complex 3D software suites, enabling automation of creative workflows."
   },
   {
-    "query": "Is there a ai diagram maker integration for Model Context Protocol?",
+    "query": "I need to generate a sequence diagram for my system architecture documentation. Can you produce a visual representation from my technical requirements?",
     "relevant_server_ids": [
       "erajasekar/ai-diagram-maker-mcp"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for ai diagram maker capabilities. The erajasekar/ai-diagram-maker-mcp server provides exactly this."
+    "constraints": "output must be visually clear and structured",
+    "rationale": "This server automates the creation of visual diagrams, saving developers time when documenting architecture or logic flows."
   },
   {
-    "query": "I want to automate my depwire workflow",
+    "query": "I am trying to map out the dependencies in my project to identify potential circular references and bottlenecks. What tool can help me visualize these links?",
     "relevant_server_ids": [
       "depwire/depwire"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for depwire capabilities. The depwire/depwire server provides exactly this."
+    "constraints": "must provide clear dependency graphs",
+    "rationale": "This server specializes in dependency analysis, which is vital for maintaining healthy project structures and debugging complex dependency trees."
   },
   {
-    "query": "Is there a alphabanana integration for Model Context Protocol?",
+    "query": "I'm looking for a tool that handles specialized data manipulation tasks. Can you provide a utility that works with the specific format required by my legacy system?",
     "relevant_server_ids": [
       "tasopen/mcp-alphabanana"
     ],
-    "constraints": [
-      "must run locally"
-    ],
-    "rationale": "The user is looking for alphabanana capabilities. The tasopen/mcp-alphabanana server provides exactly this."
+    "constraints": "must be read-only",
+    "rationale": "This server offers utility functions that assist with niche or specialized data processing tasks, useful for developers working with legacy or custom data formats."
   },
   {
-    "query": "I need a tool that lets an AI agent interact with prolog reasoner",
+    "query": "I have a complex logic problem involving nested rules and constraints. Can I use a symbolic logic engine to help me derive the correct output?",
     "relevant_server_ids": [
       "rikarazome/prolog-reasoner"
     ],
-    "constraints": [
-      "must run locally",
-      "requires authentication"
-    ],
-    "rationale": "The user is looking for prolog reasoner capabilities. The rikarazome/prolog-reasoner server provides exactly this."
+    "constraints": "must support logical inference",
+    "rationale": "This server provides access to a logic programming environment, which is highly effective for solving problems that require symbolic reasoning and rule-based deduction."
   }
 ]

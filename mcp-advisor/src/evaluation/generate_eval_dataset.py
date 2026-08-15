@@ -17,10 +17,11 @@ def generate_queries_with_gemini(servers, api_key):
     For each server, generate ONE realistic user query that a developer might ask when looking for such a tool.
     
     CRITICAL RULES:
-    1. The query MUST NOT contain the server name, repository name, or owner name.
-    2. The query should describe the capabilities, use cases, or problems the developer is trying to solve.
-    3. Include a rationale explaining why this server is relevant.
-    4. Provide the output as a JSON array of objects with the exact keys: "server_id", "query", "constraints", "rationale".
+    1. The query MUST NOT contain the server name, repository name, or owner name. This is an absolute rule to prevent data leakage.
+    2. The query should describe capabilities, use cases, or problems the developer is trying to solve.
+    3. Make the queries STRATIFIED across the batch. Some should be simple capability queries. Some should be verbose/semantic. Some should mention constraints like "must be local", "needs authentication", "must be read-only", etc.
+    4. Include a rationale explaining why this server is relevant.
+    5. Provide the output as a JSON array of objects with the exact keys: "server_id", "query", "constraints", "rationale".
     """
     
     server_context = ""
