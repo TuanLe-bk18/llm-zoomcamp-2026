@@ -1,6 +1,6 @@
 streamlit==1.61.1
 elasticsearch==8.11.1
 sentence-transformers==5.7.0
-scikit-learn==1.9.0
-pandas==3.0.5
+scikit-learn
+pandas
 google-genai==0.5.0
