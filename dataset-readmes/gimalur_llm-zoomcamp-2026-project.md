@@ -1,0 +1,123 @@
+# Travel Course Assistant (LLM Zoomcamp 2026 project)
+
+A RAG-based travel assistant: a Chainlit chat UI backed by an agentic
+LangGraph pipeline that answers destination questions (food, culture,
+transport, logistics) grounded in a curated knowledge base of Wikivoyage
+articles - never from the LLM's own general knowledge. Retrieval is
+hybrid (vector + full-text, reciprocal rank fusion) with cross-encoder
+reranking. Conversations and feedback are logged to Postgres and surfaced
+on a Grafana dashboard.
+
+Built for the [LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp)
+course project. See [`docs/architecture.md`](docs/architecture.md) for the
+full problem statement and how the retrieval/generation flow works.
+
+## Stack
+
+- **Chainlit** - chat UI (`chat-zoom` container, port 8001)
+- **LangGraph** - agentic tool-calling pipeline (`src/app/rag_graph.py`)
+- **PostgreSQL + pgvector** - conversations, feedback, and article embeddings (`postgres-zoom`, port 5433)
+- **fastembed** - embeddings (`all-MiniLM-L6-v2`) + reranking (`ms-marco-MiniLM-L-6-v2`), ONNX, no PyTorch
+- **OpenAI `gpt-4o-mini`** - chat answers, LLM-as-judge evaluation, ground-truth generation
+- **Grafana** - monitoring dashboard (`grafana-zoom`, port 3001)
+- **Docker Compose** - orchestration
+- **uv** - Python dependency management
+
+## Prerequisites
+
+- Docker + Docker Compose
+- An OpenAI API key
+- uv (only for local, non-Docker dependency work, e.g. `make sync`)
+
+## Setup
+
+```bash
+cp .env.example .env
+```
+
+Fill in `OPENAI_API_KEY`. Postgres vars already default to working values
+for local dev - nothing else needs to change for a first run. Full
+variable reference: [`docs/configuration.md`](docs/configuration.md).
+
+## Launch
+
+```bash
+docker compose up -d --build
+```
+
+| Service | URL |
+|---|---|
+| Chat (Chainlit) | http://localhost:8001 |
+| Grafana | http://localhost:3001 (`admin` / `admin`, prompts for a password change) |
+| Postgres | localhost:5433 |
+
+## Screenshots
+
+**Chat UI**
+![Chat UI](docs/chat-ui.png)
+
+**Header buttons** (top-right corner of the chat UI) - Grafana (opens
+dashboard), Ingest fake data, Ingest Data, Clear DB:
+![Header buttons](docs/buttons.png)
+
+**Grafana dashboard**
+![Grafana dashboard](docs/grafana-1.png)
+![Grafana dashboard](docs/grafana-2.png)
+
+## First launch - load the knowledge base
+
+The knowledge base is **empty** on a fresh start - the chat will run, but
+every question will get "I don't have that information" until it's
+populated. Load it once:
+
+```bash
+make db-ingest
+```
+
+Fetches ~20 curated Wikivoyage destination articles, chunks and embeds
+them into Postgres. Idempotent and resumable - safe to rerun (already-ingested
+articles are skipped), useful if it gets interrupted by Wikivoyage's rate
+limiting. Takes a couple of minutes. You can also trigger this from the
+chat UI itself via the **Ingest Data** button, top-right corner (see
+screenshot above).
+
+Optionally, populate Grafana with demo rows (fake conversations/feedback,
+no real LLM calls) via the **Ingest fake data** button (same corner) or:
+
+```bash
+make db-ingest-fake
+```
+
+## Everyday commands
+
+All of these run via `docker compose exec` - containers must already be up
+(`docker compose up -d --build`) before running any of them, `make db-ingest*`
+and `make eval-all` included.
+
+```bash
+make test              # run the pytest suite (unit tests, no live DB/API calls)
+make db-ingest          # (re)load the Wikivoyage knowledge base (or "Ingest Data" button)
+make db-ingest-fake     # seed fake conversations + feedback (or "Ingest fake data" button)
+make db-clear           # full reset: conversations + feedback + knowledge base (or "Clear DB" button)
+make eval-all           # regenerate ground truth, score retrieval, score answer quality
+make sync               # uv sync, for local (non-Docker) dependency install
+```
+
+`make eval-all` writes results to `eval/*.md`, summarized in
+[`docs/evaluation.md`](docs/evaluation.md). Need a bash/psql shell instead?
+`docker compose exec chat-zoom bash` / `docker compose exec postgres-zoom psql
+-U $POSTGRES_USER -d $POSTGRES_DB`.
+
+## Stop
+
+```bash
+docker compose down      # stop containers, keep volumes (data survives)
+docker compose down -v   # stop containers and delete volumes (wipes Postgres/Grafana data)
+```
+
+## Documentation
+
+- [`docs/architecture.md`](docs/architecture.md) - problem statement, the agentic retrieval/generation flow, code layout, best practices applied
+- [`docs/evaluation.md`](docs/evaluation.md) - retrieval and LLM-as-judge evaluation methodology and results
+- [`docs/configuration.md`](docs/configuration.md) - environment variables, tunable constants, dependency versions
+

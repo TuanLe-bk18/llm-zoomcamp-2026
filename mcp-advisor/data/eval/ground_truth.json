@@ -1,0 +1,302 @@
+[
+  {
+    "query": "Looking for a way to connect Claude to k8m",
+    "expected_owner": "weibaohui",
+    "expected_repo": "k8m",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a higress ops integration for Model Context Protocol?",
+    "expected_owner": "higress-group",
+    "expected_repo": "higress-ops-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a perseus vault integration for Model Context Protocol?",
+    "expected_owner": "Perseus-Computing-LLC",
+    "expected_repo": "perseus-vault",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to erid",
+    "expected_owner": "atomno-mcp",
+    "expected_repo": "mcp-erid",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a openproject codex plugin integration for Model Context Protocol?",
+    "expected_owner": "alex13slem",
+    "expected_repo": "openproject-codex-plugin",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I need an MCP that lets an AI work with Epoch",
+    "expected_owner": "KyaniteLabs",
+    "expected_repo": "Epoch",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to argentum core data",
+    "expected_owner": "giskard09",
+    "expected_repo": "argentum-core",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to feishu user plugin",
+    "expected_owner": "EthanQC",
+    "expected_repo": "feishu-user-plugin",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to talkthrough data",
+    "expected_owner": "korovin-aa97",
+    "expected_repo": "talkthrough-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to solnk",
+    "expected_owner": "solnk-dev",
+    "expected_repo": "solnk-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to scala",
+    "expected_owner": "Alessandro114",
+    "expected_repo": "scala-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my flowbite workflow locally",
+    "expected_owner": "themesberg",
+    "expected_repo": "flowbite-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my shipmail workflow locally",
+    "expected_owner": "jcoulaud",
+    "expected_repo": "shipmail-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a firstcycling integration for Model Context Protocol?",
+    "expected_owner": "r-huijts",
+    "expected_repo": "firstcycling-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to wigolo data",
+    "expected_owner": "KnockOutEZ",
+    "expected_repo": "wigolo",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to tiktapdown",
+    "expected_owner": "farukkolip",
+    "expected_repo": "tiktapdown-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a llmpulse integration for Model Context Protocol?",
+    "expected_owner": "LLM-Pulse",
+    "expected_repo": "llmpulse-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I need an MCP that lets an AI work with emilia protocol",
+    "expected_owner": "emiliaprotocol",
+    "expected_repo": "emilia-protocol",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to gaudio developers",
+    "expected_owner": "gaudiolab-jp",
+    "expected_repo": "gaudio-developers-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I need an MCP that lets an AI work with flexorch",
+    "expected_owner": "flexorch",
+    "expected_repo": "flexorch-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a mobile device integration for Model Context Protocol?",
+    "expected_owner": "saranshbamania",
+    "expected_repo": "mobile-device-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my knowledgelib io workflow locally",
+    "expected_owner": "peterbeck111",
+    "expected_repo": "knowledgelib-io",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a open greenhouse integration for Model Context Protocol?",
+    "expected_owner": "benmonopoli",
+    "expected_repo": "open-greenhouse-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I need an MCP that lets an AI work with make",
+    "expected_owner": "integromat",
+    "expected_repo": "make-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to fetch",
+    "expected_owner": "zcaceres",
+    "expected_repo": "fetch-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to adaptive cards data",
+    "expected_owner": "VikrantSingh01",
+    "expected_repo": "adaptive-cards-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a go sdk integration for Model Context Protocol?",
+    "expected_owner": "modelcontextprotocol",
+    "expected_repo": "go-sdk",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to uniprot",
+    "expected_owner": "smaniches",
+    "expected_repo": "uniprot-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my filesystem workflow locally",
+    "expected_owner": "mark3labs",
+    "expected_repo": "mcp-filesystem-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my omni dev workflow locally",
+    "expected_owner": "rust-works",
+    "expected_repo": "omni-dev",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my replicant workflow locally",
+    "expected_owner": "thecombatwombat",
+    "expected_repo": "replicant-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to system prompts",
+    "expected_owner": "JamesANZ",
+    "expected_repo": "system-prompts-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a glif integration for Model Context Protocol?",
+    "expected_owner": "glifxyz",
+    "expected_repo": "glif-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to nvim",
+    "expected_owner": "linw1995",
+    "expected_repo": "nvim-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to kubectl",
+    "expected_owner": "rohitg00",
+    "expected_repo": "kubectl-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to coincap data",
+    "expected_owner": "QuantGeekDev",
+    "expected_repo": "coincap-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to veezee data",
+    "expected_owner": "veezeehq",
+    "expected_repo": "veezee-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a liveblocks integration for Model Context Protocol?",
+    "expected_owner": "liveblocks",
+    "expected_repo": "liveblocks-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to graph tool call data",
+    "expected_owner": "SonAIengine",
+    "expected_repo": "graph-tool-call",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my openai workflow locally",
+    "expected_owner": "mzxrai",
+    "expected_repo": "mcp-openai",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to kubernetes data",
+    "expected_owner": "manusa",
+    "expected_repo": "kubernetes-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my buildkite workflow locally",
+    "expected_owner": "buildkite",
+    "expected_repo": "buildkite-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Is there a tilt integration for Model Context Protocol?",
+    "expected_owner": "rrmistry",
+    "expected_repo": "tilt-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to base",
+    "expected_owner": "base",
+    "expected_repo": "base-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Looking for a way to connect Claude to text to model",
+    "expected_owner": "mikan-atomoki",
+    "expected_repo": "text-to-model",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "Provide read access to openai gpt image data",
+    "expected_owner": "SureScaleAI",
+    "expected_repo": "openai-gpt-image-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I want to automate my mailbox workflow locally",
+    "expected_owner": "arbengine",
+    "expected_repo": "mailbox-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I need an MCP that lets an AI work with wcagc",
+    "expected_owner": "WCAG-Compliance",
+    "expected_repo": "wcagc-mcp",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I need an MCP that lets an AI work with last9",
+    "expected_owner": "last9",
+    "expected_repo": "last9-mcp-server",
+    "important_constraints": "remote"
+  },
+  {
+    "query": "I need an MCP that lets an AI work with marktplaats",
+    "expected_owner": "jasp-nerd",
+    "expected_repo": "marktplaats-mcp",
+    "important_constraints": "remote"
+  }
+]
