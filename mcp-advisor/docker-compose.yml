@@ -14,6 +14,17 @@ services:
     volumes:
       - es_data:/usr/share/elasticsearch/data
 
+  init-index:
+    build: .
+    container_name: mcp_init_index
+    environment:
+      - ES_URL=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./data:/app/data
+    command: ["python", "src/init_system.py"]
+
   web:
     build: .
     container_name: mcp_advisor_ui
@@ -21,11 +32,12 @@ services:
       - "8501:8501"
     environment:
       - ES_URL=http://elasticsearch:9200
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
     depends_on:
-      - elasticsearch
+      init-index:
+        condition: service_completed_successfully
     volumes:
       - ./data:/app/data
 
 volumes:
   es_data:
-

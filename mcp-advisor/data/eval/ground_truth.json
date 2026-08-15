@@ -1,302 +1,532 @@
 [
   {
-    "query": "Looking for a way to connect Claude to k8m",
-    "expected_owner": "weibaohui",
-    "expected_repo": "k8m",
-    "important_constraints": "remote"
+    "query": "Is there a spotinst integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "arnstarn/mcp-server-spotinst"
+    ],
+    "constraints": [
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for spotinst capabilities. The arnstarn/mcp-server-spotinst server provides exactly this."
   },
   {
-    "query": "Is there a higress ops integration for Model Context Protocol?",
-    "expected_owner": "higress-group",
-    "expected_repo": "higress-ops-mcp-server",
-    "important_constraints": "remote"
+    "query": "Provide read access to imagen3 data",
+    "relevant_server_ids": [
+      "hamflx/imagen3-mcp"
+    ],
+    "constraints": [
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for imagen3 capabilities. The hamflx/imagen3-mcp server provides exactly this."
   },
   {
-    "query": "Is there a perseus vault integration for Model Context Protocol?",
-    "expected_owner": "Perseus-Computing-LLC",
-    "expected_repo": "perseus-vault",
-    "important_constraints": "remote"
+    "query": "Is there a slack integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "zencoderai/slack-mcp-server"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for slack capabilities. The zencoderai/slack-mcp-server server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to erid",
-    "expected_owner": "atomno-mcp",
-    "expected_repo": "mcp-erid",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with portainer",
+    "relevant_server_ids": [
+      "portainer/portainer-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for portainer capabilities. The portainer/portainer-mcp server provides exactly this."
   },
   {
-    "query": "Is there a openproject codex plugin integration for Model Context Protocol?",
-    "expected_owner": "alex13slem",
-    "expected_repo": "openproject-codex-plugin",
-    "important_constraints": "remote"
+    "query": "I want to automate my thiri workflow",
+    "relevant_server_ids": [
+      "BluesPrince/thiri-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for thiri capabilities. The BluesPrince/thiri-mcp server provides exactly this."
   },
   {
-    "query": "I need an MCP that lets an AI work with Epoch",
-    "expected_owner": "KyaniteLabs",
-    "expected_repo": "Epoch",
-    "important_constraints": "remote"
+    "query": "Provide read access to SeedreamMCP data",
+    "relevant_server_ids": [
+      "AceDataCloud/SeedreamMCP"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for SeedreamMCP capabilities. The AceDataCloud/SeedreamMCP server provides exactly this."
   },
   {
-    "query": "Provide read access to argentum core data",
-    "expected_owner": "giskard09",
-    "expected_repo": "argentum-core",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with liquid",
+    "relevant_server_ids": [
+      "ertad-family/liquid"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for liquid capabilities. The ertad-family/liquid server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to feishu user plugin",
-    "expected_owner": "EthanQC",
-    "expected_repo": "feishu-user-plugin",
-    "important_constraints": "remote"
+    "query": "I want to automate my ragmap workflow",
+    "relevant_server_ids": [
+      "khalidsaidi/ragmap"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for ragmap capabilities. The khalidsaidi/ragmap server provides exactly this."
   },
   {
-    "query": "Provide read access to talkthrough data",
-    "expected_owner": "korovin-aa97",
-    "expected_repo": "talkthrough-mcp",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with cert manager",
+    "relevant_server_ids": [
+      "pibblokto/cert-manager-mcp-server"
+    ],
+    "constraints": [],
+    "rationale": "The user is looking for cert manager capabilities. The pibblokto/cert-manager-mcp-server server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to solnk",
-    "expected_owner": "solnk-dev",
-    "expected_repo": "solnk-mcp",
-    "important_constraints": "remote"
+    "query": "Provide read access to evc spark data",
+    "relevant_server_ids": [
+      "entire-vc/evc-spark-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for evc spark capabilities. The entire-vc/evc-spark-mcp server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to scala",
-    "expected_owner": "Alessandro114",
-    "expected_repo": "scala-mcp-server",
-    "important_constraints": "remote"
+    "query": "Is there a docker integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "friendlygeorge/docker-mcp-server"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for docker capabilities. The friendlygeorge/docker-mcp-server server provides exactly this."
   },
   {
-    "query": "I want to automate my flowbite workflow locally",
-    "expected_owner": "themesberg",
-    "expected_repo": "flowbite-mcp",
-    "important_constraints": "remote"
+    "query": "Provide read access to ejentum data",
+    "relevant_server_ids": [
+      "ejentum/ejentum-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for ejentum capabilities. The ejentum/ejentum-mcp server provides exactly this."
   },
   {
-    "query": "I want to automate my shipmail workflow locally",
-    "expected_owner": "jcoulaud",
-    "expected_repo": "shipmail-mcp",
-    "important_constraints": "remote"
+    "query": "Is there a agent web interface integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "lespaceman/agent-web-interface"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for agent web interface capabilities. The lespaceman/agent-web-interface server provides exactly this."
   },
   {
-    "query": "Is there a firstcycling integration for Model Context Protocol?",
-    "expected_owner": "r-huijts",
-    "expected_repo": "firstcycling-mcp",
-    "important_constraints": "remote"
+    "query": "Provide read access to avots data",
+    "relevant_server_ids": [
+      "avotsai/avots-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for avots capabilities. The avotsai/avots-mcp server provides exactly this."
   },
   {
-    "query": "Provide read access to wigolo data",
-    "expected_owner": "KnockOutEZ",
-    "expected_repo": "wigolo",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to unbrowser",
+    "relevant_server_ids": [
+      "protostatis/unbrowser"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for unbrowser capabilities. The protostatis/unbrowser server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to tiktapdown",
-    "expected_owner": "farukkolip",
-    "expected_repo": "tiktapdown-mcp",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with practice fusion",
+    "relevant_server_ids": [
+      "kushaim/practice-fusion-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for practice fusion capabilities. The kushaim/practice-fusion-mcp server provides exactly this."
   },
   {
-    "query": "Is there a llmpulse integration for Model Context Protocol?",
-    "expected_owner": "LLM-Pulse",
-    "expected_repo": "llmpulse-mcp",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with coinopai",
+    "relevant_server_ids": [
+      "forgemeshlabs/coinopai-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for coinopai capabilities. The forgemeshlabs/coinopai-mcp server provides exactly this."
   },
   {
-    "query": "I need an MCP that lets an AI work with emilia protocol",
-    "expected_owner": "emiliaprotocol",
-    "expected_repo": "emilia-protocol",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to ddg agent payable services",
+    "relevant_server_ids": [
+      "daedalusdevelopmentgroup/ddg-agent-payable-services"
+    ],
+    "constraints": [
+      "must run locally"
+    ],
+    "rationale": "The user is looking for ddg agent payable services capabilities. The daedalusdevelopmentgroup/ddg-agent-payable-services server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to gaudio developers",
-    "expected_owner": "gaudiolab-jp",
-    "expected_repo": "gaudio-developers-mcp",
-    "important_constraints": "remote"
+    "query": "Is there a orcarouter integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "Continuum-AI-Corp/orcarouter-mcp-server"
+    ],
+    "constraints": [
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for orcarouter capabilities. The Continuum-AI-Corp/orcarouter-mcp-server server provides exactly this."
   },
   {
-    "query": "I need an MCP that lets an AI work with flexorch",
-    "expected_owner": "flexorch",
-    "expected_repo": "flexorch-mcp",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with wisepanel",
+    "relevant_server_ids": [
+      "ikoskela/wisepanel-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for wisepanel capabilities. The ikoskela/wisepanel-mcp server provides exactly this."
   },
   {
-    "query": "Is there a mobile device integration for Model Context Protocol?",
-    "expected_owner": "saranshbamania",
-    "expected_repo": "mobile-device-mcp",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to astronomy oracle",
+    "relevant_server_ids": [
+      "gregario/astronomy-oracle"
+    ],
+    "constraints": [
+      "must run locally"
+    ],
+    "rationale": "The user is looking for astronomy oracle capabilities. The gregario/astronomy-oracle server provides exactly this."
   },
   {
-    "query": "I want to automate my knowledgelib io workflow locally",
-    "expected_owner": "peterbeck111",
-    "expected_repo": "knowledgelib-io",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with browsermcp",
+    "relevant_server_ids": [
+      "browsermcp/mcp"
+    ],
+    "constraints": [
+      "must run locally"
+    ],
+    "rationale": "The user is looking for browsermcp capabilities. The browsermcp/mcp server provides exactly this."
   },
   {
-    "query": "Is there a open greenhouse integration for Model Context Protocol?",
-    "expected_owner": "benmonopoli",
-    "expected_repo": "open-greenhouse-mcp",
-    "important_constraints": "remote"
+    "query": "I want to automate my scrapeunblocker workflow",
+    "relevant_server_ids": [
+      "ScrapeUnblocker/scrapeunblocker-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for scrapeunblocker capabilities. The ScrapeUnblocker/scrapeunblocker-mcp server provides exactly this."
   },
   {
-    "query": "I need an MCP that lets an AI work with make",
-    "expected_owner": "integromat",
-    "expected_repo": "make-mcp-server",
-    "important_constraints": "remote"
+    "query": "Is there a awesome  clients integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "punkpeye/awesome-mcp-clients"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for awesome  clients capabilities. The punkpeye/awesome-mcp-clients server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to fetch",
-    "expected_owner": "zcaceres",
-    "expected_repo": "fetch-mcp",
-    "important_constraints": "remote"
+    "query": "I want to automate my auto browser workflow",
+    "relevant_server_ids": [
+      "LvcidPsyche/auto-browser"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for auto browser capabilities. The LvcidPsyche/auto-browser server provides exactly this."
   },
   {
-    "query": "Provide read access to adaptive cards data",
-    "expected_owner": "VikrantSingh01",
-    "expected_repo": "adaptive-cards-mcp",
-    "important_constraints": "remote"
+    "query": "Is there a mcgravity integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "tigranbs/mcgravity"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for mcgravity capabilities. The tigranbs/mcgravity server provides exactly this."
   },
   {
-    "query": "Is there a go sdk integration for Model Context Protocol?",
-    "expected_owner": "modelcontextprotocol",
-    "expected_repo": "go-sdk",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to kubernetes",
+    "relevant_server_ids": [
+      "manusa/kubernetes-mcp-server"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for kubernetes capabilities. The manusa/kubernetes-mcp-server server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to uniprot",
-    "expected_owner": "smaniches",
-    "expected_repo": "uniprot-mcp",
-    "important_constraints": "remote"
+    "query": "Is there a cloudscope integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "alexpota/cloudscope-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for cloudscope capabilities. The alexpota/cloudscope-mcp server provides exactly this."
   },
   {
-    "query": "I want to automate my filesystem workflow locally",
-    "expected_owner": "mark3labs",
-    "expected_repo": "mcp-filesystem-server",
-    "important_constraints": "remote"
+    "query": "Is there a netskope integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "johnneerdael/netskope-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for netskope capabilities. The johnneerdael/netskope-mcp server provides exactly this."
   },
   {
-    "query": "I want to automate my omni dev workflow locally",
-    "expected_owner": "rust-works",
-    "expected_repo": "omni-dev",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to ucsc genome",
+    "relevant_server_ids": [
+      "hlydecker/ucsc-genome-mcp"
+    ],
+    "constraints": [
+      "must run locally"
+    ],
+    "rationale": "The user is looking for ucsc genome capabilities. The hlydecker/ucsc-genome-mcp server provides exactly this."
   },
   {
-    "query": "I want to automate my replicant workflow locally",
-    "expected_owner": "thecombatwombat",
-    "expected_repo": "replicant-mcp",
-    "important_constraints": "remote"
+    "query": "Is there a PersonalizationMCP integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "YangLiangwei/PersonalizationMCP"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for PersonalizationMCP capabilities. The YangLiangwei/PersonalizationMCP server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to system prompts",
-    "expected_owner": "JamesANZ",
-    "expected_repo": "system-prompts-mcp-server",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with dicomweb",
+    "relevant_server_ids": [
+      "PantelisGeorgiadis/dicomweb-mcp-server"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for dicomweb capabilities. The PantelisGeorgiadis/dicomweb-mcp-server server provides exactly this."
   },
   {
-    "query": "Is there a glif integration for Model Context Protocol?",
-    "expected_owner": "glifxyz",
-    "expected_repo": "glif-mcp-server",
-    "important_constraints": "remote"
+    "query": "Provide read access to web search data",
+    "relevant_server_ids": [
+      "pskill9/web-search"
+    ],
+    "constraints": [
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for web search capabilities. The pskill9/web-search server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to nvim",
-    "expected_owner": "linw1995",
-    "expected_repo": "nvim-mcp",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to bazi",
+    "relevant_server_ids": [
+      "cantian-ai/bazi-mcp"
+    ],
+    "constraints": [
+      "must run locally"
+    ],
+    "rationale": "The user is looking for bazi capabilities. The cantian-ai/bazi-mcp server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to kubectl",
-    "expected_owner": "rohitg00",
-    "expected_repo": "kubectl-mcp-server",
-    "important_constraints": "remote"
+    "query": "Provide read access to VMware Monitor data",
+    "relevant_server_ids": [
+      "zw008/VMware-Monitor"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for VMware Monitor capabilities. The zw008/VMware-Monitor server provides exactly this."
   },
   {
-    "query": "Provide read access to coincap data",
-    "expected_owner": "QuantGeekDev",
-    "expected_repo": "coincap-mcp",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to pyATS_MCP",
+    "relevant_server_ids": [
+      "automateyournetwork/pyATS_MCP"
+    ],
+    "constraints": [
+      "must run locally"
+    ],
+    "rationale": "The user is looking for pyATS_MCP capabilities. The automateyournetwork/pyATS_MCP server provides exactly this."
   },
   {
-    "query": "Provide read access to veezee data",
-    "expected_owner": "veezeehq",
-    "expected_repo": "veezee-mcp",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to kotlin sdk",
+    "relevant_server_ids": [
+      "modelcontextprotocol/kotlin-sdk"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for kotlin sdk capabilities. The modelcontextprotocol/kotlin-sdk server provides exactly this."
   },
   {
-    "query": "Is there a liveblocks integration for Model Context Protocol?",
-    "expected_owner": "liveblocks",
-    "expected_repo": "liveblocks-mcp-server",
-    "important_constraints": "remote"
+    "query": "I want to automate my tilt workflow",
+    "relevant_server_ids": [
+      "rrmistry/tilt-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for tilt capabilities. The rrmistry/tilt-mcp server provides exactly this."
   },
   {
-    "query": "Provide read access to graph tool call data",
-    "expected_owner": "SonAIengine",
-    "expected_repo": "graph-tool-call",
-    "important_constraints": "remote"
+    "query": "I want to automate my VMware AIops workflow",
+    "relevant_server_ids": [
+      "zw008/VMware-AIops"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for VMware AIops capabilities. The zw008/VMware-AIops server provides exactly this."
   },
   {
-    "query": "I want to automate my openai workflow locally",
-    "expected_owner": "mzxrai",
-    "expected_repo": "mcp-openai",
-    "important_constraints": "remote"
+    "query": "Is there a octodamus core integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "Octodamus/octodamus-core"
+    ],
+    "constraints": [
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for octodamus core capabilities. The Octodamus/octodamus-core server provides exactly this."
   },
   {
-    "query": "Provide read access to kubernetes data",
-    "expected_owner": "manusa",
-    "expected_repo": "kubernetes-mcp-server",
-    "important_constraints": "remote"
+    "query": "Provide read access to oci pricing data",
+    "relevant_server_ids": [
+      "jasonwilbur/oci-pricing-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for oci pricing capabilities. The jasonwilbur/oci-pricing-mcp server provides exactly this."
   },
   {
-    "query": "I want to automate my buildkite workflow locally",
-    "expected_owner": "buildkite",
-    "expected_repo": "buildkite-mcp-server",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to build123d",
+    "relevant_server_ids": [
+      "pzfreo/build123d-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for build123d capabilities. The pzfreo/build123d-mcp server provides exactly this."
   },
   {
-    "query": "Is there a tilt integration for Model Context Protocol?",
-    "expected_owner": "rrmistry",
-    "expected_repo": "tilt-mcp",
-    "important_constraints": "remote"
+    "query": "Is there a mindsdb integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "mindsdb/mindsdb"
+    ],
+    "constraints": [
+      "must run locally"
+    ],
+    "rationale": "The user is looking for mindsdb capabilities. The mindsdb/mindsdb server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to base",
-    "expected_owner": "base",
-    "expected_repo": "base-mcp",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with x402search",
+    "relevant_server_ids": [
+      "x402-index/x402search-mcp"
+    ],
+    "constraints": [
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for x402search capabilities. The x402-index/x402search-mcp server provides exactly this."
   },
   {
-    "query": "Looking for a way to connect Claude to text to model",
-    "expected_owner": "mikan-atomoki",
-    "expected_repo": "text-to-model",
-    "important_constraints": "remote"
+    "query": "Looking for a way to connect Claude to vibie",
+    "relevant_server_ids": [
+      "shdomi8599/vibie-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for vibie capabilities. The shdomi8599/vibie-mcp server provides exactly this."
   },
   {
-    "query": "Provide read access to openai gpt image data",
-    "expected_owner": "SureScaleAI",
-    "expected_repo": "openai-gpt-image-mcp",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with MayaMCP",
+    "relevant_server_ids": [
+      "PatrickPalmer/MayaMCP"
+    ],
+    "constraints": [],
+    "rationale": "The user is looking for MayaMCP capabilities. The PatrickPalmer/MayaMCP server provides exactly this."
   },
   {
-    "query": "I want to automate my mailbox workflow locally",
-    "expected_owner": "arbengine",
-    "expected_repo": "mailbox-mcp",
-    "important_constraints": "remote"
+    "query": "Is there a ai diagram maker integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "erajasekar/ai-diagram-maker-mcp"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for ai diagram maker capabilities. The erajasekar/ai-diagram-maker-mcp server provides exactly this."
   },
   {
-    "query": "I need an MCP that lets an AI work with wcagc",
-    "expected_owner": "WCAG-Compliance",
-    "expected_repo": "wcagc-mcp",
-    "important_constraints": "remote"
+    "query": "I want to automate my depwire workflow",
+    "relevant_server_ids": [
+      "depwire/depwire"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for depwire capabilities. The depwire/depwire server provides exactly this."
   },
   {
-    "query": "I need an MCP that lets an AI work with last9",
-    "expected_owner": "last9",
-    "expected_repo": "last9-mcp-server",
-    "important_constraints": "remote"
+    "query": "Is there a alphabanana integration for Model Context Protocol?",
+    "relevant_server_ids": [
+      "tasopen/mcp-alphabanana"
+    ],
+    "constraints": [
+      "must run locally"
+    ],
+    "rationale": "The user is looking for alphabanana capabilities. The tasopen/mcp-alphabanana server provides exactly this."
   },
   {
-    "query": "I need an MCP that lets an AI work with marktplaats",
-    "expected_owner": "jasp-nerd",
-    "expected_repo": "marktplaats-mcp",
-    "important_constraints": "remote"
+    "query": "I need a tool that lets an AI agent interact with prolog reasoner",
+    "relevant_server_ids": [
+      "rikarazome/prolog-reasoner"
+    ],
+    "constraints": [
+      "must run locally",
+      "requires authentication"
+    ],
+    "rationale": "The user is looking for prolog reasoner capabilities. The rikarazome/prolog-reasoner server provides exactly this."
   }
 ]

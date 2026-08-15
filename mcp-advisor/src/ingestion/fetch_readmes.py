@@ -43,10 +43,8 @@ def main():
         
     print(f"Found {len(servers)} servers to process.")
     
-    # We will slice to first 300 to keep it manageable and high quality for the MVP, 
-    # but still large enough for a real-world evaluation dataset.
-    # Note: awesome-mcp-servers lists curated items first, but extracting all github links might include extraneous links.
-    servers_to_process = servers[:300]
+    # Process top 500 to get a solid dataset while avoiding rate limits
+    servers_to_process = servers[:500]
     
     print(f"Starting parallel download for {len(servers_to_process)} servers...")
     
@@ -61,7 +59,7 @@ def main():
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         json.dump(documents, f, indent=2)
         
-    print(f"\nFinished! Successfully extracted READMEs for {len(documents)} / {len(servers_to_process)} servers.")
+    print(f"\\nFinished! Successfully extracted READMEs for {len(documents)} / {len(servers_to_process)} servers.")
     print(f"Documents saved to: {OUTPUT_FILE}")
 
 if __name__ == "__main__":

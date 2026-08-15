@@ -8,14 +8,22 @@ from es_search import ElasticMCPSearch
 
 EVAL_FILE = os.path.join(os.path.dirname(__file__), "..", "..", "data", "eval", "ground_truth.json")
 
-def calculate_metrics(results_list, expected_owner, expected_repo):
+def calculate_metrics(results_list, relevant_server_ids):
     hit1 = 0
     hit5 = 0
     mrr = 0.0
     
-    for i, res in enumerate(results_list):
-        # We consider it a hit if the owner/repo matches
-        if res.get('owner') == expected_owner and res.get('repo') == expected_repo:
+    # Extract unique server_ids from results while preserving order
+    unique_results = []
+    seen = set()
+    for res in results_list:
+        sid = res.get('server_id')
+        if sid and sid not in seen:
+            seen.add(sid)
+            unique_results.append(sid)
+            
+    for i, sid in enumerate(unique_results):
+        if sid in relevant_server_ids:
             if i == 0:
                 hit1 = 1
             if i < 5:
@@ -26,6 +34,10 @@ def calculate_metrics(results_list, expected_owner, expected_repo):
     return hit1, hit5, mrr
 
 def main():
+    if not os.path.exists(EVAL_FILE):
+        print(f"Error: {EVAL_FILE} not found. Run generate_eval_dataset.py first.")
+        return
+        
     with open(EVAL_FILE, 'r', encoding='utf-8') as f:
         queries = json.load(f)
         
@@ -47,16 +59,17 @@ def main():
         
         for q in queries:
             query_text = q['query']
-            expected_owner = q['expected_owner']
-            expected_repo = q['expected_repo']
+            relevant_server_ids = q.get('relevant_server_ids', [])
             
             try:
-                results = search_func(query_text, top_k=5)
+                # search_hybrid_rerank already returns unique servers.
+                # other methods return top chunks, so we fetch more (e.g. 15) to get 5 unique servers.
+                results = search_func(query_text, top_k=15 if method_name != "Hybrid+Rerank" else 5)
             except Exception as e:
                 print(f"Error during search: {e}")
                 results = []
                 
-            hit1, hit5, mrr = calculate_metrics(results, expected_owner, expected_repo)
+            hit1, hit5, mrr = calculate_metrics(results, relevant_server_ids)
             total_hit1 += hit1
             total_hit5 += hit5
             total_mrr += mrr
