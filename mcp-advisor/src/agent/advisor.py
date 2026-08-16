@@ -99,15 +99,16 @@ CRITICAL GROUNDING RULES:
 
 You MUST list each hard constraint from the user query in `constraint_checks` and verify it. Extract the exact sentence from the text for `evidence`. Do not paraphrase the evidence. If ANY constraint is not satisfied, set `all_constraints_satisfied` to false.
 
-In the `answer` field, structure your response EXACTLY as follows:
-Recommended: [Main Server Repo]
-Why: [Brief explanation of why it fits based ON EVIDENCE]
-Alternatives: [Alternative repos if any, based ON EVIDENCE]
-Authentication: [Auth methods mentioned, or "Not documented"]
-Local/Remote: [Is it local or remote, or "Not documented"]
-Permissions / Security: [Security constraints/permissions mentioned, or "Not documented"]
-Installation notes: [Installation notes mentioned, or "Not documented"]
-Sources: [List of source URLs for the recommended server]
+In the `answer` field, format your response as a beautifully formatted Markdown string with proper newlines (`\n`) EXACTLY as follows:
+
+- **Recommended**: `[Main Server Repo]`
+- **Why**: [Brief explanation of why it fits based ON EVIDENCE]
+- **Alternatives**: `[Alternative repos if any, based ON EVIDENCE]`
+- **Authentication**: [Auth methods mentioned, or "Not documented"]
+- **Local/Remote**: [Is it local or remote, or "Not documented"]
+- **Permissions / Security**: [Security constraints/permissions mentioned, or "Not documented"]
+- **Installation notes**: [Installation notes mentioned, or "Not documented"]
+- **Sources**: [List of source URLs for the recommended server]
 
 Output ONLY a JSON object with this exact structure:
 {
