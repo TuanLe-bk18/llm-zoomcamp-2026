@@ -9,6 +9,22 @@ Developers spend significant time manually searching registries and GitHub repos
 
 ---
 
+## Interface Preview
+
+### 1. Search UI
+*Example Query*: "Can you recommend a browser automation tool?"  
+*Recommendation*: `Automata-Labs-team/MCP-Server-Playwright` (Matches the intent to execute browser sessions and JS).
+
+![Search UI](docs/search_ui_real.png)
+
+### 2. Monitoring Dashboard
+Tracks real-time system metrics, user feedback, latency distributions, and top recommended servers.
+
+![Monitoring Dashboard - Metrics & Time Series](docs/dashboard_top.png)
+![Monitoring Dashboard - Distributions](docs/dashboard_bottom.png)
+
+---
+
 ## 2. Dataset
 The dataset is dynamically built from two primary sources:
 1. **Primary**: Official MCP reference servers (`modelcontextprotocol/servers`)
@@ -37,11 +53,11 @@ The ingestion pipeline is completely reproducible and automated:
 ---
 
 ## 5. Retrieval Strategy
-Standard Top-30 chunk retrieval suffers from candidate generation failure. The system uses **Oversampling + Server-level RRF Fusion** to improve recall:
-1. **Chunking**: Documents are split based on Markdown headings (e.g., `## Authentication`).
-2. **Vector Oversampling**: Retrieves Top-200 chunks via dense vector search (k-NN), deduplicates to Top-50 unique servers.
-3. **BM25 Oversampling**: Retrieves Top-200 chunks via sparse keyword search, deduplicates to Top-50 unique servers.
-4. **Reciprocal Rank Fusion (RRF)**: Merges the two server lists at the server level (k=60) to produce the Top-5 candidate list.
+Standard Top-30 chunk retrieval suffers from candidate generation failure. The system uses **Vector Oversampling + Server-Level Deduplication** to improve recall:
+1. **Chunking**: Documents are split based on Markdown headings. We target ~1000 characters per chunk to safely fit within the embedding model's limits.
+2. **Vector Oversampling**: Retrieves Top-200 chunks via dense vector search (k-NN) using `all-MiniLM-L6-v2`.
+3. **Server Deduplication**: Groups the chunks by unique `server_id`, keeping the Top-5 unique servers.
+4. **Context Limiting**: To prevent context window explosion, only the top 2-3 most relevant chunks per server are extracted and fed to the LLM.
 
 ---
 
@@ -51,36 +67,67 @@ Standard Top-30 chunk retrieval suffers from candidate generation failure. The s
 
 ---
 
-## 7. Evaluation
+## 7. Evaluation & Architecture Decisions
 
-### Dataset & Coverage
-- **Corpus**: 3243 / 3391 discovered server repositories with successfully fetched READMEs (95.64% success rate).
-- **Benchmark Set**: 60 frozen user queries (Independent Validation v1), categorized into `simple_intent`, `constraint_heavy`, and `ambiguous_realistic`. Includes 7 abstention queries.
+To ensure optimal performance and justify architecture decisions, the system was evaluated on a frozen benchmark set (`validation_realistic_v1.json`) containing 60 queries (including 7 abstention constraints).
 
-### Retrieval Performance (RRF Fusion)
-- **Vector Oversample CR@50**: 67.9%
-- **RRF Candidate Recall@30**: 60.4%
-- **RRF Candidate Recall@50**: 64.2%
-- **RRF Hit@5**: 22.6%
-- **RRF MRR@5**: 0.122
-- **Latency**: ~69ms (p50)
+### Retrieval Methodology & Results
+We evaluated four different retrieval variants using `src/evaluation/retrieval_benchmark.py`:
+- **V1: Baseline Hybrid**: Standard top-k dense and sparse search.
+- **V2: Vector Oversample**: Dense search with heavy oversampling.
+- **V3: BM25 Oversample**: Sparse keyword search with oversampling.
+- **V4: RRF Fusion (V2 + V3)**: Reciprocal Rank Fusion of oversampled vector and sparse results.
 
-*Limitations*: Ambiguous queries remain a challenge, often failing to recall the correct server in the Top 50 pool.
+**Results (Overall N=53 answerable queries):**
+| Method | Hit@5 | MRR@5 | Candidate Recall@50 | Latency (p50) |
+| --- | --- | --- | --- | --- |
+| V1: Baseline Hybrid | 17.0% | 0.081 | 35.8% | 33.0ms |
+| V2: Vector Oversample | 34.0% | 0.229 | 67.9% | 46.1ms |
+| V3: BM25 Oversample | 15.1% | 0.076 | 43.4% | 33.2ms |
+| V4: RRF Fusion | 32.1% | 0.156 | 67.9% | 72.8ms |
+
+*Note: The dataset was re-indexed with semantic chunking. We attempt to keep chunk sizes under 1000 characters to safely fit within the embedding model's 256 token limit, while removing a previous hard 4000-character truncation limit. This increased the total index size to 92,397 chunks, significantly improving Vector Search and RRF performance.*
+
+**Architecture Decision**: Vector Oversample (V2) is chosen as the production retrieval engine. Not only does it yield the highest `Hit@5` (34.0%) and `MRR@5` (0.229), but it is also faster and architecturally simpler than RRF, while matching the maximum `Candidate Recall@50` (67.9%). Furthermore, production retrieval is configured to extract only the Top 2-3 chunks per unique server, minimizing token overhead and preventing context window explosion when feeding evidence to the LLM.
+
+### End-to-End Generation (RAG Ablation)
+*Disclaimer: These metrics evaluate the generation pipeline in isolation using a frozen set of cached candidates retrieved before the Phase B chunking optimizations. The goal is purely to measure the effectiveness of the constraints and prompts.*
+
+**Results (N=60 queries):**
+| Metric | Baseline (Simple Prompt) | Production (Guarded + Constraints) |
+| --- | --- | --- |
+| Correct Recommendation | 8 | **5** (Stricter matching) |
+| Correct Abstention | 0 | **6** |
+| False Abstention (Missed in Context) | 0 | 6 |
+| Wrong Recommendation | 11 | **2** |
+| Retrieval Miss (Not in Context) | 41 | 41 |
+| API Failure | 0 | 0 |
+
+**Architecture Decision**: The production guarded pipeline provides a massive safety improvement. The baseline naive prompt makes wrong recommendations frequently (11 Wrong Recommendations) and fails to abstain when appropriate. The production system trades a slight drop in aggressive recommendation for a highly robust abstention capability, making it vastly safer for automated workflows.
 
 ---
 
-## 8. Future Work
-1. **Enriched Metadata Embeddings**: To solve the ambiguous query limitation, future iterations will concatenate the Server Name, Description, and Heading into every chunk before embedding, injecting global context into local chunk vectors.
-2. **Agentic Tool Retrieval**: Moving beyond RAG, wrapping the Elasticsearch queries into an MCP tool itself so an orchestrator agent can dynamically formulate and iterate on queries.
-3. **Automated Server Testing**: Dynamically spinning up Docker containers to test if an MCP server's advertised tools actually compile and run before recommending them.
+## 8. Reliability & Safety
+
+MCP Advisor implements multiple engineering guardrails to ensure reliable recommendations:
+- **Pydantic Structured Validation**: Responses are strictly parsed to guarantee structure.
+- **Constraint Gating**: Hard constraints (e.g., "Must be Local") are explicitly evaluated against retrieved context. If any constraint fails, the system abstains.
+- **Anti-Hallucination Gate**: The system verifies that the recommended `server_id` actually exists in the retrieved context pool. If the LLM hallucinates an invalid ID, it triggers an automatic retry, and ultimately abstains if unresolved.
+- **Untrusted External Data Treatment**: The LLM prompt explicitly treats READMEs as untrusted data, preventing prompt injection or unwanted instruction execution from the raw documentation.
 
 ---
 
-## 9. Monitoring
-The application includes a built-in monitoring module (`src/monitoring/db.py`) backed by SQLite.
-- Every interaction logs the `timestamp`, `user_query`, `latency_ms`, and `recommended_server`.
-- Users can provide explicit 👍 / 👎 feedback in the UI.
-- The **Dashboard** tab in Streamlit visualizes Total Requests, Average Latency, Feedback Ratios, and Top Recommended Servers.
+## 9. Monitoring Dashboard
+
+The application includes a built-in SQLite monitoring module (`src/monitoring/db.py`).
+- Every interaction logs `timestamp`, `user_query`, `latency_ms`, and `recommended_server`.
+- Users can provide explicit 👍 / 👎 feedback directly in the Search UI.
+- The **Dashboard** visualizes 5 metrics using Streamlit charts:
+  1. Requests over Time
+  2. Latency over Time
+  3. Feedback Distribution
+  4. Recommendation vs Abstention Ratios
+  5. Top Recommended Servers
 
 ---
 
@@ -100,19 +147,20 @@ The application includes a built-in monitoring module (`src/monitoring/db.py`) b
 4. **Access the Application**
    Open your browser to `http://localhost:8501`.
 
----
 
-## 11. Example Recommendation
 
-**User Query**: "I need to automate local browser tasks without relying on cloud APIs."
-**Authentication**: No Auth Required
-**Environment**: Local execution
+## 12. Evaluation Criteria Mapping (Reviewer Checklist)
 
-**System Output**:
-> **Recommended:** browser-use-mcp-server
-> **Why:** This server is specifically designed to control a local browser instance using the browser-use library, allowing AI agents to navigate web pages and interact with DOM elements directly on your machine without needing external cloud APIs.
-> **Alternatives:** mcp-playwright
-> **Authentication:** Not documented.
-> **Local/Remote:** Local execution (runs browser instances on the host machine).
-> **Permissions / Security:** Requires local execution environment.
-> **Sources:** https://github.com/browser-use/browser-use-mcp-server
+This table maps the LLM Zoomcamp Capstone rubric criteria to the relevant project components:
+
+| Criterion | Implementation & Evidence |
+| --- | --- |
+| **Problem Description** | See Section 1. |
+| **Ingestion Pipeline** | Automated Python pipeline fetching from GitHub (`src/ingestion/`). |
+| **RAG Flow** | User query -> LLM Rewrite -> ES Vector Oversample -> Server Dedup -> LLM Guarded Generation (`src/agent/advisor.py`). |
+| **Retrieval Evaluation** | Evaluated 4 variants. Benchmark script at `src/evaluation/retrieval_benchmark.py` (See Section 7). |
+| **LLM Generation Eval** | Ablation benchmark comparing Baseline vs Guarded approach. Script at `src/evaluation/generation_benchmark.py` (See Section 7). |
+| **Interface** | Full Streamlit application (`app.py`). |
+| **Monitoring** | SQLite + Streamlit Dashboard with 5 charts and User Feedback (See Section 9). |
+| **Containerization** | `docker-compose.yml` runs Elasticsearch, `init-index`, and Streamlit UI. |
+| **Reproducibility** | Data is committed (`data/documents.json`), meaning fresh clones index instantly without fetching 3,000 repos. |

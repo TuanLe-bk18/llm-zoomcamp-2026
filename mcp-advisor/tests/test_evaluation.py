@@ -56,7 +56,7 @@ def test_advisor_parses_valid_json(monkeypatch):
         models = Models()
 
     class DummySearch:
-        def search_rrf(self, query, top_k):
+        def search_production(self, query, top_k):
             return [{"server_id": "owner/repo", "text": "evidence", "score": 1.0}]
 
     monkeypatch.setenv("GEMINI_API_KEY", "dummy")
@@ -80,7 +80,7 @@ def test_advisor_rejects_unknown_server(monkeypatch):
         models = Models()
 
     class DummySearch:
-        def search_rrf(self, query, top_k):
+        def search_production(self, query, top_k):
             return [{"server_id": "owner/repo", "text": "evidence", "score": 1.0}]
 
     monkeypatch.setenv("GEMINI_API_KEY", "dummy")
@@ -103,7 +103,7 @@ def test_advisor_handles_invalid_json(monkeypatch):
         models = Models()
 
     class DummySearch:
-        def search_rrf(self, query, top_k):
+        def search_production(self, query, top_k):
             return [{"server_id": "owner/repo", "text": "evidence", "score": 1.0}]
 
     monkeypatch.setenv("GEMINI_API_KEY", "dummy")
@@ -126,7 +126,7 @@ def test_advisor_rejects_unsatisfied_constraint(monkeypatch):
         models = Models()
 
     class DummySearch:
-        def search_rrf(self, query, top_k):
+        def search_production(self, query, top_k):
             return [{"server_id": "owner/repo", "text": "evidence", "score": 1.0}]
 
     monkeypatch.setenv("GEMINI_API_KEY", "dummy")
@@ -148,7 +148,7 @@ def test_advisor_rejects_fake_evidence(monkeypatch):
         models = Models()
 
     class DummySearch:
-        def search_rrf(self, query, top_k):
+        def search_production(self, query, top_k):
             return [{"server_id": "owner/repo", "text": "evidence", "score": 1.0}]
 
     monkeypatch.setenv("GEMINI_API_KEY", "dummy")

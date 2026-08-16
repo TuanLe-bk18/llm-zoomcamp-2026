@@ -110,10 +110,49 @@ with tab2:
     col3.metric("Positive Feedback", metrics["positive_feedback"])
     col4.metric("Negative Feedback", metrics["negative_feedback"])
     
-    st.subheader("Top Recommended Servers")
-    if metrics["top_servers"]:
-        df = pd.DataFrame(metrics["top_servers"])
-        df.columns = ["Server", "Recommendation Count"]
-        st.dataframe(df, hide_index=True)
+    df = db.get_all_interactions_df()
+    
+    if not df.empty:
+        st.markdown("---")
+        
+        # Row 1: Time Series
+        c1, c2 = st.columns(2)
+        
+        with c1:
+            st.subheader("Requests over Time")
+            # Group by hour
+            req_over_time = df.set_index('timestamp').resample('1h').size().reset_index(name='count')
+            st.line_chart(req_over_time, x='timestamp', y='count')
+            
+        with c2:
+            st.subheader("Latency over Time (ms)")
+            st.scatter_chart(df, x='timestamp', y='latency_ms')
+            
+        st.markdown("---")
+        
+        # Row 2: Distributions
+        c3, c4 = st.columns(2)
+        
+        with c3:
+            st.subheader("Feedback Distribution")
+            fb_map = {1: 'Positive', -1: 'Negative', 0: 'No Feedback'}
+            fb_counts = df['feedback'].map(fb_map).value_counts().reset_index()
+            fb_counts.columns = ['Feedback', 'Count']
+            st.bar_chart(fb_counts.set_index('Feedback'))
+            
+        with c4:
+            st.subheader("Recommendation vs Abstention")
+            rec_status = df['recommended_server'].apply(lambda x: 'Recommendation' if pd.notna(x) and x != "" else 'Abstention')
+            rec_counts = rec_status.value_counts().reset_index()
+            rec_counts.columns = ['Result Type', 'Count']
+            st.bar_chart(rec_counts.set_index('Result Type'))
+
+        st.markdown("---")
+        st.subheader("Top Recommended Servers")
+        if metrics["top_servers"]:
+            top_df = pd.DataFrame(metrics["top_servers"])
+            top_df.columns = ["Server", "Recommendation Count"]
+            st.bar_chart(top_df.set_index("Server"))
+            
     else:
-        st.write("No recommendations yet.")
+        st.write("No interactions recorded yet.")

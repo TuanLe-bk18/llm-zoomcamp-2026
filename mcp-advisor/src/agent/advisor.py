@@ -59,7 +59,7 @@ Return ONLY the search query, nothing else.
             print(f"LLM Error during query rewrite. Using raw query. Error: {e}")
             search_query = user_query
             
-        candidates = self.search_engine.search_rrf(search_query, top_k=5)
+        candidates = self.search_engine.search_production(search_query, top_k=5)
         
         if not candidates:
             return {

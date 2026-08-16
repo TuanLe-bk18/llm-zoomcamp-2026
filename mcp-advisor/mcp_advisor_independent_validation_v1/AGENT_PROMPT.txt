@@ -1,0 +1,5 @@
+Use the attached `mcp_advisor_independent_validation_v1` package to finish MCP Advisor's independent retrieval validation in `TuanLe-bk18/llm-zoomcamp-2026/mcp-advisor`.
+
+Treat the 60 query texts as frozen. Label ground truth from the current corpus with evidence and multiple acceptable server IDs where appropriate, prepare a compact human-review artifact, then benchmark BM25, Vector, Hybrid, and Hybrid+CrossEncoder on the labeled set. Keep the old synthetic benchmark separate.
+
+Do not generate/rewrite validation queries from README content. Do not change `gemini-3.5-flash`, do not substitute another Judge model on quota errors, do not promote a production default, and do not remove CrossEncoder. Follow `AGENT_HANDOFF.md` for output files, metrics, no-match handling, and acceptance checks.

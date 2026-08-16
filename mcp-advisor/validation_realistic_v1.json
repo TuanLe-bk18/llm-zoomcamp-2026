@@ -1,0 +1,1615 @@
+{
+  "dataset_name": "MCP Advisor Independent Realistic Validation Set",
+  "version": "1.0-final-labels",
+  "created_date": "2026-08-16",
+  "source_query_bank": "mcp_advisor_independent_validation_v1/validation_intents_v1.json",
+  "query_count": 60,
+  "query_text_frozen": true,
+  "ground_truth_status": "ASSISTANT_REVIEWED_PENDING_MECHANICAL_CORPUS_CHECK",
+  "benchmark_ready": false,
+  "notes": [
+    "Semantic labeling and blocker resolution are complete.",
+    "Exactly 60 frozen query texts are preserved.",
+    "Old synthetic data/eval/ground_truth.json must remain untouched.",
+    "Four hard-constraint queries are intentionally conservative NO MATCH cases: C01, C08, C11, C14.",
+    "The remaining pre-benchmark work is mechanical corpus-ID/document existence validation only; do not re-label automatically."
+  ],
+  "queries": [
+    {
+      "query_id": "S01",
+      "query": "I want my AI assistant to read and search files in a local project folder.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "j0hanz/filesystem-context-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "The corpus source lists j0hanz/filesystem-context-mcp-server as a read-only local filesystem server for secure exploration, searching and analysis, which directly matches reading/searching a local project folder.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "j0hanz/filesystem-context-mcp-server",
+          "source": "https://github.com/j0hanz/filesystem-context-mcp-server",
+          "evidence_summary": "Local filesystem navigation/read/search; directory scope at startup.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S02",
+      "query": "I need my assistant to inspect GitHub issues and pull requests for a software project.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "github/github-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Official GitHub MCP exposes repository, issue and pull-request read capabilities.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "github/github-mcp-server",
+          "source": "https://github.com/github/github-mcp-server",
+          "evidence_summary": "Default/read toolsets include repos, issues and pull requests.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S03",
+      "query": "I want to ask natural-language questions about data stored in a PostgreSQL database.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "subnetmarco/pgmcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Natural-language PostgreSQL querying with read-only safety matches schema inspection and data questions.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "subnetmarco/pgmcp",
+          "source": "https://github.com/subnetmarco/pgmcp",
+          "evidence_summary": "PostgreSQL-focused natural-language queries; read-only safety.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S04",
+      "query": "I have a local SQLite database and want my assistant to inspect its tables and query the data.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "hannesrudolph/sqlite-explorer-fastmcp-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Purpose-built safe read-only SQLite exploration with table inspection and queries.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "hannesrudolph/sqlite-explorer-fastmcp-mcp-server",
+          "source": "https://github.com/hannesrudolph/sqlite-explorer-fastmcp-mcp-server",
+          "evidence_summary": "Safe read-only SQLite access; table/schema exploration and query validation.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S05",
+      "query": "I need an agent that can open websites, click buttons, fill forms, and read the resulting pages.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "microsoft/playwright-mcp",
+        "LvcidPsyche/auto-browser"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both provide real browser interaction for navigation, clicking, typing/forms and reading resulting pages.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "microsoft/playwright-mcp",
+          "source": "https://github.com/microsoft/playwright-mcp",
+          "evidence_summary": "Playwright MCP exposes browser click/navigation/form tools.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "LvcidPsyche/auto-browser",
+          "source": "https://github.com/LvcidPsyche/auto-browser",
+          "evidence_summary": "Auto Browser is MCP-native Playwright browser automation.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S06",
+      "query": "I want my assistant to search the public web and return relevant pages with links.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "pskill9/web-search",
+        "brave/brave-search-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both provide public web search and return link-oriented search results.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "pskill9/web-search",
+          "source": "https://github.com/pskill9/web-search",
+          "evidence_summary": "pskill9: Google search, titles/URLs/descriptions, no API key.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "brave/brave-search-mcp-server",
+          "source": "https://github.com/brave/brave-search-mcp-server",
+          "evidence_summary": "Brave MCP: web search integration.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S07",
+      "query": "I want my assistant to search our Slack conversations and summarize recent messages from a channel.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "zencoderai/slack-mcp-server",
+        "korotovsky/slack-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both can list/search Slack conversations and retrieve channel history for downstream summarization.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "zencoderai/slack-mcp-server",
+          "source": "https://github.com/zencoderai/slack-mcp-server",
+          "evidence_summary": "Slack channel/history/message retrieval tools.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "korotovsky/slack-mcp-server",
+          "source": "https://github.com/korotovsky/slack-mcp-server",
+          "evidence_summary": "korotovsky includes search/history and channel listing.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S08",
+      "query": "I need my assistant to find and read documents stored in Google Drive.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "isaacphi/mcp-gdrive"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Provides Google Drive listing/search plus file reading.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "isaacphi/mcp-gdrive",
+          "source": "https://github.com/isaacphi/mcp-gdrive",
+          "evidence_summary": "gdrive_search and gdrive_read_file; Drive readonly OAuth scope.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S09",
+      "query": "I want my assistant to search and read pages from our Notion workspace.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "makenotion/notion-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Official Notion MCP can access selected workspace pages and read/search workspace content.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "makenotion/notion-mcp-server",
+          "source": "https://github.com/makenotion/notion-mcp-server",
+          "evidence_summary": "Notion internal integration; connected pages/databases exposed to MCP.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S10",
+      "query": "I want my AI assistant to remember useful facts and retrieve them in later sessions.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "n24q02m/mnemo-mcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Mnemo is explicitly a persistent AI memory MCP with local SQLite hybrid search and zero-cloud operation, matching cross-session storage and retrieval.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "n24q02m/mnemo-mcp",
+          "source": "https://github.com/n24q02m/mnemo-mcp",
+          "evidence_summary": "Persistent AI memory with SQLite hybrid search; local/zero-cloud operation.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S11",
+      "query": "I need my assistant to look up Jira tickets and their current status.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "sooperset/mcp-atlassian"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Supports Jira search and issue-detail retrieval, including ticket status.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "sooperset/mcp-atlassian",
+          "source": "https://github.com/sooperset/mcp-atlassian",
+          "evidence_summary": "jira_search and jira_get_issue.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S12",
+      "query": "I want my assistant to check my calendar and tell me what meetings I have scheduled.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "nspady/google-calendar-mcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Provides list/search/get events and calendar availability tools.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "nspady/google-calendar-mcp",
+          "source": "https://github.com/nspady/google-calendar-mcp",
+          "evidence_summary": "list-events, search-events, get-event, get-freebusy.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S13",
+      "query": "I need my assistant to search my email and summarize messages related to a project.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "nikolausm/imap-mcp-server",
+        "ertad-family/liquid"
+      ],
+      "constraints": "None specified.",
+      "rationale": "IMAP MCP directly searches/reads email; Liquid also supports email via its generic connector layer.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "nikolausm/imap-mcp-server",
+          "source": "https://github.com/nikolausm/imap-mcp-server",
+          "evidence_summary": "IMAP search/read/thread tools.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "ertad-family/liquid",
+          "source": "https://github.com/ertad-family/liquid",
+          "evidence_summary": "Liquid supports email interfaces through fetch/query.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S14",
+      "query": "I want my assistant to inspect running Docker containers and show me their logs.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "friendlygeorge/docker-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Local Docker MCP supports container inspection, health/status and logs.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "friendlygeorge/docker-mcp-server",
+          "source": "https://github.com/friendlygeorge/docker-mcp-server",
+          "evidence_summary": "Docker status/health/log following capabilities.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S15",
+      "query": "I need my assistant to inspect a Kubernetes cluster, list workloads, and read pod logs.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "manusa/kubernetes-mcp-server",
+        "portainer/portainer-mcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both expose Kubernetes inspection; the Kubernetes MCP supports workload/log operations and Portainer proxies K8s resources.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "manusa/kubernetes-mcp-server",
+          "source": "https://github.com/manusa/kubernetes-mcp-server",
+          "evidence_summary": "Kubernetes resource inspection and logs.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "portainer/portainer-mcp",
+          "source": "https://github.com/portainer/portainer-mcp",
+          "evidence_summary": "Portainer Docker/Kubernetes troubleshooting and API proxy.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S16",
+      "query": "I want my assistant to list files in an S3-compatible bucket and download objects when needed.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "ofershap/mcp-server-s3"
+      ],
+      "constraints": "None specified.",
+      "rationale": "This MCP server directly supports the requested S3 workflow: listing objects in a bucket and downloading/reading object contents. Extra upload/delete tools do not disqualify it because this simple-intent query does not require read-only access.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "ofershap/mcp-server-s3",
+          "source": "https://github.com/ofershap/mcp-server-s3",
+          "evidence_summary": "README exposes list_objects for bucket browsing and get_object for downloading/reading object content.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S17",
+      "query": "I need my assistant to call REST APIs and inspect the JSON responses.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "ertad-family/liquid"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Liquid supports REST/JSON APIs, authentication/pagination and normalized query/fetch responses.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "ertad-family/liquid",
+          "source": "https://github.com/ertad-family/liquid",
+          "evidence_summary": "REST/JSON and other API protocols exposed via fetch/query.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S18",
+      "query": "I want to give my assistant a URL and have it extract the main readable content from the page.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "protostatis/unbrowser",
+        "ScrapeUnblocker/scrapeunblocker-mcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both fetch pages and return agent-usable content; unbrowser provides readable semantic state and ScrapeUnblocker can return parsed JSON.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "protostatis/unbrowser",
+          "source": "https://github.com/protostatis/unbrowser",
+          "evidence_summary": "Stateful non-visual web runtime with readable content.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "ScrapeUnblocker/scrapeunblocker-mcp",
+          "source": "https://github.com/ScrapeUnblocker/scrapeunblocker-mcp",
+          "evidence_summary": "fetch_parsed returns structured page data.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S19",
+      "query": "I want my assistant to search through a code repository and explain where a feature is implemented.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "github/github-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "GitHub's official MCP exposes repository-tree, file-content and code-search tools. These are sufficient to locate implementation points in a repository and provide the code context an assistant needs to explain where a feature is implemented.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "github/github-mcp-server",
+          "source": "https://github.com/github/github-mcp-server",
+          "evidence_summary": "Provides search_code, get_file_contents and repository-tree access.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "S20",
+      "query": "I need my assistant to search Google Sheets data and read values from selected spreadsheets.",
+      "query_type": "simple_intent",
+      "relevant_server_ids": [
+        "isaacphi/mcp-gdrive",
+        "freema/mcp-gsheets"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both expose Google Sheets reading; mcp-gdrive also searches Drive to locate spreadsheets.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "isaacphi/mcp-gdrive",
+          "source": "https://github.com/isaacphi/mcp-gdrive",
+          "evidence_summary": "gsheets_read plus Drive search.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "freema/mcp-gsheets",
+          "source": "https://github.com/freema/mcp-gsheets",
+          "evidence_summary": "Google Sheets API read/write integration.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C01",
+      "query": "On my Mac, I want the assistant to read one approved local folder, but it must never create, edit, move, or delete files.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [],
+      "constraints": "macOS compatible; scope access to an approved folder; read-only; no create/edit/move/delete",
+      "rationale": "NO MATCH (conservative). The obvious scoped-filesystem candidate is sandboxed to allowed directories, but its current primary README exposes write/edit/move/delete tools. Since the query requires that those operations must never be available, it is not safe to label that server as relevant without an exact read-only server boundary in the frozen corpus.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": true,
+      "label_evidence": [
+        {
+          "server_id": null,
+          "source": "candidate_review",
+          "evidence_summary": "Scoped filesystem candidates reviewed; no exact frozen-corpus server was accepted as both folder-scoped and hard read-only.",
+          "constraint_assessment": "no fully verified match"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C02",
+      "query": "I need email search and summarization, but the integration must not send, delete, archive, or modify any messages.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "nikolausm/imap-mcp-server"
+      ],
+      "constraints": "read-only email access; no send; no delete; no archive; no message modification",
+      "rationale": "Its explicit read-only mode registers only safe search/read/list tools and removes send/delete/move/flag-changing tools.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "nikolausm/imap-mcp-server",
+          "source": "https://github.com/nikolausm/imap-mcp-server",
+          "evidence_summary": "IMAP_MCP_READ_ONLY disables send, delete, move, flags and account editing.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C03",
+      "query": "I need access to a private GitHub repository to inspect code, issues, and pull requests, but the assistant must not push commits or modify repository content.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "github/github-mcp-server"
+      ],
+      "constraints": "private repository support; read-only repository access; no push or content modification",
+      "rationale": "GitHub MCP supports private repositories and an explicit read-only mode that disables modifying repository, issue and PR tools.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "github/github-mcp-server",
+          "source": "https://github.com/github/github-mcp-server",
+          "evidence_summary": "--read-only/GITHUB_READ_ONLY removes writes; private repositories supported.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C04",
+      "query": "I want an assistant to analyze a production PostgreSQL database using SELECT queries only; it must not run INSERT, UPDATE, DELETE, DDL, or schema changes.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "subnetmarco/pgmcp"
+      ],
+      "constraints": "PostgreSQL support; SELECT-only access; no writes; no DDL or schema changes",
+      "rationale": "Designed for PostgreSQL natural-language querying with read-only safety, fitting production SELECT-only analysis.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "subnetmarco/pgmcp",
+          "source": "https://github.com/subnetmarco/pgmcp",
+          "evidence_summary": "PostgreSQL read-only safety; no write-oriented workflow.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C05",
+      "query": "I want web search from my local assistant without opening a browser UI, and I strongly prefer a solution that does not require a paid search API key.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "pskill9/web-search"
+      ],
+      "constraints": "no interactive browser UI; prefer no paid search API key",
+      "rationale": "Per corpus evidence, performs Google search without browser UI and requires no API key.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "pskill9/web-search",
+          "source": "https://github.com/pskill9/web-search",
+          "evidence_summary": "No API keys/authentication; structured Google search results.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C06",
+      "query": "I need browser automation that can run headlessly inside a Linux Docker environment and still handle JavaScript-heavy pages.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "microsoft/playwright-mcp"
+      ],
+      "constraints": "headless operation; Linux compatible; Docker-compatible deployment; support dynamic JavaScript pages",
+      "rationale": "Official Playwright MCP supports headless operation and provides a Docker image running headless Chromium for dynamic browser pages.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "microsoft/playwright-mcp",
+          "source": "https://github.com/microsoft/playwright-mcp",
+          "evidence_summary": "--headless plus Docker deployment; Chromium executes JavaScript-heavy pages.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C07",
+      "query": "I want the assistant to read and search Slack channels, but it must not post messages, react, edit, or delete anything.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "korotovsky/slack-mcp-server"
+      ],
+      "constraints": "read-only Slack access; no posting; no reactions; no editing or deletion",
+      "rationale": "Write tools are disabled by default and tool registration can be restricted to history/search/channel-list tools only.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "korotovsky/slack-mcp-server",
+          "source": "https://github.com/korotovsky/slack-mcp-server",
+          "evidence_summary": "Default read tools; posting/reactions disabled unless explicitly enabled.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C08",
+      "query": "I want the assistant to search a specific Google Drive or Shared Drive and read documents, while keeping access limited to that approved drive.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [],
+      "constraints": "scope access to a specific Drive or Shared Drive; read-only preferred",
+      "rationale": "NO MATCH (conservative). Google Drive MCPs support reading/searching and read-only OAuth, but the reviewed server documentation does not itself guarantee confinement to exactly one approved Drive/Shared Drive. External Google ACL/IAM could enforce this, but that is outside the MCP server boundary used for this ground truth.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": true,
+      "label_evidence": [
+        {
+          "server_id": null,
+          "source": "candidate_review",
+          "evidence_summary": "No exact candidate verified to satisfy every hard constraint at the MCP/server boundary.",
+          "constraint_assessment": "no fully verified match"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C09",
+      "query": "I need persistent memory for an assistant, but the stored memory must stay on my own machine and must not be sent to a third-party cloud service.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "n24q02m/mnemo-mcp"
+      ],
+      "constraints": "local persistence; no third-party cloud storage",
+      "rationale": "Persistent memory is stored locally with SQLite and is described as zero-cloud, satisfying local persistence.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "n24q02m/mnemo-mcp",
+          "source": "https://github.com/n24q02m/mnemo-mcp",
+          "evidence_summary": "Local persistent SQLite hybrid memory; no cloud required.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C10",
+      "query": "I only need calendar free/busy information for scheduling; the assistant must not create, edit, move, or cancel events.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "nspady/google-calendar-mcp"
+      ],
+      "constraints": "read-only calendar access; free/busy or event reading only; no event changes",
+      "rationale": "Tool allowlisting can expose only list/search/freebusy read operations while omitting create/update/delete/respond tools.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "nspady/google-calendar-mcp",
+          "source": "https://github.com/nspady/google-calendar-mcp",
+          "evidence_summary": "ENABLED_TOOLS/--enable-tools supports read-only subset including get-freebusy.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C11",
+      "query": "I want to inspect Docker container status, configuration, and logs, but the assistant must not start, stop, restart, remove, or create containers.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [],
+      "constraints": "read-only Docker operations; no container lifecycle changes",
+      "rationale": "NO MATCH (conservative). Verified Docker MCP candidates provide status/config/log inspection but also expose container lifecycle actions. No exact server-level mode was verified that makes start/stop/restart/remove/create impossible while preserving the requested inspection tools.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": true,
+      "label_evidence": [
+        {
+          "server_id": null,
+          "source": "candidate_review",
+          "evidence_summary": "No exact candidate verified to satisfy every hard constraint at the MCP/server boundary.",
+          "constraint_assessment": "no fully verified match"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C12",
+      "query": "I need Kubernetes visibility for one namespace only: list pods, deployments, events, and logs, with no ability to change cluster resources.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "manusa/kubernetes-mcp-server"
+      ],
+      "constraints": "scope to one namespace; read-only Kubernetes access; no resource mutation",
+      "rationale": "The Kubernetes MCP supports read-only mode; namespace-only visibility can be enforced with Kubernetes RoleBinding/RBAC.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "manusa/kubernetes-mcp-server",
+          "source": "https://github.com/manusa/kubernetes-mcp-server",
+          "evidence_summary": "--read-only disables create/update/delete; namespace-scoped RoleBinding limits visibility.",
+          "constraint_assessment": "pass_with_external_scope_or_review"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C13",
+      "query": "I want the assistant to access one S3 bucket with permission to list and download objects only; uploading or deleting objects must be impossible.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "khuynh22/aws-s3-mcp-server"
+      ],
+      "constraints": "scope to one bucket; list/download only; no upload; no delete",
+      "rationale": "Write/upload is disabled by default, listing and presigned GET remain available, and one-bucket scope can be enforced with least-privilege IAM.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "khuynh22/aws-s3-mcp-server",
+          "source": "https://github.com/khuynh22/aws-s3-mcp-server",
+          "evidence_summary": "ALLOW_WRITE=false; list objects and presigned GET; no delete tool documented.",
+          "constraint_assessment": "pass_with_external_scope_or_review"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C14",
+      "query": "I need an HTTP integration for internal APIs, but requests must be restricted to an explicit allowlist of approved hosts rather than arbitrary internet addresses.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [],
+      "constraints": "host allowlist; no arbitrary destination access",
+      "rationale": "NO MATCH (conservative). No exact corpus candidate was verified to provide generic internal HTTP/API calls while enforcing an outbound destination-host allowlist. Inbound Host/Origin checks do not satisfy this requirement.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": true,
+      "label_evidence": [
+        {
+          "server_id": null,
+          "source": "candidate_review",
+          "evidence_summary": "No exact candidate verified to satisfy every hard constraint at the MCP/server boundary.",
+          "constraint_assessment": "no fully verified match"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C15",
+      "query": "I want to search and read our Notion knowledge base, but the integration should not create, edit, move, or delete pages.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "makenotion/notion-mcp-server"
+      ],
+      "constraints": "read-only Notion access; no page creation/edit/move/delete",
+      "rationale": "Notion integration capabilities can be set to Read content only, and access can be limited to selected pages/databases.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "makenotion/notion-mcp-server",
+          "source": "https://github.com/makenotion/notion-mcp-server",
+          "evidence_summary": "Read-only integration token plus selected-page access.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C16",
+      "query": "I need Jira integration that can read issues and add comments, but it must not delete issues or change workflow status.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "sooperset/mcp-atlassian"
+      ],
+      "constraints": "read issues; allow comments; no issue deletion; no workflow transitions",
+      "rationale": "mcp-atlassian supports Jira issue search/read and comment creation, and its tool allowlist can omit workflow transition/delete capabilities. This label assumes mcp-atlassian >= 0.22.0 (or an equivalent patched build), because older versions had a tool-filter authorization bypass.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "sooperset/mcp-atlassian",
+          "source": "https://github.com/sooperset/mcp-atlassian",
+          "evidence_summary": "Jira read/search/comment tools plus configurable ENABLED_TOOLS filtering; patched authorization enforcement required.",
+          "constraint_assessment": "pass_with_version_and_tool_filter_configuration"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "CONFIG_REQUIREMENT: enabled-tools read+comment only",
+        "VERSION_REQUIREMENT: mcp-atlassian >= 0.22.0"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C17",
+      "query": "I need to extract content from public web pages with minimal runtime overhead; I do not want to launch a full browser unless the page truly requires JavaScript.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "protostatis/unbrowser"
+      ],
+      "constraints": "prefer lightweight fetching; avoid full browser when unnecessary",
+      "rationale": "Designed as a lightweight non-visual tier between simple fetch and full Chrome: static/SSR by default and bounded scripting only when needed.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "protostatis/unbrowser",
+          "source": "https://github.com/protostatis/unbrowser",
+          "evidence_summary": "Fast static/SSR navigate by default; QuickJS optional for dynamic pages.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C18",
+      "query": "I want to query a MySQL-compatible database through the assistant, but database credentials must come from environment variables rather than being embedded in prompts or configuration committed to source control.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "f4ww4z/mcp-mysql-server"
+      ],
+      "constraints": "MySQL-compatible; credentials from environment or secure secret source; no credentials in prompts/source control",
+      "rationale": "Supports MySQL and explicitly supports credentials via MYSQL_* environment variables.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "f4ww4z/mcp-mysql-server",
+          "source": "https://github.com/f4ww4z/mcp-mysql-server",
+          "evidence_summary": "MYSQL_HOST/USER/PASSWORD/DATABASE environment configuration.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C19",
+      "query": "I need the assistant to retrieve secrets from a vault for deployment tasks, but it must not expose secret values in logs or persist them in its own memory.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "forest6511/secretctl"
+      ],
+      "constraints": "secure vault access; no secret logging; no persistent storage of secret values",
+      "rationale": "secretctl is an AI-safe local secrets vault with MCP integration. For deployment commands it injects credentials as environment variables without returning plaintext secrets to the AI, and sanitizes command output so matching secret values are redacted. This directly satisfies the intent of using vault-held secrets without exposing them to the model/log output.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "forest6511/secretctl",
+          "source": "https://github.com/forest6511/secretctl",
+          "evidence_summary": "MCP secret_run injects secrets as env vars; AI never receives plaintext; output is automatically sanitized/redacted.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "C20",
+      "query": "I need a code execution tool for untrusted snippets, but execution must be sandboxed so the code cannot access my host filesystem or unrestricted network resources.",
+      "query_type": "constraint_heavy",
+      "relevant_server_ids": [
+        "r33drichards/mcp-js"
+      ],
+      "constraints": "sandboxed execution; no host filesystem access; no unrestricted network access",
+      "rationale": "mcp-js/mcp-v8 executes JavaScript in a sandboxed V8 isolate. Its primary README states that network/fetch, filesystem and subprocess capabilities are off by default and require explicit policies to enable; optional kernel-level confinement adds defense in depth. The default configuration therefore matches the query's no-host-filesystem/no-unrestricted-network requirement.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "r33drichards/mcp-js",
+          "source": "https://github.com/r33drichards/mcp-js",
+          "evidence_summary": "Sandboxed V8 isolate; network, filesystem and subprocess capabilities are denied by default and policy-gated.",
+          "constraint_assessment": "pass_in_default_deny_configuration"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A01",
+      "query": "I want ChatGPT to help me work with files on my laptop.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "j0hanz/filesystem-context-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "A local filesystem MCP is a direct interpretation of the broad request to work with laptop files.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "j0hanz/filesystem-context-mcp-server",
+          "source": "https://github.com/j0hanz/filesystem-context-mcp-server",
+          "evidence_summary": "Local file read/search/navigation.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "medium",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A02",
+      "query": "I need something that lets my assistant help with our GitHub project.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "github/github-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Official GitHub MCP broadly covers repository, issue, pull-request and project context.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "github/github-mcp-server",
+          "source": "https://github.com/github/github-mcp-server",
+          "evidence_summary": "Default GitHub toolsets cover common project data.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A03",
+      "query": "Can my assistant check information in our database for me?",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "TheRaLabs/legion-mcp",
+        "ertad-family/liquid"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both are broad database access layers, appropriate because the database engine is unspecified.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "TheRaLabs/legion-mcp",
+          "source": "https://github.com/TheRaLabs/legion-mcp",
+          "evidence_summary": "Legion supports multiple SQL databases.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "ertad-family/liquid",
+          "source": "https://github.com/ertad-family/liquid",
+          "evidence_summary": "Liquid can query database interfaces generically.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "medium",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A04",
+      "query": "I want the agent to look things up on the web when it does research.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "pskill9/web-search",
+        "brave/brave-search-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both satisfy generic research-oriented web search.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "pskill9/web-search",
+          "source": "https://github.com/pskill9/web-search",
+          "evidence_summary": "Public web search results.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "brave/brave-search-mcp-server",
+          "source": "https://github.com/brave/brave-search-mcp-server",
+          "evidence_summary": "Public web search results.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A05",
+      "query": "I want the assistant to remember important things I told it before.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "n24q02m/mnemo-mcp",
+        "AliceLJY/recallnest"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both provide cross-session persistent memory.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "n24q02m/mnemo-mcp",
+          "source": "https://github.com/n24q02m/mnemo-mcp",
+          "evidence_summary": "Persistent memory and recall across sessions.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "AliceLJY/recallnest",
+          "source": "https://github.com/AliceLJY/recallnest",
+          "evidence_summary": "Persistent memory and recall across sessions.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "medium",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A06",
+      "query": "I want the assistant to help me keep up with messages from my team.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "zencoderai/slack-mcp-server",
+        "korotovsky/slack-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Slack is a valid team-messaging interpretation and both candidates retrieve team conversations.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "zencoderai/slack-mcp-server",
+          "source": "https://github.com/zencoderai/slack-mcp-server",
+          "evidence_summary": "Slack channels/history/search.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "korotovsky/slack-mcp-server",
+          "source": "https://github.com/korotovsky/slack-mcp-server",
+          "evidence_summary": "Slack channels/history/search.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "medium",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A07",
+      "query": "I need an assistant that can inspect resources in our cloud environment.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "awslabs/mcp",
+        "arnstarn/mcp-server-spotinst"
+      ],
+      "constraints": "None specified.",
+      "rationale": "The request does not name a cloud, so broad AWS resource MCP plus a multi-cloud Spot/Azure/AWS candidate are acceptable interpretations.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "awslabs/mcp",
+          "source": "https://github.com/awslabs/mcp",
+          "evidence_summary": "AWS MCP suite integrates AWS services/resources.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "arnstarn/mcp-server-spotinst",
+          "source": "https://github.com/arnstarn/mcp-server-spotinst",
+          "evidence_summary": "Spotinst MCP inspects AWS and Azure Ocean resources.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "medium",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A08",
+      "query": "I want my assistant to help me see what is happening with our containers.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "friendlygeorge/docker-mcp-server",
+        "portainer/portainer-mcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both inspect containerized environments and expose status/log-related context.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "friendlygeorge/docker-mcp-server",
+          "source": "https://github.com/friendlygeorge/docker-mcp-server",
+          "evidence_summary": "Local Docker monitoring.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "portainer/portainer-mcp",
+          "source": "https://github.com/portainer/portainer-mcp",
+          "evidence_summary": "Portainer environment/container inspection.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A09",
+      "query": "Can the assistant check what is running in our Kubernetes cluster?",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "manusa/kubernetes-mcp-server",
+        "portainer/portainer-mcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both can inspect Kubernetes resources and workloads.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "manusa/kubernetes-mcp-server",
+          "source": "https://github.com/manusa/kubernetes-mcp-server",
+          "evidence_summary": "Kubernetes resource inspection.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "portainer/portainer-mcp",
+          "source": "https://github.com/portainer/portainer-mcp",
+          "evidence_summary": "Portainer Kubernetes API proxy/inspection.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A10",
+      "query": "I need the assistant to find information in our internal documentation.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "makenotion/notion-mcp-server",
+        "sooperset/mcp-atlassian"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Internal documentation could plausibly live in Notion or Confluence; both provide search/read access.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "makenotion/notion-mcp-server",
+          "source": "https://github.com/makenotion/notion-mcp-server",
+          "evidence_summary": "Notion workspace pages.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "sooperset/mcp-atlassian",
+          "source": "https://github.com/sooperset/mcp-atlassian",
+          "evidence_summary": "Confluence search/page retrieval.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "medium",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A11",
+      "query": "I want the assistant to help me figure out when I am free for a meeting.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "nspady/google-calendar-mcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Calendar free/busy and event tools directly answer when the user is free.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "nspady/google-calendar-mcp",
+          "source": "https://github.com/nspady/google-calendar-mcp",
+          "evidence_summary": "get-freebusy/list-events.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A12",
+      "query": "I want to ask the assistant questions about emails I have received.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "nikolausm/imap-mcp-server",
+        "ertad-family/liquid"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both allow searching and reading received email.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "nikolausm/imap-mcp-server",
+          "source": "https://github.com/nikolausm/imap-mcp-server",
+          "evidence_summary": "IMAP read/search.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "ertad-family/liquid",
+          "source": "https://github.com/ertad-family/liquid",
+          "evidence_summary": "Generic email connector.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A13",
+      "query": "I need the agent to pull useful information out of websites for research.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "protostatis/unbrowser",
+        "ScrapeUnblocker/scrapeunblocker-mcp"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both can extract useful information from web pages for research.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "protostatis/unbrowser",
+          "source": "https://github.com/protostatis/unbrowser",
+          "evidence_summary": "Readable page state/extraction.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "ScrapeUnblocker/scrapeunblocker-mcp",
+          "source": "https://github.com/ScrapeUnblocker/scrapeunblocker-mcp",
+          "evidence_summary": "AI-parsed structured page output.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A14",
+      "query": "I want the assistant to help me keep track of project tickets.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "sooperset/mcp-atlassian",
+        "github/github-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Project tickets may mean Jira issues or GitHub issues; both are common valid interpretations.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "sooperset/mcp-atlassian",
+          "source": "https://github.com/sooperset/mcp-atlassian",
+          "evidence_summary": "Jira search/issues.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "github/github-mcp-server",
+          "source": "https://github.com/github/github-mcp-server",
+          "evidence_summary": "GitHub issue tools.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A15",
+      "query": "I want to ask questions about data in our analytics warehouse.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "isaacwasserman/mcp-snowflake-server",
+        "ergut/mcp-bigquery-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Snowflake and BigQuery are two directly relevant analytics-warehouse backends for an unspecified warehouse.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "isaacwasserman/mcp-snowflake-server",
+          "source": "https://github.com/isaacwasserman/mcp-snowflake-server",
+          "evidence_summary": "Snowflake query integration.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "ergut/mcp-bigquery-server",
+          "source": "https://github.com/ergut/mcp-bigquery-server",
+          "evidence_summary": "BigQuery access/querying.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "medium",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A16",
+      "query": "I need the assistant to check logs when something in our system goes wrong.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "grafana/mcp-grafana",
+        "last9/last9-mcp-server"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both provide production observability/log access; Grafana MCP directly queries Loki logs.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "grafana/mcp-grafana",
+          "source": "https://github.com/grafana/mcp-grafana",
+          "evidence_summary": "Grafana Loki log queries.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "last9/last9-mcp-server",
+          "source": "https://github.com/last9/last9-mcp-server",
+          "evidence_summary": "Last9 brings logs/metrics/traces into agent context.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A17",
+      "query": "I want the assistant to work with a few internal APIs we use at work.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "ertad-family/liquid"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Generic internal API access is directly covered by Liquid's REST/JSON and authentication/pagination abstraction.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "ertad-family/liquid",
+          "source": "https://github.com/ertad-family/liquid",
+          "evidence_summary": "Generic API fetch/query.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A18",
+      "query": "I need the assistant to use a website the way a person would, not just download the page text.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "microsoft/playwright-mcp",
+        "LvcidPsyche/auto-browser"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both provide interactive browser use rather than simple text download.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "microsoft/playwright-mcp",
+          "source": "https://github.com/microsoft/playwright-mcp",
+          "evidence_summary": "Click/type/navigate browser interaction.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "LvcidPsyche/auto-browser",
+          "source": "https://github.com/LvcidPsyche/auto-browser",
+          "evidence_summary": "Click/type/navigate browser interaction.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A19",
+      "query": "I want the assistant to search our company knowledge base and bring back the relevant pages.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "makenotion/notion-mcp-server",
+        "sooperset/mcp-atlassian"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Notion and Confluence are valid enterprise knowledge-base interpretations, both supporting search/read.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "makenotion/notion-mcp-server",
+          "source": "https://github.com/makenotion/notion-mcp-server",
+          "evidence_summary": "Notion page access.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "sooperset/mcp-atlassian",
+          "source": "https://github.com/sooperset/mcp-atlassian",
+          "evidence_summary": "Confluence search/page retrieval.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "medium",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    },
+    {
+      "query_id": "A20",
+      "query": "I want the assistant to look up values in shared spreadsheets when I ask a question.",
+      "query_type": "ambiguous_realistic",
+      "relevant_server_ids": [
+        "isaacphi/mcp-gdrive",
+        "freema/mcp-gsheets"
+      ],
+      "constraints": "None specified.",
+      "rationale": "Both can read shared spreadsheet values; mcp-gdrive can also locate Sheets in Drive.",
+      "label_status": "assistant_reviewed_pending_mechanical_corpus_check",
+      "no_relevant_server": false,
+      "label_evidence": [
+        {
+          "server_id": "isaacphi/mcp-gdrive",
+          "source": "https://github.com/isaacphi/mcp-gdrive",
+          "evidence_summary": "Google Sheets read operations.",
+          "constraint_assessment": "pass"
+        },
+        {
+          "server_id": "freema/mcp-gsheets",
+          "source": "https://github.com/freema/mcp-gsheets",
+          "evidence_summary": "Google Sheets read operations.",
+          "constraint_assessment": "pass"
+        }
+      ],
+      "confidence": "high",
+      "review_flags": [
+        "AMBIGUITY_EXPECTED_NOT_BLOCKING"
+      ],
+      "query_text_frozen": true
+    }
+  ],
+  "review_policy": {
+    "blocking_flags": [
+      "NO_MATCH_HUMAN_REVIEW",
+      "CORPUS_SNAPSHOT_MEMBERSHIP_RECHECK",
+      "REQUIRES_MCP_ATLASSIAN_0_22_0_PLUS",
+      "SANDBOX_BOUNDARY_RECHECK"
+    ],
+    "non_blocking_flags": [
+      "AMBIGUITY_EXPECTED_NOT_BLOCKING",
+      "TOOL_FILTER_CONFIG_REQUIRED",
+      "EXTERNAL_IAM_COULD_SATISFY"
+    ]
+  },
+  "mechanical_prebenchmark_checks_required": [
+    "exactly 60 queries",
+    "query text exactly matches frozen validation_intents_v1.json",
+    "every non-empty relevant_server_id exists in data/servers.json",
+    "every non-empty relevant_server_id has a corresponding record in data/documents.json"
+  ],
+  "agent_must_not_modify_labels": true
+}

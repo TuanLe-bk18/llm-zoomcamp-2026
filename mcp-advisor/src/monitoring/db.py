@@ -99,5 +99,15 @@ def get_dashboard_metrics():
         "top_servers": top_servers
     }
 
+def get_all_interactions_df():
+    import pandas as pd
+    conn = sqlite3.connect(DB_PATH)
+    df = pd.read_sql_query("SELECT * FROM interactions", conn)
+    conn.close()
+    
+    if not df.empty:
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
+    return df
+
 # Initialize on import
 init_db()

@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import time
 import re
 from elasticsearch import Elasticsearch, helpers
@@ -12,6 +13,7 @@ DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data", "documen
 def chunk_markdown_by_headings(content, server_id, source_url):
     sections = re.split(r'\n(?=#+ )', "\n" + content)
     chunks = []
+    chunk_index = 0
     
     for section in sections:
         section = section.strip()
@@ -25,19 +27,64 @@ def chunk_markdown_by_headings(content, server_id, source_url):
         if match:
             heading = match.group(2).strip()
             
-        if len(text) > 4000:
-            text = text[:4000] # naive truncation to fit embedding models
-            
         if len(text) < 50:
             continue
             
-        chunks.append({
-            "server_id": server_id,
-            "heading": heading[:200],
-            "text": text,
-            "source_url": source_url
-        })
+        max_chunk_size = 1000
+        overlap = 150
         
+        if len(text) <= max_chunk_size:
+            chunks.append({
+                "chunk_id": f"{server_id}_{chunk_index}",
+                "server_id": server_id,
+                "heading": heading[:200],
+                "text": text,
+                "source_url": source_url
+            })
+            chunk_index += 1
+            continue
+            
+        # Split long sections by paragraphs
+        paragraphs = re.split(r'\n\s*\n', text)
+        current_chunk = ""
+        
+        for p in paragraphs:
+            # If current chunk is getting too big, flush it
+            if len(current_chunk) + len(p) > max_chunk_size and len(current_chunk) > 0:
+                chunks.append({
+                    "chunk_id": f"{server_id}_{chunk_index}",
+                    "server_id": server_id,
+                    "heading": heading[:200],
+                    "text": current_chunk.strip(),
+                    "source_url": source_url
+                })
+                chunk_index += 1
+                current_chunk = current_chunk[-overlap:] + "\n\n" + p
+            else:
+                current_chunk = current_chunk + "\n\n" + p if current_chunk else p
+                
+            # If the paragraph itself is huge, split by characters
+            while len(current_chunk) > max_chunk_size + 200:
+                chunks.append({
+                    "chunk_id": f"{server_id}_{chunk_index}",
+                    "server_id": server_id,
+                    "heading": heading[:200],
+                    "text": current_chunk[:max_chunk_size].strip(),
+                    "source_url": source_url
+                })
+                chunk_index += 1
+                current_chunk = current_chunk[max_chunk_size - overlap:]
+                
+        if len(current_chunk.strip()) >= 50:
+            chunks.append({
+                "chunk_id": f"{server_id}_{chunk_index}",
+                "server_id": server_id,
+                "heading": heading[:200],
+                "text": current_chunk.strip(),
+                "source_url": source_url
+            })
+            chunk_index += 1
+            
     return chunks
 
 def main():
@@ -105,17 +152,20 @@ def main():
         
         chunks = chunk_markdown_by_headings(readme_text, server_id, source_url)
         
-        # Fallback if no chunks
         if not chunks:
             text = doc.get('description', '')
             if text:
-                chunks = [{"server_id": server_id, "heading": "General", "text": text, "source_url": source_url}]
+                chunks = [{"chunk_id": f"{server_id}_0", "server_id": server_id, "heading": "General", "text": text, "source_url": source_url}]
                 
         for chunk in chunks:
-            embedding = model.encode(chunk["text"]).tolist()
+            description = doc.get("description", "")
+            enriched_text = f"Server: {chunk['server_id']}\nDescription: {description}\nSection: {chunk['heading']}\n\n{chunk['text']}"
+            
+            embedding = model.encode(enriched_text).tolist()
             
             action = {
                 "_index": INDEX_NAME,
+                "_id": chunk["chunk_id"],
                 "_source": {
                     "server_id": chunk["server_id"],
                     "heading": chunk["heading"],
@@ -131,5 +181,24 @@ def main():
     helpers.bulk(es, actions)
     print("Indexing complete!")
 
+def smoke_test():
+    test_content = """# Short section
+This is fine.
+
+# Long section
+""" + "A" * 800 + "\n\n" + "B" * 800 + """
+
+# Huge paragraph
+""" + "C" * 2500
+
+    print("--- SMOKE TEST ---")
+    chunks = chunk_markdown_by_headings(test_content, "test/repo", "http://test")
+    for i, c in enumerate(chunks):
+        print(f"Chunk {i}: {len(c['text'])} chars, starts with {c['text'][:20]}")
+    print("------------------\n")
+
 if __name__ == "__main__":
-    main()
+    if "--test" in sys.argv:
+        smoke_test()
+    else:
+        main()

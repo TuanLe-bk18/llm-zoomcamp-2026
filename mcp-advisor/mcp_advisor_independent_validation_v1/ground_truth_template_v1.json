@@ -1,0 +1,602 @@
+[
+  {
+    "query_id": "S01",
+    "query": "I want my AI assistant to read and search files in a local project folder.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S02",
+    "query": "I need my assistant to inspect GitHub issues and pull requests for a software project.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S03",
+    "query": "I want to ask natural-language questions about data stored in a PostgreSQL database.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S04",
+    "query": "I have a local SQLite database and want my assistant to inspect its tables and query the data.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S05",
+    "query": "I need an agent that can open websites, click buttons, fill forms, and read the resulting pages.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S06",
+    "query": "I want my assistant to search the public web and return relevant pages with links.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S07",
+    "query": "I want my assistant to search our Slack conversations and summarize recent messages from a channel.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S08",
+    "query": "I need my assistant to find and read documents stored in Google Drive.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S09",
+    "query": "I want my assistant to search and read pages from our Notion workspace.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S10",
+    "query": "I want my AI assistant to remember useful facts and retrieve them in later sessions.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S11",
+    "query": "I need my assistant to look up Jira tickets and their current status.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S12",
+    "query": "I want my assistant to check my calendar and tell me what meetings I have scheduled.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S13",
+    "query": "I need my assistant to search my email and summarize messages related to a project.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S14",
+    "query": "I want my assistant to inspect running Docker containers and show me their logs.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S15",
+    "query": "I need my assistant to inspect a Kubernetes cluster, list workloads, and read pod logs.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S16",
+    "query": "I want my assistant to list files in an S3-compatible bucket and download objects when needed.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S17",
+    "query": "I need my assistant to call REST APIs and inspect the JSON responses.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S18",
+    "query": "I want to give my assistant a URL and have it extract the main readable content from the page.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S19",
+    "query": "I want my assistant to search through a code repository and explain where a feature is implemented.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "S20",
+    "query": "I need my assistant to search Google Sheets data and read values from selected spreadsheets.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C01",
+    "query": "On my Mac, I want the assistant to read one approved local folder, but it must never create, edit, move, or delete files.",
+    "relevant_server_ids": [],
+    "constraints": "macOS compatible; scope access to an approved folder; read-only; no create/edit/move/delete",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C02",
+    "query": "I need email search and summarization, but the integration must not send, delete, archive, or modify any messages.",
+    "relevant_server_ids": [],
+    "constraints": "read-only email access; no send; no delete; no archive; no message modification",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C03",
+    "query": "I need access to a private GitHub repository to inspect code, issues, and pull requests, but the assistant must not push commits or modify repository content.",
+    "relevant_server_ids": [],
+    "constraints": "private repository support; read-only repository access; no push or content modification",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C04",
+    "query": "I want an assistant to analyze a production PostgreSQL database using SELECT queries only; it must not run INSERT, UPDATE, DELETE, DDL, or schema changes.",
+    "relevant_server_ids": [],
+    "constraints": "PostgreSQL support; SELECT-only access; no writes; no DDL or schema changes",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C05",
+    "query": "I want web search from my local assistant without opening a browser UI, and I strongly prefer a solution that does not require a paid search API key.",
+    "relevant_server_ids": [],
+    "constraints": "no interactive browser UI; prefer no paid search API key",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C06",
+    "query": "I need browser automation that can run headlessly inside a Linux Docker environment and still handle JavaScript-heavy pages.",
+    "relevant_server_ids": [],
+    "constraints": "headless operation; Linux compatible; Docker-compatible deployment; support dynamic JavaScript pages",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C07",
+    "query": "I want the assistant to read and search Slack channels, but it must not post messages, react, edit, or delete anything.",
+    "relevant_server_ids": [],
+    "constraints": "read-only Slack access; no posting; no reactions; no editing or deletion",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C08",
+    "query": "I want the assistant to search a specific Google Drive or Shared Drive and read documents, while keeping access limited to that approved drive.",
+    "relevant_server_ids": [],
+    "constraints": "scope access to a specific Drive or Shared Drive; read-only preferred",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C09",
+    "query": "I need persistent memory for an assistant, but the stored memory must stay on my own machine and must not be sent to a third-party cloud service.",
+    "relevant_server_ids": [],
+    "constraints": "local persistence; no third-party cloud storage",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C10",
+    "query": "I only need calendar free/busy information for scheduling; the assistant must not create, edit, move, or cancel events.",
+    "relevant_server_ids": [],
+    "constraints": "read-only calendar access; free/busy or event reading only; no event changes",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C11",
+    "query": "I want to inspect Docker container status, configuration, and logs, but the assistant must not start, stop, restart, remove, or create containers.",
+    "relevant_server_ids": [],
+    "constraints": "read-only Docker operations; no container lifecycle changes",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C12",
+    "query": "I need Kubernetes visibility for one namespace only: list pods, deployments, events, and logs, with no ability to change cluster resources.",
+    "relevant_server_ids": [],
+    "constraints": "scope to one namespace; read-only Kubernetes access; no resource mutation",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C13",
+    "query": "I want the assistant to access one S3 bucket with permission to list and download objects only; uploading or deleting objects must be impossible.",
+    "relevant_server_ids": [],
+    "constraints": "scope to one bucket; list/download only; no upload; no delete",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C14",
+    "query": "I need an HTTP integration for internal APIs, but requests must be restricted to an explicit allowlist of approved hosts rather than arbitrary internet addresses.",
+    "relevant_server_ids": [],
+    "constraints": "host allowlist; no arbitrary destination access",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C15",
+    "query": "I want to search and read our Notion knowledge base, but the integration should not create, edit, move, or delete pages.",
+    "relevant_server_ids": [],
+    "constraints": "read-only Notion access; no page creation/edit/move/delete",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C16",
+    "query": "I need Jira integration that can read issues and add comments, but it must not delete issues or change workflow status.",
+    "relevant_server_ids": [],
+    "constraints": "read issues; allow comments; no issue deletion; no workflow transitions",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C17",
+    "query": "I need to extract content from public web pages with minimal runtime overhead; I do not want to launch a full browser unless the page truly requires JavaScript.",
+    "relevant_server_ids": [],
+    "constraints": "prefer lightweight fetching; avoid full browser when unnecessary",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C18",
+    "query": "I want to query a MySQL-compatible database through the assistant, but database credentials must come from environment variables rather than being embedded in prompts or configuration committed to source control.",
+    "relevant_server_ids": [],
+    "constraints": "MySQL-compatible; credentials from environment or secure secret source; no credentials in prompts/source control",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C19",
+    "query": "I need the assistant to retrieve secrets from a vault for deployment tasks, but it must not expose secret values in logs or persist them in its own memory.",
+    "relevant_server_ids": [],
+    "constraints": "secure vault access; no secret logging; no persistent storage of secret values",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "C20",
+    "query": "I need a code execution tool for untrusted snippets, but execution must be sandboxed so the code cannot access my host filesystem or unrestricted network resources.",
+    "relevant_server_ids": [],
+    "constraints": "sandboxed execution; no host filesystem access; no unrestricted network access",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A01",
+    "query": "I want ChatGPT to help me work with files on my laptop.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A02",
+    "query": "I need something that lets my assistant help with our GitHub project.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A03",
+    "query": "Can my assistant check information in our database for me?",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A04",
+    "query": "I want the agent to look things up on the web when it does research.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A05",
+    "query": "I want the assistant to remember important things I told it before.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A06",
+    "query": "I want the assistant to help me keep up with messages from my team.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A07",
+    "query": "I need an assistant that can inspect resources in our cloud environment.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A08",
+    "query": "I want my assistant to help me see what is happening with our containers.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A09",
+    "query": "Can the assistant check what is running in our Kubernetes cluster?",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A10",
+    "query": "I need the assistant to find information in our internal documentation.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A11",
+    "query": "I want the assistant to help me figure out when I am free for a meeting.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A12",
+    "query": "I want to ask the assistant questions about emails I have received.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A13",
+    "query": "I need the agent to pull useful information out of websites for research.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A14",
+    "query": "I want the assistant to help me keep track of project tickets.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A15",
+    "query": "I want to ask questions about data in our analytics warehouse.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A16",
+    "query": "I need the assistant to check logs when something in our system goes wrong.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A17",
+    "query": "I want the assistant to work with a few internal APIs we use at work.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A18",
+    "query": "I need the assistant to use a website the way a person would, not just download the page text.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A19",
+    "query": "I want the assistant to search our company knowledge base and bring back the relevant pages.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  },
+  {
+    "query_id": "A20",
+    "query": "I want the assistant to look up values in shared spreadsheets when I ask a question.",
+    "relevant_server_ids": [],
+    "constraints": "None specified.",
+    "rationale": "",
+    "label_status": "UNLABELED_DO_NOT_BENCHMARK",
+    "no_relevant_server": null,
+    "label_evidence": []
+  }
+]
