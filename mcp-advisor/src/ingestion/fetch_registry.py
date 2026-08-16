@@ -46,7 +46,7 @@ def fetch_registry():
     
     try:
         official_content = fetch_content(OFFICIAL_REPO_URL)
-        official_servers = extract_repos(official_content, "Official MCP Registry (modelcontextprotocol/servers)")
+        official_servers = extract_repos(official_content, "Official MCP Reference Servers (modelcontextprotocol/servers)")
     except Exception as e:
         print(f"Error fetching official registry: {e}")
         official_servers = []

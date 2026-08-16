@@ -11,8 +11,8 @@ Developers spend significant time manually searching registries and GitHub repos
 
 ## 2. Dataset
 The dataset is dynamically built from two primary sources:
-1. **Primary**: Official Model Context Protocol Registry (`modelcontextprotocol/servers`)
-2. **Supplemental**: Community Curated List (`awesome-mcp-servers`)
+1. **Primary**: Official MCP reference servers (`modelcontextprotocol/servers`)
+2. **Supplemental**: Community curated list (`awesome-mcp-servers`)
 
 For each server, the system fetches the `README.md` directly from its source repository, ensuring the recommendation engine has access to the most accurate, up-to-date documentation regarding capabilities, installation, and security permissions.
 
@@ -54,7 +54,7 @@ Standard Top-30 chunk retrieval suffers from candidate generation failure. The s
 ## 7. Evaluation
 
 ### Dataset & Coverage
-- **Corpus**: 3243 / 3391 registered servers (95.64% success rate).
+- **Corpus**: 3243 / 3391 discovered server repositories with successfully fetched READMEs (95.64% success rate).
 - **Benchmark Set**: 60 frozen user queries (Independent Validation v1), categorized into `simple_intent`, `constraint_heavy`, and `ambiguous_realistic`. Includes 7 abstention queries.
 
 ### Retrieval Performance (RRF Fusion)
