@@ -139,17 +139,19 @@ Output ONLY a JSON object with this exact structure:
                 
                 result = json.loads(response.text)
                 
-                # Gate 1: Check constraints
+                # Apply local Pydantic validation
                 result_dict = result[0] if isinstance(result, list) else result
-                recommended_server = result_dict.get("recommended_server", "")
+                validated = AdvisorRecommendation.model_validate(result_dict)
+                
+                recommended_server = validated.recommended_server
                 if recommended_server is None:
                     recommended_server = ""
                 else:
                     recommended_server = recommended_server.strip()
                     
-                all_satisfied = result_dict.get("all_constraints_satisfied", False)
-                checks = result_dict.get("constraint_checks", [])
-                answer = result_dict.get("answer", "")
+                all_satisfied = validated.all_constraints_satisfied
+                checks = [c.model_dump() for c in validated.constraint_checks]
+                answer = validated.answer
                 
                 # Gate 1: Check constraints
                 selected_text = next(
@@ -170,6 +172,11 @@ Output ONLY a JSON object with this exact structure:
                 ):
                     print(f"  [Validation] Hard constraints not met or evidence hallucinated for '{recommended_server}'. Abstaining.")
                     recommended_server = ""
+                    answer = (
+                        "No fully matching MCP server was found. "
+                        "One or more hard constraints could not be verified simultaneously "
+                        "from the retrieved README evidence."
+                    )
                 
                 # Gate 2: Hallucination check
                 if recommended_server and recommended_server not in candidate_ids:

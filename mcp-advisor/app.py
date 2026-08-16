@@ -62,6 +62,8 @@ with tab1:
                     
                     if "error" in result:
                         st.error(f"Error generating recommendation: {result['error']}")
+                    elif not result.get("recommended_server"):
+                        st.warning("No fully matching MCP server found.")
                     else:
                         st.success("Recommendation Ready!")
                         
