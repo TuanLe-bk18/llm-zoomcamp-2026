@@ -11,8 +11,15 @@ from es_search import ElasticMCPSearch
 import json
 from pydantic import BaseModel, Field
 
+class ConstraintCheck(BaseModel):
+    constraint: str
+    satisfied: bool
+    evidence: str
+
 class AdvisorRecommendation(BaseModel):
     recommended_server: str = Field(description="The server_id of the recommended server, exactly as it appears in the Evidence, or empty string if no suitable server exists.")
+    all_constraints_satisfied: bool
+    constraint_checks: list[ConstraintCheck]
     answer: str = Field(description="Full markdown response explaining the recommendation, alternatives, auth, local/remote, permissions, installation, and sources.")
 
 class MCPAdvisor:
@@ -90,6 +97,8 @@ CRITICAL GROUNDING RULES:
 8. Do not infer security properties from absence of documentation.
 9. If no candidate satisfies all hard requirements, return recommended_server: "" and clearly state in the answer that no fully matching server was found.
 
+You MUST list each hard constraint from the user query in `constraint_checks` and verify it. Extract the exact sentence from the text for `evidence`. Do not paraphrase the evidence. If ANY constraint is not satisfied, set `all_constraints_satisfied` to false.
+
 In the `answer` field, structure your response EXACTLY as follows:
 Recommended: [Main Server Repo]
 Why: [Brief explanation of why it fits based ON EVIDENCE]
@@ -117,8 +126,21 @@ Sources: [List of source URLs for the recommended server]
                 
                 result = json.loads(response.text)
                 recommended_server = result.get("recommended_server", "").strip()
+                all_satisfied = result.get("all_constraints_satisfied", False)
+                checks = result.get("constraint_checks", [])
                 answer = result.get("answer", "")
                 
+                # Gate 1: Check constraints
+                if recommended_server and (
+                    not all_satisfied
+                    or not checks
+                    or any(not c.get("satisfied") for c in checks)
+                    or any(c.get("evidence", "") not in context_str for c in checks)
+                ):
+                    print(f"  [Validation] Hard constraints not met or evidence hallucinated for '{recommended_server}'. Abstaining.")
+                    recommended_server = ""
+                
+                # Gate 2: Hallucination check
                 if recommended_server and recommended_server not in candidate_ids:
                     if attempt == 0:
                         print(f"  [Validation] Hallucinated server '{recommended_server}'. Retrying...")

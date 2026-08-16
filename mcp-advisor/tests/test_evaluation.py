@@ -51,7 +51,7 @@ def test_advisor_parses_valid_json(monkeypatch):
         class Models:
             def generate_content(self, model, contents, config):
                 class Response:
-                    text = '{"recommended_server": "owner/repo", "answer": "Detailed answer"}'
+                    text = '{"recommended_server": "owner/repo", "all_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "satisfied": true, "evidence": "evidence"}], "answer": "Detailed answer"}'
                 return Response()
         models = Models()
 
@@ -75,7 +75,7 @@ def test_advisor_rejects_unknown_server(monkeypatch):
             def generate_content(self, model, contents, config):
                 class Response:
                     # Always hallucinates a server not in candidates
-                    text = '{"recommended_server": "fake/repo", "answer": "Hallucinated answer"}'
+                    text = '{"recommended_server": "fake/repo", "all_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "satisfied": true, "evidence": "evidence"}], "answer": "Hallucinated answer"}'
                 return Response()
         models = Models()
 
