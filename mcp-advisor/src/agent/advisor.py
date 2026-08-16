@@ -108,6 +108,20 @@ Local/Remote: [Is it local or remote, or "Not documented"]
 Permissions / Security: [Security constraints/permissions mentioned, or "Not documented"]
 Installation notes: [Installation notes mentioned, or "Not documented"]
 Sources: [List of source URLs for the recommended server]
+
+Output ONLY a JSON object with this exact structure:
+{
+  "recommended_server": "owner/repo",
+  "all_constraints_satisfied": true,
+  "constraint_checks": [
+    {
+      "constraint": "Local execution",
+      "satisfied": true,
+      "evidence": "exact sentence from README"
+    }
+  ],
+  "answer": "Your formatted answer here"
+}
 """
         
         user_prompt = f"User Requirement: {user_query}\n\nEvidence:\n{context_str}"
@@ -119,23 +133,40 @@ Sources: [List of source URLs for the recommended server]
                     contents=[system_prompt, user_prompt],
                     config=types.GenerateContentConfig(
                         response_mime_type="application/json",
-                        response_schema=AdvisorRecommendation,
                         temperature=0.3 + (attempt * 0.2)
                     )
                 )
                 
                 result = json.loads(response.text)
-                recommended_server = result.get("recommended_server", "").strip()
-                all_satisfied = result.get("all_constraints_satisfied", False)
-                checks = result.get("constraint_checks", [])
-                answer = result.get("answer", "")
                 
                 # Gate 1: Check constraints
+                result_dict = result[0] if isinstance(result, list) else result
+                recommended_server = result_dict.get("recommended_server", "")
+                if recommended_server is None:
+                    recommended_server = ""
+                else:
+                    recommended_server = recommended_server.strip()
+                    
+                all_satisfied = result_dict.get("all_constraints_satisfied", False)
+                checks = result_dict.get("constraint_checks", [])
+                answer = result_dict.get("answer", "")
+                
+                # Gate 1: Check constraints
+                selected_text = next(
+                    (c.get("text", "") for c in candidates if c.get("server_id") == recommended_server),
+                    ""
+                )
+                
+                invalid_evidence = any(
+                    not c.get("evidence", "").strip() or c.get("evidence") not in selected_text
+                    for c in checks
+                )
+                
                 if recommended_server and (
                     not all_satisfied
                     or not checks
                     or any(not c.get("satisfied") for c in checks)
-                    or any(c.get("evidence", "") not in context_str for c in checks)
+                    or invalid_evidence
                 ):
                     print(f"  [Validation] Hard constraints not met or evidence hallucinated for '{recommended_server}'. Abstaining.")
                     recommended_server = ""

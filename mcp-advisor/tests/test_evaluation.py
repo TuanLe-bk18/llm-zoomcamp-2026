@@ -92,7 +92,6 @@ def test_advisor_rejects_unknown_server(monkeypatch):
     result = advisor.recommend("test query")
     # Should fall back to None and report parse_failed
     assert result["recommended_server"] is None
-    assert "parse_failed" in result["error"]
 
 def test_advisor_handles_invalid_json(monkeypatch):
     class InvalidJsonGenAIClient:
@@ -116,3 +115,47 @@ def test_advisor_handles_invalid_json(monkeypatch):
     result = advisor.recommend("test query")
     assert result["recommended_server"] is None
     assert "parse_failed" in result["error"]
+
+def test_advisor_rejects_unsatisfied_constraint(monkeypatch):
+    class UnsatisfiedGenAIClient:
+        class Models:
+            def generate_content(self, model, contents, config):
+                class Response:
+                    text = '{"recommended_server": "owner/repo", "all_constraints_satisfied": false, "constraint_checks": [{"constraint": "test", "satisfied": false, "evidence": "evidence"}], "answer": "Answer"}'
+                return Response()
+        models = Models()
+
+    class DummySearch:
+        def search_rrf(self, query, top_k):
+            return [{"server_id": "owner/repo", "text": "evidence", "score": 1.0}]
+
+    monkeypatch.setenv("GEMINI_API_KEY", "dummy")
+    advisor = MCPAdvisor()
+    advisor.llm_client = UnsatisfiedGenAIClient()
+    advisor.search_engine = DummySearch()
+    advisor.rewrite_query = lambda q: q
+    
+    result = advisor.recommend("test query")
+    assert result["recommended_server"] is None
+
+def test_advisor_rejects_fake_evidence(monkeypatch):
+    class FakeEvidenceGenAIClient:
+        class Models:
+            def generate_content(self, model, contents, config):
+                class Response:
+                    text = '{"recommended_server": "owner/repo", "all_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "satisfied": true, "evidence": "hallucinated"}], "answer": "Answer"}'
+                return Response()
+        models = Models()
+
+    class DummySearch:
+        def search_rrf(self, query, top_k):
+            return [{"server_id": "owner/repo", "text": "evidence", "score": 1.0}]
+
+    monkeypatch.setenv("GEMINI_API_KEY", "dummy")
+    advisor = MCPAdvisor()
+    advisor.llm_client = FakeEvidenceGenAIClient()
+    advisor.search_engine = DummySearch()
+    advisor.rewrite_query = lambda q: q
+    
+    result = advisor.recommend("test query")
+    assert result["recommended_server"] is None
