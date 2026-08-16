@@ -2,7 +2,7 @@ import os
 import json
 from collections import defaultdict
 from elasticsearch import Elasticsearch
-from sentence_transformers import SentenceTransformer, CrossEncoder
+from sentence_transformers import SentenceTransformer
 
 class ElasticMCPSearch:
     def __init__(self, es_url=None, index_name="mcp-servers"):
@@ -10,14 +10,9 @@ class ElasticMCPSearch:
         self.es = Elasticsearch(es_url)
         self.index_name = index_name
         self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
-        self.cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
 
     def search_keyword(self, query, top_k=30):
-        es_query = {
-            "match": {
-                "text": query
-            }
-        }
+        es_query = {"match": {"text": query}}
         res = self.es.search(index=self.index_name, query=es_query, size=top_k)
         return self._parse_results(res)
 
@@ -30,28 +25,6 @@ class ElasticMCPSearch:
             "num_candidates": 100
         }
         res = self.es.search(index=self.index_name, knn=knn_query, size=top_k)
-        return self._parse_results(res)
-
-    def search_hybrid(self, query, top_k=30):
-        query_vector = self.embedding_model.encode(query).tolist()
-        
-        knn_query = {
-            "field": "text_vector",
-            "query_vector": query_vector,
-            "k": top_k,
-            "num_candidates": 100,
-            "boost": 0.5
-        }
-        match_query = {
-            "match": {
-                "text": {
-                    "query": query,
-                    "boost": 0.5
-                }
-            }
-        }
-        
-        res = self.es.search(index=self.index_name, knn=knn_query, query=match_query, size=top_k)
         return self._parse_results(res)
 
     def search_rrf(self, query, top_k=5, k_rrf=60):

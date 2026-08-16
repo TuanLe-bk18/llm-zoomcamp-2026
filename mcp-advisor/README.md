@@ -1,9 +1,11 @@
-# MCP Advisor: RAG-based Model Context Protocol Recommendation System
+# MCP Advisor
+
+A Retrieval-Augmented Generation (RAG) system that recommends Model Context Protocol (MCP) servers based on natural language requirements.
 
 ## 1. Problem
-As the Model Context Protocol (MCP) ecosystem grows, developers struggle to find the right MCP server for their specific needs. Manually browsing registries or Github repositories is time-consuming, and keyword searches often fail to capture complex constraints (e.g., "I need local browser automation without relying on a cloud API key").
+Developers spend significant time manually searching registries and GitHub repositories to find MCP servers. Keyword searches often fail to capture complex constraints (e.g., "I need local browser automation without relying on a cloud API key").
 
-**MCP Advisor** solves this by providing a Retrieval-Augmented Generation (RAG) application that understands natural language requirements, searches through actual MCP server documentation, and recommends the best-fit servers based strictly on retrieved evidence.
+**MCP Advisor** solves this by searching directly through server documentation and recommending the best-fit servers based on retrieved evidence.
 
 ---
 
@@ -35,38 +37,36 @@ The ingestion pipeline is completely reproducible and automated:
 
 ---
 
-## 5. Retrieval Strategy (First-Stage Optimization)
-After rigorous diagnostic benchmarking, we identified that standard Top-30 chunk retrieval suffers from significant "Candidate Generation Failure" (failing to retrieve the correct server into the reranking pool). To solve this, the system uses **Oversampling + Server-level RRF Fusion**:
-1. **Heading-based Chunking**: Documents are split into chunks based on Markdown headings (e.g., `## Authentication`, `## Configuration`).
-2. **Vector Oversampling**: Retrieves Top-200 chunks via dense vector search (k-NN) and deduplicates them to find the Top-50 unique servers.
-3. **BM25 Oversampling**: Retrieves Top-200 chunks via sparse keyword search and deduplicates them to find the Top-50 unique servers.
-4. **Reciprocal Rank Fusion (RRF)**: Merges the two server lists at the server level (k=60) to produce a highly robust Top-5 candidate list for the LLM.
-
-*(Note: CrossEncoder reranking was evaluated but ultimately discarded as it introduced 7x latency without significantly improving MRR@5 on this specific dataset).*
+## 5. Retrieval Strategy
+Standard Top-30 chunk retrieval suffers from candidate generation failure. The system uses **Oversampling + Server-level RRF Fusion** to improve recall:
+1. **Chunking**: Documents are split based on Markdown headings (e.g., `## Authentication`).
+2. **Vector Oversampling**: Retrieves Top-200 chunks via dense vector search (k-NN), deduplicates to Top-50 unique servers.
+3. **BM25 Oversampling**: Retrieves Top-200 chunks via sparse keyword search, deduplicates to Top-50 unique servers.
+4. **Reciprocal Rank Fusion (RRF)**: Merges the two server lists at the server level (k=60) to produce the Top-5 candidate list.
 
 ---
 
 ## 6. RAG Flow
-The LLM integration operates in two strict phases to ensure high-quality, grounded recommendations:
-1. **Query Rewriting**: The user's natural language input (plus selected constraints like "Local Execution") is rewritten by Gemini into a dense, keyword-rich search query optimized for Elasticsearch.
-2. **Strict Grounded Generation**: Gemini is provided with the aggregated server documents. It is strictly instructed via system prompt to **only** recommend servers present in the context, and to explicitly state "Not documented" if a capability or security property is missing from the evidence.
+1. **Query Rewriting**: The user's input (plus constraints like "Local Execution") is rewritten by an LLM into a dense search query.
+2. **Grounded Generation**: The LLM evaluates the Top-5 aggregated server documents. It is instructed to only recommend servers present in the context and to state "Not documented" for missing information.
 
 ---
 
-## 7. Evaluation & Metrics
+## 7. Evaluation
 
 ### Dataset & Coverage
-- **Corpus**: Rebuilt to cover 3243 / 3391 registered servers (95.64% success rate).
-- **Benchmark Set**: 60 strictly frozen, realistic user queries (Independent Validation v1), categorized into `simple_intent`, `constraint_heavy`, and `ambiguous_realistic`. Includes 7 abstention "no match" queries to test hallucination resistance.
+- **Corpus**: 3243 / 3391 registered servers (95.64% success rate).
+- **Benchmark Set**: 60 frozen user queries (Independent Validation v1), categorized into `simple_intent`, `constraint_heavy`, and `ambiguous_realistic`. Includes 7 abstention queries.
 
-### First-Stage Retrieval Optimization
-Through our diagnostic benchmark, we evaluated several candidate generation configurations. By moving from standard Hybrid search to **Oversampling + RRF Fusion**, we achieved:
-- **Candidate Recall@50**: ~68% (A 2x improvement over the baseline 34%).
-- **Hit@5**: 22.6%
-- **MRR@5**: 0.122
+### Retrieval Performance (RRF Fusion)
+- **Vector Oversample CR@50**: 67.9%
+- **RRF Candidate Recall@30**: 60.4%
+- **RRF Candidate Recall@50**: 64.2%
+- **RRF Hit@5**: 22.6%
+- **RRF MRR@5**: 0.122
 - **Latency**: ~69ms (p50)
 
-*Limitations*: While RRF effectively pushes relevant servers up the ranking (especially for constraint-heavy queries), **ambiguous queries** remain a significant limitation, often failing to recall the correct server in the Top 50 pool.
+*Limitations*: Ambiguous queries remain a challenge, often failing to recall the correct server in the Top 50 pool.
 
 ---
 

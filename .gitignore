@@ -1,3 +1,7 @@
 .venv
 models/
 .DS_Store
+.env
+__pycache__
+*.db
+.ipynb_checkpoints

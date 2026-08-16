@@ -1,232 +1,176 @@
 {
   "judge_model": "gemini-3.5-flash",
-  "evaluation_date": "2026-08-15T16:50:26Z",
+  "evaluation_date": "2026-08-15T18:07:19Z",
   "number_of_cases": 20,
+  "successful_judges": 0,
+  "failed_judges": 20,
+  "failure_rate": 1.0,
+  "is_valid": false,
   "summary": {
-    "relevance": 3.45,
-    "groundedness": 1.35,
-    "constraint_satisfaction": 3.4,
-    "usefulness": 3.65
+    "relevance": 0,
+    "groundedness": 0,
+    "constraint_satisfaction": 0,
+    "usefulness": 0
   },
   "details": [
     {
-      "query": "I need a way to programmatically manage my cloud compute instances and optimize spot instance scaling within my infrastructure environment.",
-      "output": "Recommended: Albaker-Group/cloudprice-mcp\n\nWhy: This server is specifically designed for FinOps and cloud cost analysis. It provides tools for multi-cloud spot pricing, including eviction tradeoffs, and allows for the computation of Reserved Instance break-even points. It supports AWS, Azure, GCP, and OCI, making it suitable for optimizing scaling decisions across a multi-cloud infrastructure.\n\nAlternatives: \n- trilogy-group/aws-pricing-mcp (Provides AWS EC2 instance pricing data, but is limited to AWS).\n- freema/openclaw-mcp (Supports orchestration of multiple instances/gateways, but does not provide pricing or optimization data).\n\nAuthentication: Not documented.\n\nLocal/Remote: Not documented.\n\nPermissions / Security: Not documented.\n\nInstallation notes: `pip install cloudprice-mcp && cloudprice-mcp setup`. The setup command auto-detects common AI clients (Claude Desktop, GitHub Copilot, Cursor, Windsurf, Cline, Continue.dev, and Zed) and prompts for configuration.\n\nSources: https://raw.githubusercontent.com/Albaker-Group/cloudprice-mcp/main/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to perform read-only queries and return the results in a structured format for my AI coding assistant.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 3,
-        "groundedness": 1,
-        "constraint_satisfaction": 2,
-        "usefulness": 4,
-        "feedback": "The recommendation is highly ungrounded because the provided evidence contains almost no details about `cloudprice-mcp`'s features (such as FinOps, AWS/Azure/GCP support, eviction tradeoffs) or its installation steps. Furthermore, the recommended server only provides pricing data and does not satisfy the user's constraint to programmatically 'manage' cloud compute instances."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "Can you help me generate high-quality images from text prompts directly within my development workflow?",
-      "output": "Recommended: profullstack/mcp-server\n\nWhy: This server provides direct support for Stable Diffusion (specifically `stable-diffusion-xl-1024-v1-0`) for image generation. It allows you to perform inference via a POST request to a local endpoint, returning base64-encoded images, which integrates well into a development workflow.\n\nAlternatives: \n- gwbischof/outsource-mcp: Supports DALL-E 2 and DALL-E 3 for image generation.\n- gpu-bridge/mcp-server: Supports FLUX.1 (Schnell and Dev), Stable Diffusion XL, and Stable Diffusion 3.5.\n- j-east/pixel-surgeon-mcp: Supports Gemini, OpenAI, Grok Imagine, and Veo 3, with additional tools for image editing and background removal.\n\nAuthentication: \n- profullstack/mcp-server: Mentions `STABILITY_API_KEY` for Stable Diffusion.\n- gwbischof/outsource-mcp: Mentions configuring API keys for providers used.\n- j-east/pixel-surgeon-mcp: Mentions using OpenAI API keys.\n- gpu-bridge/mcp-server: Not documented.\n\nLocal/Remote: \n- profullstack/mcp-server: Local (runs on `http://localhost:3000`).\n- Others: Not documented.\n\nPermissions / Security: \n- gwbischof/outsource-mcp: Mentions ensuring the API key has access to the requested model and sufficient credits/quota.\n- j-east/pixel-surgeon-mcp: Mentions image generation is billed per request.\n- Others: Not documented.\n\nInstallation notes: \n- gwbischof/outsource-mcp: Mentions restarting the MCP client after updating configuration and verifying configuration file locations.\n- Others: Not documented.\n\nSources: \n- https://raw.githubusercontent.com/profullstack/mcp-server/master/README.md\n- https://raw.githubusercontent.com/gwbischof/outsource-mcp/main/README.md\n- https://raw.githubusercontent.com/gpu-bridge/mcp-server/main/README.md\n- https://raw.githubusercontent.com/j-east/pixel-surgeon-mcp/main/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to perform read-only data analysis and generate SQL queries based on natural language prompts.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 0,
-        "groundedness": 0,
-        "constraint_satisfaction": 0,
-        "usefulness": 0,
-        "feedback": "Expecting ',' delimiter: line 6 column 335 (char 426)"
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need to fetch recent messages from specific channels and send automated status updates to our team's workspace.",
-      "output": "Recommended: zencoderai/slack-mcp-server\n\nWhy: This server directly supports your requirements by providing `slack_get_channel_history` to fetch recent messages from specific channels and `slack_post_message` to send automated status updates to your workspace.\n\nAlternatives: None of the other provided servers offer Slack integration.\n\nAuthentication: The server supports a bearer token for HTTP authorization, which can be provided via the `--token` command-line option or the `AUTH_TOKEN` environment variable.\n\nLocal/Remote: Supports both `stdio` and Streamable HTTP transports.\n\nPermissions / Security: The documentation states that you need to create a Slack app and configure it with the necessary permissions, though specific permission scopes are \"Not documented\" in the provided evidence.\n\nInstallation notes: The server can be run via command line using `slack-mcp [options]`. It supports `stdio` (default) or `http` transport types.\n\nSources: https://raw.githubusercontent.com/zencoderai/slack-mcp-server/main/README.md",
+      "query": "I need a tool that can securely connect to my local database to query system logs and extract performance metrics without exposing the data to external cloud services.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 2,
-        "constraint_satisfaction": 5,
-        "usefulness": 5,
-        "feedback": "The recommended server is highly relevant to the user's query. However, the system output hallucinated several details not present in the provided evidence, such as the existence of the 'slack_get_channel_history' tool, specific authentication options (--token, AUTH_TOKEN), and installation commands."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I want to manage my containerized applications and monitor deployment health across multiple environments through a unified interface.",
-      "output": "Recommended: reza-gholizade/k8s-mcp-server\n\nWhy: This server provides comprehensive Kubernetes management capabilities, including resource discovery, listing, description, pod logs, and metrics (CPU/Memory). It supports managing multiple environments through flexible configuration of Kubernetes contexts and allows for resource creation, updating, and deletion, making it suitable for managing containerized applications and monitoring deployment health.\n\nAlternatives: friendlygeorge/docker-mcp-server (if your environment is strictly Docker-based rather than Kubernetes-based, as it offers specific fleet monitoring and compose lifecycle tools).\n\nAuthentication: Supports mounting a `kubeconfig` file or using environment variables (`KUBECONFIG_DATA`, or `KUBERNETES_SERVER` with `KUBERNETES_TOKEN` and `KUBERNETES_CA_CERT_PATH`).\n\nLocal/Remote: Supports `stdio` mode (local), `sse` mode, and `streamable-http` mode (remote/web).\n\nPermissions / Security: The Docker image runs as a non-root user (`appuser` with UID 1001). It supports a `--readonly` mode to prevent changes to the cluster.\n\nInstallation notes: Available as a pre-built Docker image (`ginnux/k8s-mcp-server:latest`). Can be run via `docker run` with various modes and volume mounts for `kubeconfig`.\n\nSources: https://raw.githubusercontent.com/reza-gholizade/k8s-mcp-server/main/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to perform read-only queries and return the results in a structured format for my AI assistant.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 2,
-        "constraint_satisfaction": 5,
-        "usefulness": 5,
-        "feedback": "The recommendation is highly relevant to the user's query and the format is excellent. However, the groundedness is low because the system output hallucinates numerous details (such as specific authentication environment variables, local/remote modes, non-root user permissions, and installation notes) that are completely absent from the provided evidence snippet."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I am looking for a tool that can facilitate complex data transformations and workflow orchestration within my data pipeline.",
-      "output": "Recommended: ksterx/srunx\n\nWhy: This server is specifically designed for workflow orchestration and data pipeline management. It allows you to define pipelines using YAML, supports parameterized workflows with Jinja2, manages inter-job data exports, and handles dependency-driven scheduling (where jobs run automatically once dependencies are met). It also supports containerized execution per job.\n\nAlternatives: \n- spre-sre/lumino-mcp-server: Offers pipeline intelligence, including monitoring, log retrieval, and root cause analysis for Tekton pipelines.\n- awslabs/mcp: Provides a broad suite of tools for data operations, ETL pipelines, and infrastructure management within AWS environments.\n\nAuthentication: Not documented.\n\nLocal/Remote: Not documented.\n\nPermissions / Security: ksterx/srunx supports containerized execution (Pyxis / Apptainer / Singularity) and mounts, but specific security constraints or permission models are not documented.\n\nInstallation notes: ksterx/srunx provides CLI commands for execution (`srunx flow run workflow.yaml`). awslabs/mcp provides installation instructions for macOS, Linux, Windows, and containerized environments.\n\nSources: \n- https://raw.githubusercontent.com/ksterx/srunx/main/README.md\n- https://raw.githubusercontent.com/spre-sre/lumino-mcp-server/main/README.md\n- https://raw.githubusercontent.com/awslabs/mcp/main/README.md",
+      "query": "I need a way to integrate my local terminal workflow with my project management board. Is there a tool that allows me to list, create, and update tasks directly from the command line while ensuring all actions are authenticated and restricted to read-only access for team members?",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 2,
-        "constraint_satisfaction": 5,
-        "usefulness": 5,
-        "feedback": "The recommended tool (ksterx/srunx) is highly relevant to the user's query. However, the groundedness is low because the system output references alternative tools (spre-sre/lumino-mcp-server and awslabs/mcp) and specific details (like Jinja2 and containerized execution) that are completely absent from the provided evidence."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need an interface to interact with my data cloud storage to query and retrieve datasets for my machine learning projects.",
-      "output": "Recommended: awslabs/mcp (specifically the **Amazon Bedrock Knowledge Bases Retrieval MCP Server** or **Amazon Kendra Index MCP Server**)\n\nWhy: These servers are specifically designed for enterprise knowledge retrieval and RAG (Retrieval-Augmented Generation) workflows. They allow you to query and retrieve data from your existing cloud-based knowledge bases or indexes, which aligns with your requirement to interact with data cloud storage for machine learning projects.\n\nAlternatives: \n- **Amazon Kendra Index MCP Server**: Best for enterprise search and RAG enhancement.\n- **Amazon Q Business MCP Server**: Best for AI-assisted access to ingested content.\n\nAuthentication: \n- Both servers require AWS environment configuration, specifically `AWS_PROFILE` and `AWS_REGION`. \n- The Kendra server additionally requires a `KEND_ROLE_ARN` and `KEND_INDEX_ID`.\n\nLocal/Remote: The evidence indicates these are run via `uvx` (a command-line tool), which typically executes locally on your machine while connecting to remote AWS cloud services.\n\nPermissions / Security: \n- Requires AWS credentials (via `AWS_PROFILE`).\n- The Kendra server requires a specific Role ARN for access.\n- The Bedrock server supports optional filtering via `KB_INCLUSION_TAG_KEY`.\n\nInstallation notes: \n- Installation is supported via Kiro, Cursor, and VS Code using the provided `uvx` command configurations.\n- Environment variables (Region, Profile, Role ARN, Index ID) must be set during configuration.\n\nSources: \n- https://raw.githubusercontent.com/awslabs/mcp/main/README.md",
+      "query": "I need a tool that can connect to my local filesystem to read configuration files and execute shell commands for project automation, but it must strictly operate in a read-only mode for file access to ensure safety.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 3,
-        "groundedness": 1,
-        "constraint_satisfaction": 3,
-        "usefulness": 5,
-        "feedback": "The recommended server (awslabs/mcp) and its details are completely hallucinated relative to the provided evidence. The evidence only contains information about 'ragmap', 'cloudprice-mcp', and 'svgmaker-mcp'. Therefore, the groundedness score is 1."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need a templating engine integration that allows me to dynamically generate text files and configuration outputs based on variables.",
-      "output": "Recommended: None\n\nWhy: Based on the provided evidence, there is no MCP server that explicitly offers templating engine functionality or the ability to dynamically generate text files and configuration outputs based on variables. The available servers focus on Kubernetes management, bioinformatics data retrieval (`gget-mcp`), Mermaid diagram generation, or general AI model provider integration.\n\nAlternatives: Not documented\n\nAuthentication: Not documented\n\nLocal/Remote: Not documented\n\nPermissions / Security: Not documented\n\nInstallation notes: Not documented\n\nSources: \n- https://raw.githubusercontent.com/spre-sre/lumino-mcp-server/main/README.md\n- https://raw.githubusercontent.com/GittyBurstein/mermaid-mcp-server/main/README.md\n- https://raw.githubusercontent.com/strowk/mcp-k8s-go/main/README.md\n- https://raw.githubusercontent.com/longevity-genie/gget-mcp/main/README.md\n- https://raw.githubusercontent.com/profullstack/mcp-server/master/README.md",
+      "query": "I need a tool that can securely fetch and display system environment variables and process lists directly within my IDE's context to help me debug configuration issues without leaving the editor.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 0,
-        "groundedness": 0,
-        "constraint_satisfaction": 0,
-        "usefulness": 0,
-        "feedback": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "How can I map and visualize the relationships between my retrieved documents and knowledge base to improve my RAG system's accuracy?",
-      "output": "Recommended: [gzoonet/cortex](https://raw.githubusercontent.com/gzoonet/cortex/main/README.md)\n\nWhy: Cortex is specifically designed to maintain context across projects by watching files, extracting entities (decisions, patterns, dependencies), and inferring relationships between them. It features a web dashboard with knowledge graph visualization and provides an MCP server that allows AI clients to query the knowledge graph directly, which directly addresses your need to map and visualize document relationships for RAG accuracy.\n\nAlternatives: \n- [HelpCode-ai/anythingmcp](https://raw.githubusercontent.com/HelpCode-ai/anythingmcp/main/README.md): Offers a knowledge graph that maps entities and relationships across connectors, including a visual graph editor.\n- [VeriTeknik/pluggedin-mcp-proxy](https://raw.githubusercontent.com/VeriTeknik/pluggedin-mcp-proxy/main/README.md): Focuses on RAG v2 document exchange, attribution tracking, and unified document search across connected sources.\n\nAuthentication: Not documented.\n\nLocal/Remote: Cortex respects privacy by ensuring restricted projects never leave your machine (Local).\n\nPermissions / Security: Cortex detects contradictions and respects privacy by restricting project data. AnythingMCP is PII-safe, storing only entity/field names and relationship metadata, never the values.\n\nInstallation notes: Cortex installation for Claude Code is via: `claude mcp add cortex --scope user -- npx @gzoo/cortex mcp`.\n\nSources: \n- [https://raw.githubusercontent.com/gzoonet/cortex/main/README.md](https://raw.githubusercontent.com/gzoonet/cortex/main/README.md)\n- [https://raw.githubusercontent.com/HelpCode-ai/anythingmcp/main/README.md](https://raw.githubusercontent.com/HelpCode-ai/anythingmcp/main/README.md)\n- [https://raw.githubusercontent.com/VeriTeknik/pluggedin-mcp-proxy/main/README.md](https://raw.githubusercontent.com/VeriTeknik/pluggedin-mcp-proxy/main/README.md)",
+      "query": "I need an MCP server that allows me to interact with my local filesystem to read and write configuration files. Are there any options that support path-based access control and provide a read-only mode for safety?",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 2,
-        "groundedness": 1,
-        "constraint_satisfaction": 2,
-        "usefulness": 3,
-        "feedback": "The primary recommendation ('gzoonet/cortex') is completely hallucinated as it does not exist in the provided evidence. Only the alternative recommendations were present in the source text. This severely violates the groundedness constraint."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need to monitor the status of my SSL/TLS certificates and automate certificate renewal checks in my Kubernetes environment.",
-      "output": "Recommended: spre-sre/lumino-mcp-server\n\nWhy: This server is specifically designed for Kubernetes environments and includes built-in tools for certificate health monitoring (`check_cluster_certificate_health`) and TLS issue investigation (`investigate_tls_certificate_issues`). It explicitly supports scanning namespaces for expiring certificates and generating renewal schedules.\n\nAlternatives: None of the other provided servers are designed for general Kubernetes certificate monitoring. The `zw008/VMware-AVI` server monitors SSL certificates but is specific to VMware AVI environments.\n\nAuthentication: Not documented.\n\nLocal/Remote: Not documented.\n\nPermissions / Security: The evidence mentions the ability to \"Scan all namespaces for expiring certificates\" and \"Audit all secrets and configmaps for sensitive data exposure patterns.\"\n\nInstallation notes: Not documented.\n\nSources: https://raw.githubusercontent.com/spre-sre/lumino-mcp-server/main/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to perform read-only queries and return the results in a structured format for my AI assistant.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 4,
-        "groundedness": 2,
-        "constraint_satisfaction": 5,
-        "usefulness": 5,
-        "feedback": "The recommended server is highly relevant to the user's query. However, the groundedness is low because the system output hallucinates details not present in the provided evidence, such as 'scanning namespaces for expiring certificates', 'generating renewal schedules', and 'auditing secrets and configmaps'."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need to submit and monitor Spark jobs on my cluster to process large-scale batch data analytics.",
-      "output": "Recommended: ksterx/srunx\n\nWhy: The `srunx` server provides a comprehensive suite of tools for job submission (`sbatch`), job control (`scancel`), and monitoring (status, accounting, and log streaming) specifically designed for SLURM-managed clusters. While your request mentions Spark, `srunx` is the only server in the provided evidence that offers the necessary primitives for submitting and monitoring batch jobs on a cluster.\n\nAlternatives: None of the other provided servers offer SLURM-based batch job management. `silenceper/mcp-k8s` and `spre-sre/lumino-mcp-server` focus on Kubernetes/OpenShift resource management and observability, while `olostep/olostep-mcp-server` is limited to batch scrape results.\n\nAuthentication: Not documented.\n\nLocal/Remote: Supports both local SLURM and remote clusters via SSH profiles (`--profile <name>`).\n\nPermissions / Security: Not documented.\n\nInstallation notes: The README indicates it is available via PyPI and requires Python 3.12+.\n\nSources: https://raw.githubusercontent.com/ksterx/srunx/main/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to perform read-only queries and return the results in a structured format for my AI assistant.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 0,
-        "groundedness": 0,
-        "constraint_satisfaction": 0,
-        "usefulness": 0,
-        "feedback": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need to manage my local containers and inspect logs directly from my IDE's AI chat interface. Can you help me list running containers and stop specific ones?",
-      "output": "Recommended: helbertparanhos/easypanel-mcp-server\n\nWhy: This server explicitly provides the functionality to manage containers and inspect logs. According to the evidence, it supports `runtime container logs` via `/ws/serviceLogs`, the ability to `exec_in_container`, and the retrieval of `live Docker events` via `get_docker_events`. It also includes a confirmation gate for destructive operations.\n\nAlternatives: None of the other provided servers offer general-purpose container management and log inspection for arbitrary local containers. (Note: `localstack-mcp-server` is specific to LocalStack/AWS emulation, and `devops-mcp-webui` is focused on Kubernetes/K8s clusters).\n\nAuthentication: Not documented.\n\nLocal/Remote: Not documented.\n\nPermissions / Security: The server includes a `MCP_ACCESS_MODE=readonly` setting to block write operations, a destructive-command gate for `exec_in_container`, and a confirmation gate (`confirm: \"CONFIRMO\"`) for destructive operations. It also performs secret redaction for `apiToken` and `twoFactorSecret`.\n\nInstallation notes: Requires `npx`/`node`.\n\nSources: https://raw.githubusercontent.com/helbertparanhos/easypanel-mcp-server/master/README.md",
+      "query": "I need a tool that can interact with my local filesystem to list directory contents and read file metadata without requiring external API access or cloud authentication.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 4,
-        "groundedness": 1,
-        "constraint_satisfaction": 3,
-        "usefulness": 5,
-        "feedback": "The recommended server 'helbertparanhos/easypanel-mcp-server' and its specific features (like /ws/serviceLogs, exec_in_container) are completely missing from the provided evidence, resulting in a groundedness score of 1."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "How can I integrate my current workflow automation tools to bridge data between disparate internal business systems?",
-      "output": "Recommended: anythink-cloud/anythink-cli\n\nWhy: This server provides built-in capabilities to manage automation workflows, including the ability to trigger workflows based on entity creation or updates. This functionality allows for bridging data between systems by automating actions when specific data events occur.\n\nAlternatives: waystation-ai/mcp (supports workflow automation and process optimization as a use case).\n\nAuthentication: Not documented.\n\nLocal/Remote: Not documented.\n\nPermissions / Security: Not documented.\n\nInstallation notes: Not documented.\n\nSources: https://raw.githubusercontent.com/anythink-cloud/anythink-cli/main/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to query system logs and perform read-only data analysis without exposing credentials to the internet.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 0,
-        "groundedness": 0,
-        "constraint_satisfaction": 0,
-        "usefulness": 0,
-        "feedback": "Expecting ',' delimiter: line 6 column 244 (char 335)"
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I want to visualize the decision-making process of my autonomous agent by giving it a browser-based dashboard. Is there a way to expose agent internal states to a web UI?",
-      "output": "Recommended: HanSur94/matlab-mcp-server-python\n\nWhy: This server explicitly provides built-in observability with a web dashboard designed for AI agent self-monitoring. It includes JSON health/metrics endpoints and MCP tools specifically for monitoring agent states, which directly addresses your requirement to visualize internal agent processes.\n\nAlternatives: \n- ksterx/srunx: Provides a web dashboard for visual cluster management and workflow DAG visualization, though it is specifically tailored for SLURM cluster environments.\n- aparajithn/agent-deploy-dashboard-mcp: Provides a web-based dashboard for agent deployment, though it appears focused on infrastructure management rather than internal agent state visualization.\n- espadaw/Agent47: Provides a web dashboard that aggregates job data from agent marketplaces, but does not explicitly document the visualization of internal agent states.\n\nAuthentication: Not documented.\n\nLocal/Remote: The server supports both SSE (mounted as a sub-app) and stdio (via a background Uvicorn task) transport modes.\n\nPermissions / Security: Not documented.\n\nInstallation notes: Configuration is managed via a `monitoring` block in a YAML file, with environment variable overrides available (e.g., `MATLAB_MCP_MONITORING_ENABLED`).\n\nSources: https://raw.githubusercontent.com/HanSur94/matlab-mcp-server-python/master/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to perform read-only queries and return the results as structured JSON, without requiring external cloud access.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 3,
-        "constraint_satisfaction": 5,
-        "usefulness": 5,
-        "feedback": "The recommended server is highly relevant to the user's query. However, the groundedness score is lower because the system output references an alternative ('ksterx/srunx') and specific transport details (SSE/stdio sub-app details) that are not present in the provided evidence."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I am looking for a tool that helps me manage my AI-driven development tasks and context more effectively.",
-      "output": "Recommended: juspay/neurolink\n\nWhy: This server is specifically designed for AI-driven development workflows. It features conversation memory, project architecture analysis, and the ability to discover and utilize other MCP tools (such as GitHub integration for creating issues and PRs) directly within a development session. It also supports GitHub Actions for automated PR/issue management.\n\nAlternatives: waystation-ai/mcp (focused on broader project and task management rather than direct coding/development context).\n\nAuthentication: Mentions `anthropic_api_key` for GitHub Action usage. Other methods are Not documented.\n\nLocal/Remote: Not documented.\n\nPermissions / Security: Mentions \"requires HITL (Human-in-the-loop) approval if configured\" for tool execution.\n\nInstallation notes: Mentions usage via `npx @juspay/neurolink` and GitHub Actions (`uses: juspay/neurolink@v1`).\n\nSources: https://raw.githubusercontent.com/juspay/neurolink/master/README.md",
+      "query": "I need an MCP server that can interact with my local filesystem to read and write configuration files, but it must operate strictly within a specified root directory for security reasons.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 4,
-        "groundedness": 1,
-        "constraint_satisfaction": 5,
-        "usefulness": 3,
-        "feedback": "The system output recommended 'juspay/neurolink' and detailed its features (conversation memory, project architecture analysis, etc.), but none of this information was present in the provided evidence. The evidence for 'juspay/neurolink' only contained a 'Contributing & Support' section. This is a severe grounding failure (hallucination) despite the format being well-structured."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need a way to scrape and parse complex web content without dealing with heavy headless browser overhead. Can you provide a lightweight way to extract clean text from URLs?",
-      "output": "Recommended: aparajithn/agent-scraper-mcp\n\nWhy: This server provides a `scrape_url` tool specifically designed to extract clean, readable text or markdown from any webpage using `readability-lxml` (similar to Firefox Reader View). It is well-suited for your requirement as it offers a lightweight extraction method alongside optional browser-based features.\n\nAlternatives: \n- olostep/olostep-mcp-server: Offers scraping with multiple output formats (including markdown/text) and specialized parsers, though it requires an API key.\n- firecrawl/firecrawl-mcp-server: Designed for clean, agent-ready context extraction.\n\nAuthentication: Not documented for `aparajithn/agent-scraper-mcp`. (Note: `olostep/olostep-mcp-server` and `ScrapeUnblocker/scrapeunblocker-mcp` explicitly require API keys).\n\nLocal/Remote: The evidence shows `aparajithn/agent-scraper-mcp` can be accessed via a hosted endpoint (e.g., `https://agent-scraper-mcp.onrender.com`), but the server itself is built on Python/FastAPI.\n\nPermissions / Security: Not documented.\n\nInstallation notes: Not documented.\n\nSources: https://raw.githubusercontent.com/aparajithn/agent-scraper-mcp/master/README.md",
+      "query": "I need an MCP server that can securely interface with my local file system to perform read-only operations on project configuration files. It must support authentication to ensure that my IDE only accesses specific directories I authorize.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 4,
-        "groundedness": 2,
-        "constraint_satisfaction": 4,
-        "usefulness": 5,
-        "feedback": "The recommendation is highly relevant to the user's query, but the groundedness is low because the system output contains several claims not supported by the provided evidence. Specifically, the mention of 'readability-lxml', 'firecrawl/firecrawl-mcp-server', the hosted endpoint URL, and Python/FastAPI are completely absent from the provided evidence text."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "How can I programmatically query patient records or schedule data from my electronic health record system while ensuring HIPAA compliance?",
-      "output": "Recommended: **healthchainai/HealthChain**\n\nWhy: HealthChain is specifically designed for production-ready healthcare AI, offering a robust architecture that supports both querying and writing FHIR data. It explicitly addresses your requirement for HIPAA compliance by providing a \"governance as config\" framework that treats compliance standards (including HIPAA) as a first-class deployment artifact. It also includes security foundations such as API-key authentication, audit logging, and TLS.\n\nAlternatives: \n* **wso2/fhir-mcp-server**: A generic FHIR R4 server capable of reading, writing, updating, and deleting FHIR resources. It is suitable for programmatic interaction but does not explicitly document HIPAA-specific governance features.\n* **awslabs/mcp (AWS HealthLake MCP Server)**: Designed for managing FHIR healthcare data workflows within the AWS ecosystem.\n\nAuthentication: \n* **HealthChain**: API-key authentication, TLS (configured via `healthchain.yaml`).\n* **wso2/fhir-mcp-server**: Not documented.\n* **AWS HealthLake**: Not documented.\n\nLocal/Remote: \n* **HealthChain**: Supports Dockerized deployment.\n* **wso2/fhir-mcp-server**: Supports local installation (PyPI/Source) and Docker.\n* **AWS HealthLake**: Not documented.\n\nPermissions / Security: \n* **HealthChain**: Includes audit logging, TLS, and configurable security for HIPAA/NHS environments.\n* **wso2/fhir-mcp-server**: Not documented.\n* **AWS HealthLake**: Not documented.\n\nInstallation notes: \n* **HealthChain**: Uses `healthchain.yaml` for configuration.\n* **wso2/fhir-mcp-server**: Supports installation via PyPI, source, or Docker/Docker Compose.\n* **AWS HealthLake**: Supports installation via `uvx` (Kiro, Cursor, VS Code).\n\nSources: \n* https://raw.githubusercontent.com/healthchainai/HealthChain/main/README.md\n* https://raw.githubusercontent.com/wso2/fhir-mcp-server/main/README.md\n* https://raw.githubusercontent.com/awslabs/mcp/main/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to perform read-only queries and generate summary reports without exposing the data to external cloud services.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 1,
-        "constraint_satisfaction": 4,
-        "usefulness": 5,
-        "feedback": "The recommendation is highly relevant to the user's query, but the groundedness is extremely low. The system output makes extensive claims about HealthChain's HIPAA compliance, 'governance as config' framework, TLS, API-key authentication, and 'healthchain.yaml' configuration, none of which are present in the provided evidence. Additionally, it introduces 'awslabs/mcp' as an alternative, which is completely absent from the evidence."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I am looking for an interface to execute crypto-asset transactions and monitor wallet balances through natural language commands.",
-      "output": "Recommended: [blockrunai/blockrun-mcp](https://github.com/blockrunai/blockrun-mcp)\n\nWhy: This server is specifically designed for agent-first interactions, allowing you to monitor wallet balances and execute transactions through natural language commands. It provides a comprehensive suite of tools, including `blockrun_wallet` for status and funding, and `blockrun_polymarket` for executing real trades. It supports self-custody and handles authentication via wallet signatures.\n\nAlternatives: \n- [forgemeshlabs/coinopai-mcp](https://github.com/forgemeshlabs/coinopai-mcp): Focuses on automated micropayments for AI agents using USDC on the Base network.\n- [Swarmwage/swarmwage](https://github.com/Swarmwage/swarmwage): Provides discovery and reliability tools for x402 services, with options for dry-runs before executing paid calls.\n\nAuthentication: Wallet-based authentication (your wallet signature acts as authentication).\n\nLocal/Remote: Local (the server runs on your machine; your wallet key stays local).\n\nPermissions / Security: \n- Self-custody: Your private key never leaves your machine. \n- `blockrun_polymarket` requires explicit confirmation for real fund movements; without `confirm:true`, it performs a safe dry-run.\n- The server is designed so that it cannot move your funds without your authorization.\n\nInstallation notes: \n- Requires Node.js (\u226520.19).\n- Install via `claude mcp add blockrun -s user -e PATH=\"$PATH\" -- npx -y @blockrun/mcp@latest`.\n- If using Claude Code, ensure `node`/`npx` are in your PATH.\n\nSources: \n- https://raw.githubusercontent.com/blockrunai/blockrun-mcp/main/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to query system logs and perform read-only data analysis without exposing credentials to the cloud.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 2,
-        "constraint_satisfaction": 5,
-        "usefulness": 5,
-        "feedback": "The recommended server is highly relevant to the user's query. However, the groundedness is low because the output contains several details not present in the provided evidence, such as specific tool names (blockrun_wallet, blockrun_polymarket), the alternative 'Swarmwage/swarmwage', and specific installation commands."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need to implement a monetization layer for my agent, where users pay for specific API calls or tasks. Do you have a tool for handling payable service requests?",
-      "output": "Recommended: rplryan/x402-discovery-mcp\n\nWhy: This server is specifically designed for the x402 micropayment standard, which is an HTTP-native protocol for agentic web payments. It includes \"ScoutGate,\" a dedicated gateway that allows you to wrap any existing API in x402 payments, enabling you to monetize your services without requiring deep protocol knowledge.\n\nAlternatives: aparajithn/agent-deploy-dashboard-mcp (includes built-in x402 payment middleware for API monetization)\n\nAuthentication: Not documented\n\nLocal/Remote: Not documented\n\nPermissions / Security: x402-discovery-mcp mentions endpoint security hardening, including SSRF guards, rate limiting, and HTTPS-only requirements for registration.\n\nInstallation notes: \n- x402-discovery-mcp: Published to GitHub MCP Registry (`io.github.rplryan/x402-discovery-mcp`).\n- x402-payment-harness: `pip install x402-payment-harness`\n- x402scout CLI: `npm install -g x402scout`\n\nSources: \n- https://raw.githubusercontent.com/rplryan/x402-discovery-mcp/main/README.md\n- https://raw.githubusercontent.com/aparajithn/agent-deploy-dashboard-mcp/master/README.md",
+      "query": "I need an MCP server that can securely interface with my local database to perform read-only data analysis without exposing my credentials to external cloud services.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 1,
-        "constraint_satisfaction": 5,
-        "usefulness": 3,
-        "feedback": "The primary recommendation 'rplryan/x402-discovery-mcp' is completely hallucinated and not present in the provided evidence. The system should have recommended 'aparajithn/agent-deploy-dashboard-mcp' as the primary option, as it was the only server in the evidence containing the x402 micropayment feature."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I have multiple LLM endpoints and need a smart router to distribute traffic based on cost and performance. How can I manage these routes?",
-      "output": "Recommended: juspay/neurolink\n\nWhy: NeuroLink provides comprehensive features for managing multiple LLM endpoints and routing traffic. It includes \"Automatic Cost Optimization\" to select the cheapest models for tasks, \"LiteLLM Model Routing\" for load balancing across 100+ models, and \"Intelligent Fallback\" for provider switching. Additionally, it offers a \"Tool Router\" with 6 strategies for intelligent routing across multiple MCP servers.\n\nAlternatives: TheLunarCompany/lunar (provides a unified API Gateway for AI with traffic shaping, cost/performance optimization, and centralized MCP aggregation).\n\nAuthentication: Not documented.\n\nLocal/Remote: Not documented.\n\nPermissions / Security: NeuroLink supports credential management, auditing, and hardened OS configurations (SELinux, AppArmor). It features zero credential logging and encrypted configuration storage. It is deployable within SOC 2 Type II and ISO 27001-certified infrastructure environments (though NeuroLink itself is not certified).\n\nInstallation notes: The evidence shows usage via `npx @juspay/neurolink`.\n\nSources: https://raw.githubusercontent.com/juspay/neurolink/master/README.md",
+      "query": "I need an MCP server that can interact with my local filesystem to read configuration files and execute shell commands to restart my development services.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 2,
-        "constraint_satisfaction": 5,
-        "usefulness": 5,
-        "feedback": "The recommended server (juspay/neurolink) is highly relevant and perfectly solves the user's query. However, the groundedness is low because the system output contains multiple claims (such as the alternative 'TheLunarCompany/lunar', specific security features like SELinux/AppArmor, and the installation command) that are completely absent from the provided evidence snippet."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     },
     {
-      "query": "I need an administrative panel interface that allows me to configure and monitor my AI services without writing raw configuration files.",
-      "output": "Recommended: aparajithn/agent-deploy-dashboard-mcp\n\nWhy: This server provides a unified web-based dashboard specifically designed for the deployment and management of AI agent services across multiple platforms (Vercel, Render, Railway, and Fly.io), which aligns with your requirement for an administrative interface to monitor and configure services.\n\nAlternatives: HanSur94/matlab-mcp-server-python (Offers a web dashboard for monitoring metrics and health, but is specific to MATLAB-related MCP operations).\n\nAuthentication: Requires API tokens for the managed services (e.g., `VERCEL_TOKEN`, `RENDER_API_KEY`, `RAILWAY_TOKEN`, `FLY_API_TOKEN`).\n\nLocal/Remote: Remote (Designed to be deployed as a web service on platforms like Render).\n\nPermissions / Security: Not documented.\n\nInstallation notes: Requires forking the repository, deploying as a Docker-based Web Service on a provider like Render, and configuring environment variables for the respective service tokens.\n\nSources: https://raw.githubusercontent.com/aparajithn/agent-deploy-dashboard-mcp/master/README.md",
+      "query": "I need a tool that can securely fetch and display system environment variables and process lists directly within my IDE to help debug configuration issues without leaving my development environment.",
+      "output": "System encountered a structured parsing failure.",
       "eval": {
-        "relevance": 5,
-        "groundedness": 3,
-        "constraint_satisfaction": 5,
-        "usefulness": 5,
-        "feedback": "The recommendation is highly relevant and directly addresses the user's query. However, the groundedness score is lower because the system output includes details not present in the provided evidence, such as specific environment variables (VERCEL_TOKEN, RENDER_API_KEY, etc.) and the mention of a 'Docker-based' service."
+        "judge_failed": true,
+        "error": "Max retries exceeded"
       }
     }
   ]

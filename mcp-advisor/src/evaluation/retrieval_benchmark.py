@@ -4,7 +4,7 @@ import os
 import time
 import numpy as np
 from elasticsearch import Elasticsearch
-from sentence_transformers import SentenceTransformer, CrossEncoder
+from sentence_transformers import SentenceTransformer
 
 EVAL_FILE = os.path.join("data", "eval", "validation_realistic_v1.json")
 ES_URL = os.getenv("ES_URL", "http://localhost:9200")
@@ -15,8 +15,6 @@ class Benchmarker:
         self.es = Elasticsearch(ES_URL)
         print("Loading embedding model...")
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
-        print("Loading cross encoder...")
-        self.cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
         
     def _parse_results(self, es_res):
         results = []
@@ -158,51 +156,11 @@ def main():
         list_bm25 = var3_bm25_oversample(bm, q)
         return merge_rrf(list_vector, list_bm25, k_rrf=60)[:50]
         
-    def var5_vector_nc100(bm, q):
-        chunks = bm.search_vector(q, top_k=200, num_candidates=100)
-        return bm._deduplicate(chunks, max_unique=50)
-        
-    def var6_v4_rrf_plus_ce(bm, q):
-        v4_results = var4_rrf_fusion(bm, q)
-        if not v4_results: return []
-        
-        # We need the text for each candidate to run CE.
-        # But v4_results only has 'server_id' and 'score'.
-        # Since we just want the benchmark, we can fetch the text from ES quickly or just run the CE logic.
-        # This might be tricky without modifying es_search or fetching all texts.
-        # Actually, let's write a small helper to get text for CE.
-        es_query = {"terms": {"server_id": [r["server_id"] for r in v4_results]}}
-        res = bm.es.search(index=INDEX_NAME, query=es_query, size=1000)
-        
-        server_texts = {}
-        for hit in res['hits']['hits']:
-            src = hit['_source']
-            sid = src.get("server_id")
-            if sid not in server_texts: server_texts[sid] = []
-            server_texts[sid].append(f"[{src.get('heading', '')}]\\n{src.get('text', '')}")
-            
-        candidates = []
-        for r in v4_results:
-            sid = r["server_id"]
-            agg_text = "\\n\\n".join(server_texts.get(sid, []))
-            candidates.append({"server_id": sid, "text": agg_text})
-            
-        pairs = [[q, c['text']] for c in candidates]
-        if not pairs: return v4_results
-        
-        # cross_encoder is in ElasticMCPSearch. We can import it or initialize it.
-        # It's better to just use engine.cross_encoder
-        ce = bm.cross_encoder
-        scores = ce.predict(pairs)
-        for i, score in enumerate(scores):
-            candidates[i]['score'] = float(score)
-            
-        sorted_cands = sorted(candidates, key=lambda x: x['score'], reverse=True)
-        return sorted_cands
-
     variants = {
-        "V4: RRF Fusion (V2 + V3)": var4_rrf_fusion,
-        "V6: V4 RRF + CrossEncoder": var6_v4_rrf_plus_ce
+        "V1: Baseline Hybrid": var1_baseline_hybrid,
+        "V2: Vector Oversample": var2_vector_oversample,
+        "V3: BM25 Oversample": var3_bm25_oversample,
+        "V4: RRF Fusion (V2 + V3)": var4_rrf_fusion
     }
     
     for name, func in variants.items():

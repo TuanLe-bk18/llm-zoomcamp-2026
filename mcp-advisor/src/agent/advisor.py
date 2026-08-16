@@ -24,7 +24,6 @@ class MCPAdvisor:
         self.search_engine = ElasticMCPSearch(es_url=es_url)
 
     def rewrite_query(self, user_query):
-        """Phase 4: Rewrite the user requirement into a better search query."""
         prompt = f"""
 You are an expert AI agent specializing in the Model Context Protocol (MCP).
 The user is looking for an MCP server.
@@ -45,15 +44,13 @@ Return ONLY the search query, nothing else.
     def recommend(self, user_query):
         print(f"Original requirement: {user_query}")
         
-        # 1. Query Rewrite
         try:
             search_query = self.rewrite_query(user_query)
             print(f"Rewritten query for retrieval: {search_query}")
         except Exception as e:
-            print(f"LLM Error during query rewrite (check GEMINI_API_KEY). Using raw query. Error: {e}")
+            print(f"LLM Error during query rewrite. Using raw query. Error: {e}")
             search_query = user_query
             
-        # 2. Retrieve Candidates via First-stage (RRF + Oversampling)
         candidates = self.search_engine.search_rrf(search_query, top_k=5)
         
         if not candidates:
@@ -65,7 +62,6 @@ Return ONLY the search query, nothing else.
                 "evidence": []
             }
             
-        # 3. Construct Evidence Context
         context_blocks = []
         evidence_list = []
         for c in candidates:
@@ -79,7 +75,6 @@ Return ONLY the search query, nothing else.
         context_str = "\\n".join(context_blocks)
         candidate_ids = [c.get('server_id') for c in candidates]
         
-        # 4. LLM Generation
         system_prompt = """
 You are the MCP Advisor, an expert in Model Context Protocol integrations.
 Given the user's requirement and the retrieved evidence from the MCP Registry (README chunks), recommend the most suitable MCP server.
@@ -119,7 +114,6 @@ Sources: [List of source URLs for the recommended server]
                 recommended_server = result.get("recommended_server", "").strip()
                 answer = result.get("answer", "")
                 
-                # Validation: Recommended server must be in candidate list (or empty if no match)
                 if recommended_server and recommended_server not in candidate_ids:
                     if attempt == 0:
                         print(f"  [Validation] Hallucinated server '{recommended_server}'. Retrying...")

@@ -22,17 +22,6 @@ with st.sidebar:
         os.environ["GEMINI_API_KEY"] = api_key
         
     st.markdown("---")
-    st.markdown("""
-    ### Project Phases Implemented
-    ✅ Phase 1: Registry Ingestion (Official + Awesome)  
-    ✅ Phase 2: Heading-based Chunking (ES)  
-    ✅ Phase 3: Hybrid Retrieval + Reranking  
-    ✅ Phase 4: Ground Truth Eval (Hit@1, Hit@5)  
-    ✅ Phase 5: Gemini RAG Flow (Strict Grounding)  
-    ✅ Phase 6: LLM-as-a-Judge Eval  
-    ✅ Phase 7: SQLite Monitoring & UI Dashboard  
-    ✅ Phase 8: Docker Reproducibility  
-    """)
 
 @st.cache_resource
 def get_advisor():
