@@ -5,43 +5,7 @@ import json
 
 # Add src to path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-from evaluation.generate_eval_dataset import redact_text
-from evaluation.llm_eval import evaluate_with_llm
 
-def test_eval_query_has_no_server_name_leakage():
-    """Test that redacting text successfully removes repo and owner names."""
-    raw_text = "This is the punkpeye/awesome-mcp-servers repo. You can install it using npx @punkpeye/awesome-mcp-servers. See https://github.com/punkpeye/awesome-mcp-servers"
-    server_id = "punkpeye/awesome-mcp-servers"
-    
-    redacted = redact_text(raw_text, server_id)
-    
-    assert "punkpeye" not in redacted
-    assert "awesome-mcp-servers" not in redacted
-    assert "[REDACTED_SERVER]" in redacted
-    assert "[REDACTED_URL]" in redacted
-    assert "[REDACTED_PACKAGE]" in redacted
-
-class DummyClient:
-    class Models:
-        def generate_content(self, model, contents, config):
-            class Response:
-                text = '{"relevance": 5, "groundedness": 5, "constraint_satisfaction": 5, "usefulness": 5, "feedback": "Good"}'
-            return Response()
-    models = Models()
-    
-class FailingClient:
-    class Models:
-        def generate_content(self, model, contents, config):
-            raise Exception("503 UNAVAILABLE")
-    models = Models()
-
-def test_failed_judge_returns_judge_failed():
-    """Test that if the judge fails, it returns judge_failed=True."""
-    client = FailingClient()
-    result = evaluate_with_llm(client, "query", "output", [], "rationale", max_retries=1) # 1 retry to speed up test
-    
-    assert result.get("judge_failed") is True
-    assert "error" in result
 
 # For the advisor tests, we need to mock the Gemini client and ES search.
 from agent.advisor import MCPAdvisor

@@ -161,6 +161,6 @@ This table maps the LLM Zoomcamp Capstone rubric criteria to the relevant projec
 | **Retrieval Evaluation** | Evaluated 4 variants | `src/evaluation/retrieval_benchmark.py` (See Section 8) |
 | **LLM Generation Eval** | Ablation benchmark comparing Baseline vs Guarded approach | `src/evaluation/generation_benchmark.py` (See Section 8) |
 | **Interface** | Full Streamlit application | `app.py` |
-| **Monitoring** | SQLite + Streamlit Dashboard with 5 charts and User Feedback | `src/monitoring/db.py`, `app.py` (See Section 11) |
+| **Monitoring** | SQLite + Streamlit Dashboard with 5 charts and User Feedback | `src/monitoring/db.py`, `app.py` (See Section 10) |
 | **Containerization** | Runs Elasticsearch, `init-index`, and Streamlit UI | `docker-compose.yml`, `Dockerfile` |
 | **Reproducibility** | Data is committed (`data/documents.json`), dependencies pinned | `data/documents.json`, `requirements.txt` (See Section 11) |

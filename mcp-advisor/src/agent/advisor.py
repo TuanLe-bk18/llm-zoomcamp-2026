@@ -196,7 +196,7 @@ Output ONLY a JSON object with this exact structure:
                     else:
                         print("  [Validation] Retry failed. Returning parse_failed state.")
                         return {
-                            "answer": answer,
+                            "answer": "Unable to produce a grounded recommendation.",
                             "rewritten_query": search_query,
                             "recommended_server": None,
                             "candidates": candidate_ids,

@@ -1,41 +1,41 @@
 Loading embedding model...
 \n==================================================\nRunning V1: Baseline Hybrid\n==================================================
 Overall (N=53):
-Avg Unique Servers: 26.2 (p50: 28, p95: 30)
-Candidate Recall @10: 0.226 | @30: 0.340 | @50: 0.340
-Hit@1: 0.038 | Hit@5: 0.151 | MRR@5: 0.075 | Recall@5: 0.142
-Latency: p50=28.8ms, p95=46.6ms
+Avg Unique Servers: 25.1 (p50: 27, p95: 29)
+Candidate Recall @10: 0.283 | @30: 0.358 | @50: 0.358
+Hit@1: 0.038 | Hit@5: 0.170 | MRR@5: 0.081 | Recall@5: 0.160
+Latency: p50=33.0ms, p95=63.0ms
 \nBreakdown:
-  simple_intent (N=20): CR@30=0.400, Hit@1=0.100, Hit@5=0.200, MRR@5=0.135
-  constraint_heavy (N=13): CR@30=0.615, Hit@1=0.000, Hit@5=0.308, MRR@5=0.099
-  ambiguous_realistic (N=20): CR@30=0.100, Hit@1=0.000, Hit@5=0.000, MRR@5=0.000
+  simple_intent (N=20): CR@30=0.400, Hit@1=0.100, Hit@5=0.200, MRR@5=0.142
+  constraint_heavy (N=13): CR@30=0.615, Hit@1=0.000, Hit@5=0.385, MRR@5=0.112
+  ambiguous_realistic (N=20): CR@30=0.150, Hit@1=0.000, Hit@5=0.000, MRR@5=0.000
 \n==================================================\nRunning V2: Vector Oversample\n==================================================
 Overall (N=53):
-Avg Unique Servers: 49.7 (p50: 50, p95: 50)
-Candidate Recall @10: 0.340 | @30: 0.566 | @50: 0.679
-Hit@1: 0.057 | Hit@5: 0.151 | MRR@5: 0.097 | Recall@5: 0.138
-Latency: p50=46.7ms, p95=61.9ms
+Avg Unique Servers: 48.7 (p50: 50, p95: 50)
+Candidate Recall @10: 0.453 | @30: 0.642 | @50: 0.679
+Hit@1: 0.151 | Hit@5: 0.340 | MRR@5: 0.229 | Recall@5: 0.285
+Latency: p50=46.1ms, p95=60.0ms
 \nBreakdown:
-  simple_intent (N=20): CR@30=0.600, Hit@1=0.150, Hit@5=0.250, MRR@5=0.200
-  constraint_heavy (N=13): CR@30=0.846, Hit@1=0.000, Hit@5=0.154, MRR@5=0.064
-  ambiguous_realistic (N=20): CR@30=0.350, Hit@1=0.000, Hit@5=0.050, MRR@5=0.017
+  simple_intent (N=20): CR@30=0.700, Hit@1=0.150, Hit@5=0.400, MRR@5=0.247
+  constraint_heavy (N=13): CR@30=0.769, Hit@1=0.231, Hit@5=0.385, MRR@5=0.295
+  ambiguous_realistic (N=20): CR@30=0.500, Hit@1=0.100, Hit@5=0.250, MRR@5=0.167
 \n==================================================\nRunning V3: BM25 Oversample\n==================================================
 Overall (N=53):
-Avg Unique Servers: 50.0 (p50: 50, p95: 50)
-Candidate Recall @10: 0.226 | @30: 0.358 | @50: 0.415
-Hit@1: 0.038 | Hit@5: 0.170 | MRR@5: 0.080 | Recall@5: 0.160
-Latency: p50=32.2ms, p95=36.3ms
+Avg Unique Servers: 49.9 (p50: 50, p95: 50)
+Candidate Recall @10: 0.264 | @30: 0.358 | @50: 0.434
+Hit@1: 0.038 | Hit@5: 0.151 | MRR@5: 0.076 | Recall@5: 0.142
+Latency: p50=33.2ms, p95=43.9ms
 \nBreakdown:
-  simple_intent (N=20): CR@30=0.400, Hit@1=0.100, Hit@5=0.200, MRR@5=0.138
-  constraint_heavy (N=13): CR@30=0.615, Hit@1=0.000, Hit@5=0.385, MRR@5=0.114
+  simple_intent (N=20): CR@30=0.400, Hit@1=0.100, Hit@5=0.200, MRR@5=0.142
+  constraint_heavy (N=13): CR@30=0.615, Hit@1=0.000, Hit@5=0.308, MRR@5=0.092
   ambiguous_realistic (N=20): CR@30=0.150, Hit@1=0.000, Hit@5=0.000, MRR@5=0.000
 \n==================================================\nRunning V4: RRF Fusion (V2 + V3)\n==================================================
 Overall (N=53):
 Avg Unique Servers: 50.0 (p50: 50, p95: 50)
-Candidate Recall @10: 0.340 | @30: 0.604 | @50: 0.642
-Hit@1: 0.075 | Hit@5: 0.226 | MRR@5: 0.122 | Recall@5: 0.193
-Latency: p50=68.7ms, p95=83.0ms
+Candidate Recall @10: 0.396 | @30: 0.566 | @50: 0.679
+Hit@1: 0.057 | Hit@5: 0.321 | MRR@5: 0.156 | Recall@5: 0.259
+Latency: p50=72.8ms, p95=82.7ms
 \nBreakdown:
-  simple_intent (N=20): CR@30=0.600, Hit@1=0.150, Hit@5=0.350, MRR@5=0.199
-  constraint_heavy (N=13): CR@30=0.846, Hit@1=0.077, Hit@5=0.308, MRR@5=0.173
-  ambiguous_realistic (N=20): CR@30=0.450, Hit@1=0.000, Hit@5=0.050, MRR@5=0.013
+  simple_intent (N=20): CR@30=0.550, Hit@1=0.100, Hit@5=0.450, MRR@5=0.237
+  constraint_heavy (N=13): CR@30=0.769, Hit@1=0.077, Hit@5=0.308, MRR@5=0.179
+  ambiguous_realistic (N=20): CR@30=0.450, Hit@1=0.000, Hit@5=0.200, MRR@5=0.060

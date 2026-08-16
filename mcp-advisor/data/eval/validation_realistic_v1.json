@@ -2,7 +2,7 @@
   "dataset_name": "MCP Advisor Independent Realistic Validation Set",
   "version": "1.2-final-full-corpus",
   "created_date": "2026-08-16",
-  "source_query_bank": "mcp_advisor_independent_validation_v1/validation_intents_v1.json",
+  "source_query_bank": "data/eval/validation_intents_v1.json",
   "query_count": 60,
   "query_text_frozen": true,
   "ground_truth_status": "FINAL_LABELS_MECHANICAL_CHECKED",
