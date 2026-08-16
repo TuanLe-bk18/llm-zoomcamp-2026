@@ -51,7 +51,7 @@ def test_advisor_parses_valid_json(monkeypatch):
         class Models:
             def generate_content(self, model, contents, config):
                 class Response:
-                    text = '{"recommended_server": "owner/repo", "all_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "satisfied": true, "evidence": "evidence"}], "answer": "Detailed answer"}'
+                    text = '{"recommended_server": "owner/repo", "all_hard_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "is_hard_constraint": true, "satisfied": true, "evidence": "evidence"}], "answer": "Detailed answer"}'
                 return Response()
         models = Models()
 
@@ -75,7 +75,7 @@ def test_advisor_rejects_unknown_server(monkeypatch):
             def generate_content(self, model, contents, config):
                 class Response:
                     # Always hallucinates a server not in candidates
-                    text = '{"recommended_server": "fake/repo", "all_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "satisfied": true, "evidence": "evidence"}], "answer": "Hallucinated answer"}'
+                    text = '{"recommended_server": "fake/repo", "all_hard_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "is_hard_constraint": true, "satisfied": true, "evidence": "evidence"}], "answer": "Hallucinated answer"}'
                 return Response()
         models = Models()
 
@@ -121,7 +121,7 @@ def test_advisor_rejects_unsatisfied_constraint(monkeypatch):
         class Models:
             def generate_content(self, model, contents, config):
                 class Response:
-                    text = '{"recommended_server": "owner/repo", "all_constraints_satisfied": false, "constraint_checks": [{"constraint": "test", "satisfied": false, "evidence": "evidence"}], "answer": "Answer"}'
+                    text = '{"recommended_server": "owner/repo", "all_hard_constraints_satisfied": false, "constraint_checks": [{"constraint": "test", "is_hard_constraint": true, "satisfied": false, "evidence": "evidence"}], "answer": "Answer"}'
                 return Response()
         models = Models()
 
@@ -143,7 +143,7 @@ def test_advisor_rejects_fake_evidence(monkeypatch):
         class Models:
             def generate_content(self, model, contents, config):
                 class Response:
-                    text = '{"recommended_server": "owner/repo", "all_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "satisfied": true, "evidence": "hallucinated"}], "answer": "Answer"}'
+                    text = '{"recommended_server": "owner/repo", "all_hard_constraints_satisfied": true, "constraint_checks": [{"constraint": "test", "is_hard_constraint": true, "satisfied": true, "evidence": "hallucinated"}], "answer": "Answer"}'
                 return Response()
         models = Models()
 
