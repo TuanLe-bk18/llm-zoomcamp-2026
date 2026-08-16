@@ -69,10 +69,10 @@ Return ONLY the search query, nothing else.
             text = c.get('text', '')
             score = c.get('score', 0.0)
             url = c.get('source_url', '')
-            context_blocks.append(f"--- SERVER: {server_id} (Score: {score:.2f}) ---\\nURL: {url}\\n{text}\\n")
+            context_blocks.append(f"--- SERVER: {server_id} (Score: {score:.2f}) ---\nURL: {url}\n{text}\n")
             evidence_list.append({"server_id": server_id, "text": text})
             
-        context_str = "\\n".join(context_blocks)
+        context_str = "\n".join(context_blocks)
         candidate_ids = [c.get('server_id') for c in candidates]
         
         system_prompt = """
@@ -96,12 +96,12 @@ Installation notes: [Installation notes mentioned, or "Not documented"]
 Sources: [List of source URLs for the recommended server]
 """
         
-        user_prompt = f"User Requirement: {user_query}\\n\\nEvidence:\\n{context_str}"
+        user_prompt = f"User Requirement: {user_query}\n\nEvidence:\n{context_str}"
         
         for attempt in range(2): # 1 initial try + 1 repair retry
             try:
                 response = self.llm_client.models.generate_content(
-                    model='gemini-3.5-flash',
+                    model='gemini-3.1-flash-lite',
                     contents=[system_prompt, user_prompt],
                     config=types.GenerateContentConfig(
                         response_mime_type="application/json",
@@ -117,7 +117,7 @@ Sources: [List of source URLs for the recommended server]
                 if recommended_server and recommended_server not in candidate_ids:
                     if attempt == 0:
                         print(f"  [Validation] Hallucinated server '{recommended_server}'. Retrying...")
-                        user_prompt += f"\\n\\n[SYSTEM ERROR]: Your previous recommendation '{recommended_server}' was NOT in the Evidence list {candidate_ids}. You MUST recommend a server from the Evidence, or return an empty string if none are suitable."
+                        user_prompt += f"\n\n[SYSTEM ERROR]: Your previous recommendation '{recommended_server}' was NOT in the Evidence list {candidate_ids}. You MUST recommend a server from the Evidence, or return an empty string if none are suitable."
                         continue
                     else:
                         print("  [Validation] Retry failed. Returning parse_failed state.")
@@ -157,8 +157,8 @@ if __name__ == "__main__":
     advisor = MCPAdvisor()
     test_query = "I need an MCP to automate browser interactions without using a cloud service."
     print("Running MCP Advisor...")
-    print("======================\\n")
+    print("======================\n")
     result = advisor.recommend(test_query)
-    print("\\n======================\\nRESULT:\\n")
+    print("\n======================\nRESULT:\n")
     import json
     print(json.dumps(result, indent=2))

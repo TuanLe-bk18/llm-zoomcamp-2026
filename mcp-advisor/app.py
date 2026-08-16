@@ -60,8 +60,11 @@ with tab1:
                     result = advisor.recommend(full_query)
                     latency = (time.time() - start_time) * 1000
                     
-                    st.success("Recommendation Ready!")
-                    
+                    if "error" in result:
+                        st.error(f"Error generating recommendation: {result['error']}")
+                    else:
+                        st.success("Recommendation Ready!")
+                        
                     st.markdown("### Result")
                     st.markdown(result["answer"])
                     

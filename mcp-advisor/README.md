@@ -23,7 +23,6 @@ The system consists of the following components:
 - **Ingestion Engine**: Python scripts to fetch registries and crawl GitHub for documentation.
 - **Search Engine**: Elasticsearch (v8.11.1) running locally via Docker.
 - **Embedding Model**: `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions).
-- **Reranking Model**: `cross-encoder/ms-marco-MiniLM-L-6-v2`.
 - **LLM / Generator**: Google Gemini API (`gemini-3.1-flash-lite`).
 - **Monitoring**: Local SQLite database capturing requests, latency, and feedback.
 - **UI**: Streamlit web interface with interactive feedback and a monitoring dashboard.
@@ -33,7 +32,7 @@ The system consists of the following components:
 ## 4. Ingestion
 The ingestion pipeline is completely reproducible and automated:
 1. `fetch_registry.py`: Parses the raw markdown from official and community registries to extract stable metadata (`server_id`, `name`, `description`, `repository`).
-2. `fetch_readmes.py`: Uses concurrent threads to safely download the `README.md` for the top 500 servers directly from GitHub.
+2. `fetch_readmes.py`: Uses concurrent threads to safely download the `README.md` for all registered servers directly from GitHub.
 
 ---
 
@@ -90,13 +89,14 @@ The application includes a built-in monitoring module (`src/monitoring/db.py`) b
 1. **Clone the repository**
 2. **Set your API Key**
    ```bash
+   cd mcp-advisor
    export GEMINI_API_KEY="your-gemini-api-key"
    ```
 3. **Start the system via Docker Compose**
    ```bash
    docker compose up --build
    ```
-   *Note: The `init-index` container will automatically start first, wait for Elasticsearch to boot, download the registry/READMEs, and index them. The `web` interface will only start once indexing is completely finished.*
+   *Note: The `init-index` container will automatically start first, wait for Elasticsearch to boot, and index `documents.json`. If `documents.json` is missing, it will download the registry and READMEs from scratch. The `web` interface will only start once indexing is completely finished.*
 4. **Access the Application**
    Open your browser to `http://localhost:8501`.
 

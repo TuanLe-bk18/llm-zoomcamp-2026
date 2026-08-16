@@ -5,8 +5,8 @@
   "source_query_bank": "mcp_advisor_independent_validation_v1/validation_intents_v1.json",
   "query_count": 60,
   "query_text_frozen": true,
-  "ground_truth_status": "FINAL_LABELS_PENDING_MECHANICAL_CHECK",
-  "benchmark_ready": false,
+  "ground_truth_status": "FINAL_LABELS_MECHANICAL_CHECKED",
+  "benchmark_ready": true,
   "notes": [
     "This supersedes the corpus-workaround qrels built before documents.json was rebuilt.",
     "The four originally missing registry IDs (Notion, Calendar, IMAP, S3) were replaced only with candidates present in both servers.json and rebuilt documents.json, or converted to conservative NO MATCH where hard constraints could not be proven.",
