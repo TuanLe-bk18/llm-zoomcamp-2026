@@ -108,7 +108,11 @@ class MCPSearchEngine:
             candidates[i]['score'] = float(score)
             
         candidates = sorted(candidates, key=lambda x: x['score'], reverse=True)
-        return candidates[:top_k]
+    def search_rrf(self, query, top_k=5):
+        """
+        Search using RRF Fusion over Vector and BM25.
+        """
+        return self.es_client.search_rrf(query, top_k)
 
     def _get_top_results(self, scores, top_k):
         top_indices = scores.argsort()[-top_k:][::-1]
@@ -120,30 +124,16 @@ class MCPSearchEngine:
         return results
 
 if __name__ == "__main__":
-    import time
-    engine = MCPSearchEngine()
-    engine.load_and_chunk()
-    engine.build_index()
+    import sys
+    engine = SearchEngine()
     
-    query = "local filesystem access on Mac"
-    
-    print("\n--- Keyword Search ---")
-    start = time.time()
-    res = engine.search_keyword(query, top_k=3)
-    print(f"Time: {time.time()-start:.3f}s")
-    for r in res:
-        print(f"[{r['owner']}/{r['repo']}] (Score: {r['score']:.3f}): {r['text'][:100]}...")
+    query = "database connection PostgreSQL"
+    if len(sys.argv) > 1:
+        query = " ".join(sys.argv[1:])
         
-    print("\n--- Vector Search ---")
-    start = time.time()
-    res = engine.search_vector(query, top_k=3)
-    print(f"Time: {time.time()-start:.3f}s")
-    for r in res:
-        print(f"[{r['owner']}/{r['repo']}] (Score: {r['score']:.3f}): {r['text'][:100]}...")
+    print(f"\n=== Query: '{query}' ===")
         
-    print("\n--- Hybrid + Reranking ---")
-    start = time.time()
-    res = engine.search_hybrid_rerank(query, top_k=3)
-    print(f"Time: {time.time()-start:.3f}s")
+    print("\n--- RRF Search ---")
+    res = engine.search_rrf(query, top_k=3)
     for r in res:
-        print(f"[{r['owner']}/{r['repo']}] (Score: {r['score']:.3f}): {r['text'][:100]}...")
+        print(f"[{r['server_id']}] (Score: {r['score']:.3f}): {r['text'][:150]}...\nSource: {r['source_url']}\n")

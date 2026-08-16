@@ -54,46 +54,77 @@ class ElasticMCPSearch:
         res = self.es.search(index=self.index_name, knn=knn_query, query=match_query, size=top_k)
         return self._parse_results(res)
 
-    def search_hybrid_rerank(self, query, top_k=5):
-        # Retrieve top 30 chunks from hybrid
-        chunks = self.search_hybrid(query, top_k=30)
+    def search_rrf(self, query, top_k=5, k_rrf=60):
+        # 1. Vector Oversample (k=200, nc=500)
+        query_vector = self.embedding_model.encode(query).tolist()
+        knn_query = {
+            "field": "text_vector",
+            "query_vector": query_vector,
+            "k": 200,
+            "num_candidates": 500
+        }
+        res_vector = self.es.search(index=self.index_name, knn=knn_query, size=200)
+        chunks_vector = self._parse_results(res_vector)
         
-        # Group by server_id
-        server_groups = defaultdict(list)
-        for chunk in chunks:
-            server_id = chunk['server_id']
-            server_groups[server_id].append(chunk)
-            
-        candidates = []
-        for server_id, group in server_groups.items():
-            # Aggregate text (heading + text)
-            aggregated_text = "\\n\\n".join([f"[{c['heading']}]\\n{c['text']}" for c in group])
-            
-            # Use the first chunk's source_url
-            source_url = group[0].get('source_url', f"https://github.com/{server_id}")
-            
-            candidates.append({
-                "server_id": server_id,
-                "text": aggregated_text,
-                "source_url": source_url,
-                "original_chunks": group
-            })
-            
-        # Prepare pairs for cross-encoder
-        pairs = [[query, c['text']] for c in candidates]
+        # 2. BM25 Oversample (k=200)
+        es_query = {"match": {"text": query}}
+        res_bm25 = self.es.search(index=self.index_name, query=es_query, size=200)
+        chunks_bm25 = self._parse_results(res_bm25)
         
-        # Score pairs
-        if not pairs:
+        # Helper to deduplicate and keep top 50 unique servers
+        def get_unique_servers(chunks, max_unique=50):
+            unique = []
+            seen = set()
+            for c in chunks:
+                sid = c['server_id']
+                if sid not in seen:
+                    seen.add(sid)
+                    unique.append(sid)
+                    if len(unique) >= max_unique:
+                        break
+            return unique
+            
+        vector_servers = get_unique_servers(chunks_vector)
+        bm25_servers = get_unique_servers(chunks_bm25)
+        
+        # 3. RRF Fusion
+        scores = {}
+        for i, sid in enumerate(vector_servers):
+            scores[sid] = scores.get(sid, 0) + 1.0 / (k_rrf + i + 1)
+        for i, sid in enumerate(bm25_servers):
+            scores[sid] = scores.get(sid, 0) + 1.0 / (k_rrf + i + 1)
+            
+        # Sort by RRF score
+        sorted_sids = sorted(scores.keys(), key=lambda x: scores[x], reverse=True)[:top_k]
+        
+        if not sorted_sids:
             return []
             
-        rerank_scores = self.cross_encoder.predict(pairs)
+        # We need text and source_url for the chosen servers.
+        # We can query ES for these server_ids and aggregate their chunks.
+        terms_query = {"terms": {"server_id": sorted_sids}}
+        res_docs = self.es.search(index=self.index_name, query=terms_query, size=1000)
         
-        for i, score in enumerate(rerank_scores):
-            candidates[i]['score'] = float(score)
+        server_groups = defaultdict(list)
+        for hit in res_docs['hits']['hits']:
+            source = hit['_source']
+            server_groups[source.get("server_id")].append(source)
             
-        # Sort by rerank score
-        candidates = sorted(candidates, key=lambda x: x['score'], reverse=True)
-        return candidates[:top_k]
+        final_candidates = []
+        for sid in sorted_sids:
+            group = server_groups.get(sid, [])
+            if not group:
+                continue
+            aggregated_text = "\\n\\n".join([f"[{c.get('heading', '')}]\\n{c.get('text', '')}" for c in group])
+            source_url = group[0].get('source_url', f"https://github.com/{sid}")
+            final_candidates.append({
+                "server_id": sid,
+                "text": aggregated_text,
+                "source_url": source_url,
+                "score": scores[sid]
+            })
+            
+        return final_candidates
 
     def _parse_results(self, es_res):
         results = []
@@ -115,9 +146,9 @@ if __name__ == "__main__":
     
     print(f"\\n=== Query: '{query}' ===")
         
-    print("\\n--- Hybrid + Reranking Search (Unique Servers) ---")
+    print("\\n--- RRF Search (Unique Servers) ---")
     start = time.time()
-    res = engine.search_hybrid_rerank(query, top_k=3)
+    res = engine.search_rrf(query, top_k=3)
     print(f"Time: {time.time()-start:.3f}s")
     for r in res:
         print(f"[{r['server_id']}] (Score: {r['score']:.3f}): {r['text'][:150]}...\\nSource: {r['source_url']}\\n")

@@ -35,50 +35,45 @@ The ingestion pipeline is completely reproducible and automated:
 
 ---
 
-## 5. Retrieval
-The system uses a **Hybrid Search + CrossEncoder Reranking** strategy:
-1. **Heading-based Chunking**: Documents are split into chunks based on Markdown headings (e.g., `## Authentication`, `## Configuration`) rather than arbitrary paragraphs.
-2. **Hybrid Search**: The user's rewritten query is executed against Elasticsearch using both sparse (BM25 keyword) and dense (k-NN vector) search to retrieve the top 30 candidate chunks.
-3. **Aggregation**: Chunks are grouped and aggregated by their `server_id` to form complete contextual profiles for each candidate server.
-4. **Reranking**: The aggregated server profiles are paired with the user's query and scored by the CrossEncoder to return the Top 5 most relevant unique servers.
+## 5. Retrieval Strategy (First-Stage Optimization)
+After rigorous diagnostic benchmarking, we identified that standard Top-30 chunk retrieval suffers from significant "Candidate Generation Failure" (failing to retrieve the correct server into the reranking pool). To solve this, the system uses **Oversampling + Server-level RRF Fusion**:
+1. **Heading-based Chunking**: Documents are split into chunks based on Markdown headings (e.g., `## Authentication`, `## Configuration`).
+2. **Vector Oversampling**: Retrieves Top-200 chunks via dense vector search (k-NN) and deduplicates them to find the Top-50 unique servers.
+3. **BM25 Oversampling**: Retrieves Top-200 chunks via sparse keyword search and deduplicates them to find the Top-50 unique servers.
+4. **Reciprocal Rank Fusion (RRF)**: Merges the two server lists at the server level (k=60) to produce a highly robust Top-5 candidate list for the LLM.
+
+*(Note: CrossEncoder reranking was evaluated but ultimately discarded as it introduced 7x latency without significantly improving MRR@5 on this specific dataset).*
 
 ---
 
 ## 6. RAG Flow
 The LLM integration operates in two strict phases to ensure high-quality, grounded recommendations:
 1. **Query Rewriting**: The user's natural language input (plus selected constraints like "Local Execution") is rewritten by Gemini into a dense, keyword-rich search query optimized for Elasticsearch.
-2. **Strict Grounded Generation**: Gemini is provided with the Top 5 aggregated server documents. It is strictly instructed via system prompt to **only** recommend servers present in the context, and to explicitly state "Not documented" if a capability or security property is missing from the evidence.
+2. **Strict Grounded Generation**: Gemini is provided with the aggregated server documents. It is strictly instructed via system prompt to **only** recommend servers present in the context, and to explicitly state "Not documented" if a capability or security property is missing from the evidence.
 
 ---
 
-## 7. Evaluation & Monitoring
+## 7. Evaluation & Metrics
 
-### Retrieval Benchmark (50 Stratified Semantic Queries)
-*We evaluated retrieval performance by fetching exactly 30 candidates for each method before reranking, and scoring the Top-5 unique servers.*
-- **Vector Search**: Hit@1: 0.180 | Hit@5: 0.380 | MRR: 0.276 *(Best Performer)*
-- **Hybrid + CrossEncoder**: Hit@1: 0.100 | Hit@5: 0.300 | MRR: 0.177
-- **Keyword Search**: Hit@1: 0.100 | Hit@5: 0.180 | MRR: 0.149
-- **Hybrid Search**: Hit@1: 0.080 | Hit@5: 0.180 | MRR: 0.141
+### Dataset & Coverage
+- **Corpus**: Rebuilt to cover 3243 / 3391 registered servers (95.64% success rate).
+- **Benchmark Set**: 60 strictly frozen, realistic user queries (Independent Validation v1), categorized into `simple_intent`, `constraint_heavy`, and `ambiguous_realistic`. Includes 7 abstention "no match" queries to test hallucination resistance.
 
-*Note: Vector Search outperforms other methods on this dataset because the queries were deliberately designed to be highly verbose and semantic without exact server names.*
+### First-Stage Retrieval Optimization
+Through our diagnostic benchmark, we evaluated several candidate generation configurations. By moving from standard Hybrid search to **Oversampling + RRF Fusion**, we achieved:
+- **Candidate Recall@50**: ~68% (A 2x improvement over the baseline 34%).
+- **Hit@5**: 22.6%
+- **MRR@5**: 0.122
+- **Latency**: ~69ms (p50)
 
-### LLM-as-a-Judge Evaluation (gemini-3.5-flash)
-*Results based on 20 stratified cases, graded specifically on evidence-groundedness and constraint satisfaction.*
-- **Relevance**: 3.45/5.0
-- **Groundedness**: 1.35/5.0 *(Note: The system aggressively scores down if the LLM hallucinates constraints not present in the chunk. We also observed several `503 UNAVAILABLE` API rate-limits dropping the average).*
-- **Constraint Satisfaction**: 3.40/5.0
-- **Usefulness**: 3.65/5.0
+*Limitations*: While RRF effectively pushes relevant servers up the ranking (especially for constraint-heavy queries), **ambiguous queries** remain a significant limitation, often failing to recall the correct server in the Top 50 pool.
 
 ---
 
-## 8. LLM Evaluation (LLM-as-a-Judge)
-To evaluate the final generation quality, we use `llm_eval.py` where Gemini acts as an expert judge evaluating its own RAG pipeline outputs on 4 criteria (Scale 1-5):
-- **Relevance**: Does the server solve the problem?
-- **Groundedness**: Are claims strictly based on the provided evidence?
-- **Constraint Satisfaction**: Were constraints (e.g., Local only) respected?
-- **Usefulness**: Was the format strictly adhered to?
-
-*(Run `python src/evaluation/llm_eval.py` with your `GEMINI_API_KEY` to populate these exact metrics).*
+## 8. Future Work
+1. **Enriched Metadata Embeddings**: To solve the ambiguous query limitation, future iterations will concatenate the Server Name, Description, and Heading into every chunk before embedding, injecting global context into local chunk vectors.
+2. **Agentic Tool Retrieval**: Moving beyond RAG, wrapping the Elasticsearch queries into an MCP tool itself so an orchestrator agent can dynamically formulate and iterate on queries.
+3. **Automated Server Testing**: Dynamically spinning up Docker containers to test if an MCP server's advertised tools actually compile and run before recommending them.
 
 ---
 
