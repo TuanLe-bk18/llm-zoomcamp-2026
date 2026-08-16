@@ -153,14 +153,14 @@ The application includes a built-in SQLite monitoring module (`src/monitoring/db
 
 This table maps the LLM Zoomcamp Capstone rubric criteria to the relevant project components:
 
-| Criterion | Implementation & Evidence |
-| --- | --- |
-| **Problem Description** | See Section 1. |
-| **Ingestion Pipeline** | Automated Python pipeline fetching from GitHub (`src/ingestion/`). |
-| **RAG Flow** | User query -> LLM Rewrite -> ES Vector Oversample -> Server Dedup -> LLM Guarded Generation (`src/agent/advisor.py`). |
-| **Retrieval Evaluation** | Evaluated 4 variants. Benchmark script at `src/evaluation/retrieval_benchmark.py` (See Section 7). |
-| **LLM Generation Eval** | Ablation benchmark comparing Baseline vs Guarded approach. Script at `src/evaluation/generation_benchmark.py` (See Section 7). |
-| **Interface** | Full Streamlit application (`app.py`). |
-| **Monitoring** | SQLite + Streamlit Dashboard with 5 charts and User Feedback (See Section 9). |
-| **Containerization** | `docker-compose.yml` runs Elasticsearch, `init-index`, and Streamlit UI. |
-| **Reproducibility** | Data is committed (`data/documents.json`), meaning fresh clones index instantly without fetching 3,000 repos. |
+| Criterion | Implementation | Evidence (Code/File) |
+| --- | --- | --- |
+| **Problem Description** | Explained in README | See Section 1 |
+| **Ingestion Pipeline** | Automated Python pipeline fetching from GitHub | `src/ingestion/` |
+| **RAG Flow** | User query -> LLM Rewrite -> ES Vector Oversample -> Server Dedup -> LLM Guarded Generation | `src/agent/advisor.py`, `src/retrieval/es_search.py` |
+| **Retrieval Evaluation** | Evaluated 4 variants | `src/evaluation/retrieval_benchmark.py` (See Section 7) |
+| **LLM Generation Eval** | Ablation benchmark comparing Baseline vs Guarded approach | `src/evaluation/generation_benchmark.py` (See Section 7) |
+| **Interface** | Full Streamlit application | `app.py` |
+| **Monitoring** | SQLite + Streamlit Dashboard with 5 charts and User Feedback | `src/monitoring/db.py`, `app.py` (See Section 9) |
+| **Containerization** | Runs Elasticsearch, `init-index`, and Streamlit UI | `docker-compose.yml`, `Dockerfile` |
+| **Reproducibility** | Data is committed (`data/documents.json`), dependencies pinned | `data/documents.json`, `requirements.txt` (See Section 10) |
