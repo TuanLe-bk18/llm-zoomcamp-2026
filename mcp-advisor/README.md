@@ -9,15 +9,15 @@ Developers spend significant time manually searching registries and GitHub repos
 
 ---
 
-## Interface Preview
+## 2. Interface Preview
 
-### 1. Search UI
+### Search UI
 *Example Query*: "Can you recommend a browser automation tool?"  
 *Recommendation*: `Automata-Labs-team/MCP-Server-Playwright` (Matches the intent to execute browser sessions and JS).
 
 ![Search UI](docs/search_ui_real.png)
 
-### 2. Monitoring Dashboard
+### Monitoring Dashboard
 Tracks real-time system metrics, user feedback, latency distributions, and top recommended servers.
 
 ![Monitoring Dashboard - Metrics & Time Series](docs/dashboard_top.png)
@@ -25,7 +25,7 @@ Tracks real-time system metrics, user feedback, latency distributions, and top r
 
 ---
 
-## 2. Dataset
+## 3. Dataset
 The dataset is dynamically built from two primary sources:
 1. **Primary**: Official MCP reference servers (`modelcontextprotocol/servers`)
 2. **Supplemental**: Community curated list (`awesome-mcp-servers`)
@@ -34,7 +34,7 @@ For each server, the system fetches the `README.md` directly from its source rep
 
 ---
 
-## 3. Architecture
+## 4. Architecture
 The system consists of the following components:
 - **Ingestion Engine**: Python scripts to fetch registries and crawl GitHub for documentation.
 - **Search Engine**: Elasticsearch (v8.11.1) running locally via Docker.
@@ -45,14 +45,14 @@ The system consists of the following components:
 
 ---
 
-## 4. Ingestion
+## 5. Ingestion
 The ingestion pipeline is completely reproducible and automated:
 1. `fetch_registry.py`: Parses the raw markdown from official and community registries to extract stable metadata (`server_id`, `name`, `description`, `repository`).
 2. `fetch_readmes.py`: Uses concurrent threads to safely download the `README.md` for all registered servers directly from GitHub.
 
 ---
 
-## 5. Retrieval Strategy
+## 6. Retrieval Strategy
 Standard Top-30 chunk retrieval suffers from candidate generation failure. The system uses **Vector Oversampling + Server-Level Deduplication** to improve recall:
 1. **Chunking**: Documents are split based on Markdown headings. We target ~1000 characters per chunk to safely fit within the embedding model's limits.
 2. **Vector Oversampling**: Retrieves Top-200 chunks via dense vector search (k-NN) using `all-MiniLM-L6-v2`.
@@ -61,13 +61,13 @@ Standard Top-30 chunk retrieval suffers from candidate generation failure. The s
 
 ---
 
-## 6. RAG Flow
+## 7. RAG Flow
 1. **Query Rewriting**: The user's input (plus constraints like "Local Execution") is rewritten by an LLM into a dense search query.
 2. **Grounded Generation**: The LLM evaluates the Top-5 aggregated server documents. It is instructed to only recommend servers present in the context and to state "Not documented" for missing information.
 
 ---
 
-## 7. Evaluation & Architecture Decisions
+## 8. Evaluation & Architecture Decisions
 
 To ensure optimal performance and justify architecture decisions, the system was evaluated on a frozen benchmark set (`validation_realistic_v1.json`) containing 60 queries (including 7 abstention constraints).
 
@@ -107,7 +107,7 @@ We evaluated four different retrieval variants using `src/evaluation/retrieval_b
 
 ---
 
-## 8. Reliability & Safety
+## 9. Reliability & Safety
 
 MCP Advisor implements multiple engineering guardrails to ensure reliable recommendations:
 - **Pydantic Structured Validation**: Responses are strictly parsed to guarantee structure.
@@ -117,7 +117,7 @@ MCP Advisor implements multiple engineering guardrails to ensure reliable recomm
 
 ---
 
-## 9. Monitoring Dashboard
+## 10. Monitoring Dashboard
 
 The application includes a built-in SQLite monitoring module (`src/monitoring/db.py`).
 - Every interaction logs `timestamp`, `user_query`, `latency_ms`, and `recommended_server`.
@@ -131,7 +131,7 @@ The application includes a built-in SQLite monitoring module (`src/monitoring/db
 
 ---
 
-## 10. How to Run
+## 11. How to Run
 
 1. **Clone the repository**
 2. **Set your API Key**
@@ -158,9 +158,9 @@ This table maps the LLM Zoomcamp Capstone rubric criteria to the relevant projec
 | **Problem Description** | Explained in README | See Section 1 |
 | **Ingestion Pipeline** | Automated Python pipeline fetching from GitHub | `src/ingestion/` |
 | **RAG Flow** | User query -> LLM Rewrite -> ES Vector Oversample -> Server Dedup -> LLM Guarded Generation | `src/agent/advisor.py`, `src/retrieval/es_search.py` |
-| **Retrieval Evaluation** | Evaluated 4 variants | `src/evaluation/retrieval_benchmark.py` (See Section 7) |
-| **LLM Generation Eval** | Ablation benchmark comparing Baseline vs Guarded approach | `src/evaluation/generation_benchmark.py` (See Section 7) |
+| **Retrieval Evaluation** | Evaluated 4 variants | `src/evaluation/retrieval_benchmark.py` (See Section 8) |
+| **LLM Generation Eval** | Ablation benchmark comparing Baseline vs Guarded approach | `src/evaluation/generation_benchmark.py` (See Section 8) |
 | **Interface** | Full Streamlit application | `app.py` |
-| **Monitoring** | SQLite + Streamlit Dashboard with 5 charts and User Feedback | `src/monitoring/db.py`, `app.py` (See Section 9) |
+| **Monitoring** | SQLite + Streamlit Dashboard with 5 charts and User Feedback | `src/monitoring/db.py`, `app.py` (See Section 11) |
 | **Containerization** | Runs Elasticsearch, `init-index`, and Streamlit UI | `docker-compose.yml`, `Dockerfile` |
-| **Reproducibility** | Data is committed (`data/documents.json`), dependencies pinned | `data/documents.json`, `requirements.txt` (See Section 10) |
+| **Reproducibility** | Data is committed (`data/documents.json`), dependencies pinned | `data/documents.json`, `requirements.txt` (See Section 11) |
